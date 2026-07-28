@@ -492,6 +492,27 @@
       ]
     }
   },
+  "developerReport": {
+    "panelTitle": "Developer Report",
+    "dialogTitle": "Generate Developer Report",
+    "reportKindButtonAria": "Developer Report",
+    "diagramLinkSelector": "a[href*=\"threatmodeldiagram\"]",
+    "modalSelector": "ngb-modal-window",
+    "selectors": {
+      "generateNewButton": "button[aria-label=\"Generate New\"]",
+      "versionDropdown": "ngb-modal-window kendo-dropdownlist",
+      "pdfFormatRadio": "#reportExportFile-pdf-input",
+      "csvFormatRadio": "#reportExportFile-csv-input",
+      "closeButton": "#reportDeveloperPopup-close-button",
+      "cancelButton": "button#reportDeveloperPopup-cancel-button",
+      "generateButton": "button#reportDeveloperPopup-generateReport-button",
+      "openPopupListItems": ".k-animation-container-shown .k-list-item"
+    },
+    "expected": {
+      "emptyStateText": "No reports generated yet",
+      "versionPattern": "^V\\s*\\d"
+    }
+  },
   "customRiskCalculation": {
     "configPath": "/configurations",
     "titlePattern": "Configurations \\| ThreatModeler",

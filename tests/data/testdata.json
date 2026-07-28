@@ -459,6 +459,39 @@
       "actionDefault": "All"
     }
   },
+  "userReport": {
+    "panelTitle": "Audit Report",
+    "dialogTitle": "Generate Audit Report",
+    "reportKindButtonAria": "Audit Report",
+    "diagramLinkSelector": "a[href*=\"threatmodeldiagram\"]",
+    "modalSelector": "ngb-modal-window",
+    "selectors": {
+      "generateNewButton": "button[aria-label=\"Generate New\"]",
+      "userActivityCheckbox": "input[id=\"Include user activity summary\"]",
+      "userMultiselect": "kendo-multiselect#reportSelectPopup-user-dropdown",
+      "metricsMultiselect": "kendo-multiselect#reportSelectPopup-metrics-dropdown",
+      "pdfFormatRadio": "#reportExportFile-pdf-input",
+      "csvFormatRadio": "#reportExportFile-csv-input",
+      "cancelButton": "button#reportAuditPopup-cancel-button",
+      "openPopupListContainer": ".k-animation-container-shown",
+      "popupListItems": ".k-animation-container-shown .k-list-item",
+      "popupSelectAllCheckbox": ".k-animation-container-shown input#chk",
+      "popupItemCheckbox": ".k-animation-container-shown .k-list-item input[type=checkbox]"
+    },
+    "expected": {
+      "metricCount": 8,
+      "metricLabels": [
+        "Threat Status Changed",
+        "Threats Mitigated (Combined by Mitigated by Control)",
+        "Threats Mitigated by Control",
+        "Security Requirements Status Changed",
+        "Approval Diagram Updated",
+        "Test Case Status Changed",
+        "Tickets Created",
+        "Attributes Used"
+      ]
+    }
+  },
   "customRiskCalculation": {
     "configPath": "/configurations",
     "titlePattern": "Configurations \\| ThreatModeler",

@@ -550,6 +550,50 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "solutionHub": {
+    "path": "/solutions-hub",
+    "titlePattern": "Solutions Hub \\| ThreatModeler",
+    "sideNavAriaLabel": "Solutions Hub",
+    "selectors": {
+      "navLink": "a[aria-label=\"Solutions Hub\"]",
+      "searchInputWrapper": "kendo-textbox#solutionHub-searchName-input",
+      "searchInputInner": "kendo-textbox#solutionHub-searchName-input input",
+      "searchClearIcon": "kendo-textbox#solutionHub-searchName-input .k-clear-value",
+      "labelFilterButton": "button#solutionHub-filter-button",
+      "modelListContainer": "[aria-label=\"Threat Model Selection\"]",
+      "modelCardTemplate": "[id^=\"marketplace-open-\"][id$=\"-button\"]",
+      "modelTagList": "kendo-chiplist-custom#solutionHub-labels-tag",
+      "seeMoreLink": "a#seeMore_href",
+      "downloadButton": "button#solutionHub-downloadTM-button",
+      "welcomePlaceholder": "text=Welcome to the Solutions Hub!",
+      "modelDetailTabpanel": "[id^=\"tabpanel-\"]",
+      "aboutToggle": "button#first-toggle",
+      "aboutCollapse": "#first-collapse",
+      "relatedModelTemplate": "[id^=\"marketPlace-relatedTM-\"]",
+      "labelSidebar": "marketplace-label-filter",
+      "labelSidebarCloseButton": "button#marketplace-filterClose-button",
+      "labelSidebarTitle": "h2#Filter-modal",
+      "labelSearchInputWrapper": "kendo-input#marketplace-search-input",
+      "labelCheckboxTemplate": "input[id=\"marketplace-{label}-checkbox\"]",
+      "labelApplyButton": "#marketplace-applyFilter-button button",
+      "labelClearButton": "#marketplace-clearFilter-button button",
+      "downloadDialog": "kendo-dialog:has-text(\"Download or Open model\"), kendo-dialog:has-text(\"about to download\")",
+      "downloadDialogCloseX": "kendo-dialog button[aria-label=\"Close\"]",
+      "downloadDialogCancelButton": "button#confirmation-close-button",
+      "downloadDialogOpenModelButton": "button#confirmation-Open\\ Model-button",
+      "downloadDialogDownloadModelButton": "button#confirmAction-Download\\ Model-button"
+    },
+    "expected": {
+      "welcomeStart": "Welcome to the Solutions Hub!",
+      "labelSidebarTitle": "Select Label",
+      "downloadDialogTitles": ["Download or Open model", "about to download"]
+    },
+    "candidates": {
+      "searchTerm": "azure",
+      "searchNoResultsTerm": "zzznonexistentqqxyz",
+      "labelKeys": ["azure", "aws"]
+    }
+  },
   "userProfile": {
     "path": "/user-profile",
     "titlePattern": "User Profile \\| ThreatModeler",

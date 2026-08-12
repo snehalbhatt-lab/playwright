@@ -550,6 +550,45 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "emailTemplate": {
+    "modelPrefix": "EmailTM",
+    "selectors": {
+      "shareButton": "#diagram-shareModal-button",
+      "dialog": "kendo-dialog.share-model-members",
+      "title": "#shareModel-title",
+      "usersTab": "#shareModel-usersTab",
+      "groupsTab": "#shareModel-groupsTab",
+      "departmentsTab": "#shareModel-departmentsTab",
+      "usersPanel": "[id^=\"k-tabstrip-tabpanel-\"][id$=\"-0\"]",
+      "search": "#shareModel-searchUserOrGroup-input",
+      "firstSuggestion": "#user-option-0",
+      "newRoleTemplate": "#shareModel-newRole-{i}",
+      "existingRoleTemplate": "#shareModel-existingUserRole-{i}",
+      "removePendingTemplate": "#shareModel-removeNew-{i}",
+      "removeExistingTemplate": "#shareModel-removeUser-{i}",
+      "cancelButton": "button#shareModel-cancel-button",
+      "saveButton": "button#shareModel-saveShared-button",
+      "rolePopupClass": ".mm-role-popup",
+      "roleOption": ".mm-role-popup .k-list-item",
+      "confirmYes": "button#confirmAction-Yes-button",
+      "entryRow": ".mm-entry-row",
+      "entryName": ".mm-entry-name"
+    },
+    "candidates": [
+      { "search": "rajeev", "namePrefix": "Rajeev" },
+      { "search": "alberto", "namePrefix": "Alberto" },
+      { "search": "ankit", "namePrefix": "Ankit" }
+    ],
+    "roles": {
+      "readOnly": "Project ReadOnly",
+      "readWrite": "Project ReadWrite",
+      "admin": "Project Admin"
+    },
+    "expected": {
+      "tabsPattern": ["Users \\(", "Groups \\(", "Departments \\("],
+      "confirmDialogPhrase": "revoke"
+    }
+  },
   "threatModelsScreen": {
     "expectedColumns": ["Name", "Version", "Risk", "Status", "Author", "Modified"],
     "leftNavLabels": {

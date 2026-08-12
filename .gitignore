@@ -9,5 +9,6 @@ screenshots/
 .env.local
 .DS_Store
 Thumbs.db
+~$*
 .claude/
 /*.yml

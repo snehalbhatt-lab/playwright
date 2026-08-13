@@ -550,6 +550,26 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "onFormValidation": {
+    "modelPrefix": "DupTM",
+    "selectors": {
+      "createNewMenu": "button[aria-label=\"Create new menu\"]",
+      "createNewDialog": "kendo-dialog:has-text(\"Create New Threat Model\")",
+      "nameKendoTextbox": "kendo-textbox#model-name-input",
+      "versionKendoTextbox": "kendo-textbox#version-input",
+      "nameInputInner": "input[placeholder=\"Enter Model Name\"]",
+      "versionInputInner": "input[placeholder=\"Enter Version\"]",
+      "createSaveButton": "button#createSave_button",
+      "formError": "kendo-formerror.k-form-error"
+    },
+    "expected": {
+      "nameRequiredError": "Threat Model Name is a required field",
+      "versionRequiredError": "Threat Model Version is a required field",
+      "duplicateError": "already exists"
+    },
+    "tabs": ["Blank", "Template", "Import File", "CloudModeler", "Solutions Hub", "Wizard"],
+    "tabSwitchTargets": ["Template", "Solutions Hub"]
+  },
   "toolboxSearch": {
     "modelPrefix": "TBoxTM",
     "selectors": {

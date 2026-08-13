@@ -550,6 +550,30 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "versionHistory": {
+    "modelPrefix": "VerHistTM",
+    "selectors": {
+      "sideNavButton": "button#sideMenuTour_7",
+      "panel": ".version-history",
+      "panelClose": "#diagram-vHistory-close-button",
+      "headerVersionBadge": ".project-version",
+      "createVersionButton": "button#diagram-vHistory-createVersion-button",
+      "dialog": "kendo-dialog:has-text(\"Create New Version\")",
+      "newVersionInput": "#diagram-vHistory-newVersion-input",
+      "releaseNotesTextarea": "#diagram-vHistory-addNotes-input",
+      "submitButton": "button#diagram-vHistory-submit-button",
+      "dialogCloseButton": "kendo-dialog button[aria-label=\"Close\"]"
+    },
+    "expected": {
+      "dialogTitle": "Create New Version",
+      "notesPlaceholder": "Start typing here",
+      "submitterName": "sneha bhatt",
+      "submitterInitials": "SB",
+      "versionCreatedPrefix": "Version Created"
+    },
+    "sampleNewVersion": "1.1",
+    "sampleReleaseNotes": "Test release notes for version"
+  },
   "onFormValidation": {
     "modelPrefix": "DupTM",
     "selectors": {

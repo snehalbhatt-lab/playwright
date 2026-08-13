@@ -550,6 +550,28 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "toolboxSearch": {
+    "modelPrefix": "TBoxTM",
+    "selectors": {
+      "diagramComponentIcon": "button#diagram-component-icon",
+      "toolboxPanel": "#componentsExpand",
+      "searchInput": "#diagram-component-search-input",
+      "placeholderContainer": ".vertical-placeholder-container",
+      "placeholderItem": ".vertical-placeholder-container .placeholder-item"
+    },
+    "expected": {
+      "expectedPlaceholderTerms": ["Azure", "Load Balancer", "AWS", "Server", "IAM", "APIs"],
+      "noResultsText": "No Result Found",
+      "couldntFindPrefix": "couldn't find"
+    },
+    "searchTerms": {
+      "nonexistent": "zzznonexistent",
+      "partial": "lambd",
+      "shortForm": "vpc",
+      "longForm": "virtual private",
+      "misspelled": "lamda"
+    }
+  },
   "helpSection": {
     "selectors": {
       "helpButton": "button#customer-support",

@@ -550,6 +550,36 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "helpSection": {
+    "selectors": {
+      "helpButton": "button#customer-support",
+      "helpPopup": ".kendo-help-popup",
+      "helpHeading": "#help-center-heading",
+      "helpAcademy": "#helpCenter-academy-href",
+      "helpDocumentation": "button#helpCenter-openSupportDoc",
+      "helpIacAssist": "button#helpCenter-downloadIacPlugin",
+      "helpTMLink": "#helpCenter-TMlink",
+      "helpLicense": "button#helpCenter-openLicense",
+      "helpSupport": "#helpCenter-support",
+      "helpExternalIcon": ".external-link",
+      "threatsSideMenu": "button#sideMenuTour_3",
+      "srSideMenu": "button[aria-label=\"Security Requirements\"]",
+      "tcSideMenu": "button[aria-label=\"Test Cases\"]",
+      "threatsExpandIcon": "#diagram-threats-expand-icon",
+      "myViewsButton": "#diagram-threats-myView-button"
+    },
+    "expected": {
+      "helpHeadingText": "Help and support",
+      "sectionTitles": ["Resources", "Software information", "Contact support"],
+      "helpLinkHrefs": {
+        "helpAcademy": "https://threatmodeler.academy/",
+        "helpTMLink": "https://threatmodeler.ai/",
+        "helpSupport": "support.threatmodeler.com"
+      },
+      "strideViewName": "STRIDE",
+      "savedViewsHeadingPrefix": "Saved Views"
+    }
+  },
   "solutionHub": {
     "path": "/solutions-hub",
     "titlePattern": "Solutions Hub \\| ThreatModeler",

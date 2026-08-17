@@ -550,6 +550,28 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "trayFilter": {
+    "modelPrefix": "TrayFTM",
+    "selectors": {
+      "diagramComponentIcon": "button#diagram-component-icon",
+      "toolboxPanel": "#componentsExpand",
+      "searchInput": "#diagram-component-search-input",
+      "filterIcon": "button#leftSideMenuTour-filter",
+      "filterHighlightIcon": "button#leftSideMenuTour-filter i.fa-filter",
+      "filterModal": "#tm-filter-panel",
+      "filterClearButton": "#filter-clear-button",
+      "filterCloseButton": "button#close-filter-modal",
+      "filterCheckboxTemplate": "input[id^=\"filter-\"][id$=\"-checkbox\"]",
+      "noResultBlock": ".no-result-block",
+      "resetFilterLink": "#diagram-filter-resetFilter-button"
+    },
+    "expected": {
+      "highlightClass": "filter-hightlight-icon",
+      "noResultsText": "No Result Found",
+      "noResultsAdvice": "adjust your filters"
+    },
+    "nonexistentSearchTerm": "zzznonexistent"
+  },
   "versionHistory": {
     "modelPrefix": "VerHistTM",
     "selectors": {

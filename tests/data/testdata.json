@@ -550,6 +550,24 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "noteAtMention": {
+    "modelPrefix": "NoteTM",
+    "selectors": {
+      "threatsSideMenu": "button#sideMenuTour_3",
+      "threatsExpandIcon": "#diagram-threats-expand-icon",
+      "expandThreatDetails": "a[aria-label=\"Expand Details\"]",
+      "notesContainer": "note#diagram-threat",
+      "noteTextarea": "textarea[name=\"note\"]",
+      "characterCounter": ".remain-character span",
+      "notesHintContainer": ".info-container"
+    },
+    "expected": {
+      "characterLimit": 5000,
+      "initialCounterText": "Characters Left: 5000 / 5000",
+      "counterPrefix": "Characters Left:",
+      "notesHintText": "cannot be edited or deleted after creation"
+    }
+  },
   "trayFilter": {
     "modelPrefix": "TrayFTM",
     "selectors": {

@@ -550,6 +550,25 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "approvalNew": {
+    "modelPrefix": "ApprovalTM",
+    "selectors": {
+      "approvalWorkflowIcon": "button#sideMenuTour_6",
+      "submitForApprovalButton": "button#diagram-arroval-submitForApproval-button",
+      "dialog": "kendo-dialog:has-text(\"Submit for Approval\")",
+      "approversPanel": "#kendoaprroved",
+      "approversPanelbarItem": "#k-panelbar-0-item-approverListTitle",
+      "approversPanelbarLink": "#k-panelbar-0-item-approverListTitle .k-link",
+      "warningText": "#approverExclamation",
+      "cancelButton": "button#diagram-approval-submitApproval-back-button",
+      "submitButton": "button#diagram-approval-submitApproval-submit-button"
+    },
+    "expected": {
+      "dialogTitle": "Submit for Approval",
+      "approversHeading": "List of Approvers",
+      "warningTextSnippet": "view-only"
+    }
+  },
   "noteAtMention": {
     "modelPrefix": "NoteTM",
     "selectors": {

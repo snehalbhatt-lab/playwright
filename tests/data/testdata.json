@@ -550,6 +550,29 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "createModel": {
+    "modelPrefix": "CrModelTM",
+    "sourceInitialVersion": "1.0",
+    "newVersion": "2.0",
+    "createVersionNotes": "Test v2",
+    "selectors": {
+      "versionHistoryIcon": "button#sideMenuTour_7",
+      "createVersionButton": "button#diagram-vHistory-createVersion-button",
+      "createVersionInput": "#diagram-vHistory-newVersion-input",
+      "createVersionNotesInput": "#diagram-vHistory-addNotes-input",
+      "createVersionSubmit": "button#diagram-vHistory-submit-button",
+      "versionAccordion": ".version-accordion",
+      "createModelIcon": "#diagram-vHistory-createModel-button",
+      "createModelDialog": "kendo-dialog:has-text(\"Create Model\")",
+      "nameInputInner": "#diagramModelInfo-tmName-input input",
+      "versionInputInner": "#diagramModelInfo-version-input input",
+      "saveButton": "button#diagramModelInfo-save-button",
+      "dialogCloseX": "kendo-dialog button[aria-label=\"Close\"]"
+    },
+    "expected": {
+      "dialogTitle": "Create Model"
+    }
+  },
   "approvalNew": {
     "modelPrefix": "ApprovalTM",
     "selectors": {

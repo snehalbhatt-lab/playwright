@@ -550,6 +550,24 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "integrationDashboard": {
+    "path": "/integration-dashboard",
+    "selectors": {
+      "dashboardHeader": "Integration Dashboard",
+      "securityIssueSummary": "Security Issue Summary",
+      "selectIntegrationHeading": "Select Integration:",
+      "durationLabel": ".duration-filter-label",
+      "durationDefault": "Last 90 Days",
+      "dataGrid": "[role=\"grid\"][aria-label=\"Data table\"]",
+      "exportDropdownTrigger": "#exportFieldDropdown",
+      "exportMenu": "#dropdown-container.dropdown-menu.show",
+      "exportOptionExcel": "#threatmodels_exportOption_div_0",
+      "exportOptionPdf": "#threatmodels_exportOption_div_1"
+    },
+    "expected": {
+      "exportOptions": ["Excel", "PDF"]
+    }
+  },
   "wizard": {
     "searchKeyword": "AWS",
     "selectors": {

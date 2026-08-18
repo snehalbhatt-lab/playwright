@@ -550,6 +550,25 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "tagsBulkEdit": {
+    "path": "/secure-design-graph",
+    "searchKeyword": "AMSR",
+    "selectors": {
+      "componentCheckboxTemplate": "#threatframework-item-{i}-checkbox",
+      "actionsMenuButton": "#threatframework-actions-menu-button",
+      "addTagButton": "#threatframework-tag-button",
+      "dialog": "kendo-dialog:has(#addNewAws-button)",
+      "dialogTitle": "Add tags",
+      "multiselect": "#multiselectId",
+      "multiselectInput": "#multiselectId input",
+      "popup": ".k-animation-container-shown",
+      "popupItems": ".k-animation-container-shown .k-list-item",
+      "chips": "#multiselectId .k-chip",
+      "cancelButton": "button#cancelNewCreated_button",
+      "submitButton": "button#addNewAws-button",
+      "helperText": "You can add multiple tags at once."
+    }
+  },
   "task": {
     "modelPrefix": "TaskTM",
     "sampleTaskName": "Sample Task 1",

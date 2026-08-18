@@ -550,6 +550,23 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "diagramFilter": {
+    "modelPrefix": "FilterTM",
+    "probeName": "NonPersistentProbeName",
+    "selectors": {
+      "filterTriggerButton": "#diagarm-filterDiagram-button",
+      "filterPanel": "#diagramCanvasFilter-expandFilter-panel",
+      "resourcesMultiselect": "#diagramCanvasFilter-resources-multiselect",
+      "tagsMultiselect": "#diagramCanvasFilter-tags-multiselect",
+      "cancelButton": "button#diagramCanvasFilter-cancelfilter-button",
+      "saveFilterButton": "button#diagramCanvasFilter-saveFilter-button",
+      "applyButton": "button#diagramCanvasFilter-applyFilter-button",
+      "savedFiltersExpansion": "#diagramCanvasFilter-expandSaveFilter-panel",
+      "saveFormNameInput": "input[placeholder=\"Enter filter Name\"]",
+      "saveFormSubmitName": "Save Filter",
+      "saveFormCancelName": "Cancel"
+    }
+  },
   "templateBuilder": {
     "path": "/template-builder",
     "searchKeyword": "DElete",

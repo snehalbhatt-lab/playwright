@@ -550,6 +550,25 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "templateBuilder": {
+    "path": "/template-builder",
+    "searchKeyword": "DElete",
+    "selectors": {
+      "pageHeading": "Template Builder",
+      "searchInput": "#template-builder-search-input input",
+      "deleteButton": "#template-builder-delete-button",
+      "departmentFilterButton": "#template-builder-departmentFilter-button",
+      "selectAllCheckbox": "input[aria-label=\"Select All\"]",
+      "templateCards": "[id^=\"template-builder-templateData-\"][id$=\"-div\"]",
+      "previewPlaceholderText": "Select template from list to preview",
+      "createMenuButton": "button[aria-label=\"Create new menu\"]",
+      "templateMenuItemName": "Template",
+      "dialogHeadingName": "New Template",
+      "nameInput": "#templateName input",
+      "createButton": "button#template-builder-createNewTemplate-button",
+      "closeButtonName": "Close"
+    }
+  },
   "complianceReport": {
     "modelPrefix": "ComplianceTM",
     "selectors": {

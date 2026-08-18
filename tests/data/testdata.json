@@ -550,6 +550,21 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "wizard": {
+    "searchKeyword": "AWS",
+    "selectors": {
+      "createNewMenuButton": "button[aria-label=\"Create new menu\"]",
+      "threatModelMenuItem": "Tm logo Threat Model",
+      "createModelDialog": "kendo-dialog:has(#cancelNewCreated_button)",
+      "wizardTab": "Wizard",
+      "wizardSearchInput": "input[placeholder=\"Enter name\"]",
+      "wizardCards": "button[id$=\"-wizardList\"]",
+      "wizardCount": ".overview-count",
+      "nextButton": "button#next-button",
+      "prevButton": "button#previous-button",
+      "cancelButton": "button#cancelNewCreated_button"
+    }
+  },
   "tagsBulkEdit": {
     "path": "/secure-design-graph",
     "searchKeyword": "AMSR",

@@ -550,6 +550,18 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "customCompliance": {
+    "path": "/secure-design-graph",
+    "selectors": {
+      "entityTitleButton": "#threatframework-entitytitle-button",
+      "entityOptionTemplate": "[id=\"threatframework-displayname-{name}-dropdowntoggle\"]",
+      "libraryDropdown": "#threatframework-library-dropdown",
+      "entityCount": "#threatframework-counts-div"
+    },
+    "expected": {
+      "libraryLockedLabel": "All"
+    }
+  },
   "diagramFilter": {
     "modelPrefix": "FilterTM",
     "probeName": "NonPersistentProbeName",

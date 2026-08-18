@@ -550,6 +550,36 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "threatDashboard": {
+    "path": "/dashboard",
+    "expectedModelStatuses": [
+      "Approved",
+      "Pending For Approval",
+      "Rejected",
+      "Completed-ReadOnly",
+      "In Progress",
+      "Review"
+    ],
+    "selectors": {
+      "dashboardHeader": "Overview Dashboard",
+      "overviewDashboardLink": "a#create-newDashboard-menu",
+      "traceabilityMatrix": "#dashboard-traceabilityMatrix-div",
+      "top10Section": "#dashboard-top10Sr-div",
+      "complianceSection": "#dashboard-compliance-div",
+      "complianceSummaryHeading": "#dashboard-complianceSummary-div",
+      "complianceOverCompliant": "#dashboard-overCompliance-div",
+      "complianceOverNonCompliant": "#dashboard-overComplianceNon-div",
+      "complianceOverPartially": "#dashboard-overCompliancePartially-div",
+      "complianceCompliantLabel": "#dashboard-compliant-div",
+      "complianceNonCompliantLabel": "#dashboard-nonCompliant-div",
+      "compliancePartiallyLabel": "#dashboard-partially-div",
+      "filterButton": "#dashboard-filter-button",
+      "filterSidebar": "#dashboard-filter-sidebar",
+      "modelStatusMultiselect": "#dashboard-filterStatusList-multiselect input",
+      "popupItems": ".k-animation-container-shown .k-list-item",
+      "statusDefaultPlaceholder": "All"
+    }
+  },
   "integrationDashboard": {
     "path": "/integration-dashboard",
     "selectors": {

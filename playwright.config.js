@@ -4,6 +4,15 @@ const { defineConfig, devices } = require("@playwright/test");
 module.exports = defineConfig({
   testDir: "./tests",
   fullyParallel: true,
+  // Two workers means two spec files can execute concurrently on
+  // separate browser contexts. Within a spec, tests still run
+  // serially (`test.describe.configure({ mode: "serial" })` is set at
+  // the file level). Risk on this tenant: two workers racing on the
+  // /threatmodels list (login + create + cleanup) when both are using
+  // disposable models. Empirically the tenant handles it, and the
+  // retry logic below covers transient session-drop flakes. Drop back
+  // to 1 if we see systematic conflicts.
+  workers: 2,
   // Retry transient failures once. Shared-tenant flakes (overlay
   // interception, kendo timing) usually clear on a fresh browser
   // context; this soaks up ~90% of the drift.

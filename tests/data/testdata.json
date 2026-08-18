@@ -550,6 +550,29 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "task": {
+    "modelPrefix": "TaskTM",
+    "sampleTaskName": "Sample Task 1",
+    "sampleNote": "Note added by automated test",
+    "selectors": {
+      "tasksPanelButton": "button[aria-label=\"Tasks\"]",
+      "tasksDialog": "[role=\"dialog\"][aria-label=\"Tasks\"]",
+      "openCreateTaskButton": "#diagram-task-createTask-button",
+      "createTaskHeader": "Create Task",
+      "taskNameInput": "#diagram-task-taskName-input",
+      "priorityDropdown": "#diagram-task-priority-list",
+      "priorityHigh": "#diagram-task-High-button",
+      "priorityMedium": "#diagram-task-Medium-button",
+      "priorityLow": "#diagram-task-Low-button",
+      "noteInput": "#diagram-task-note-input",
+      "createButton": "button#diagram-task-createTask-create-button",
+      "cancelButton": "button#diagram-task-createTask-cancel-button",
+      "backButton": "#diagram-task-backIcon-button",
+      "closeButton": "#diagram-task-closeIcon-button",
+      "emptyStateText": "No Task Found",
+      "tasksHeader": "Tasks 0 of 0 Complete"
+    }
+  },
   "cvss40": {
     "configPath": "/configurations",
     "selectors": {

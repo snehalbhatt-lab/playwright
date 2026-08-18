@@ -143,9 +143,18 @@ test.describe("Threat Dashboard — landmarks + Compliance Summary + Model Statu
     // R54 — dropdown must include the six built-in statuses. The
     // tenant also carries custom test statuses beyond these six, so
     // we assert containment rather than an exact-set match.
+    //
+    // The multiselect click occasionally races with the popup mount
+    // (~1 in 5 runs). Retry the click once if the popup didn't
+    // materialise within the first window.
     await statusInput.click();
     const items = page.locator(SEL.popupItems);
-    await expect(items.first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+    try {
+      await expect(items.first()).toBeVisible({ timeout: 3000 });
+    } catch {
+      await statusInput.click();
+      await expect(items.first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+    }
     const labels = (await items.allTextContents()).map((s) => s.trim());
     for (const expected of EXPECTED_STATUSES) {
       expect(

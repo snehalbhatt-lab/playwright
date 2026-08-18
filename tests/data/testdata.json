@@ -285,11 +285,14 @@
     "integrations": {
       "newIntegrationButton": "button#config-integrations-newIntegration-button",
       "filterMultiselect": "#multiselect-integration-filter",
+      "searchInputAlt": "#config-integrations-search-input",
+      "grid": "#integrations-config-grid",
+      "syncButtonTemplate": "#integration-sync-{i}",
       "searchInput": "#config-integrations-search-input",
       "groupHeaderTemplate": "#integration-group-header-{i}",
       "actionsButtonTemplate": "#integration-third-party-{i}",
-      "editButtonTemplate": "#edit-integration-{i}",
-      "deleteButtonTemplate": "#delete-integration-{i}"
+      "editButtonTemplate": "#integration-edit-{i}",
+      "deleteButtonTemplate": "#integration-delete-{i}"
     },
     "llmFeaturesDefaults": {
       "featureDropdowns": [

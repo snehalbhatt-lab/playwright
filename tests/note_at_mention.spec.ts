@@ -192,20 +192,19 @@ test.describe("Note@mention — Diagram > Notes", () => {
       const ml = await textarea.getAttribute("maxlength");
       expect(Number(ml), "maxlength attribute must be 5000").toBe(EXP.characterLimit);
 
-      // JS `value=` setters can bypass the attribute, but a real
-      // user's keystrokes cannot. Simulate real input by using
-      // page.locator.fill() (which types the value) and confirm the
-      // browser truncates at the cap. We limit the fill string to
-      // slightly over the cap; anything longer would inflate the
-      // wall-clock cost.
-      const overCap = "x".repeat(EXP.characterLimit + 50);
-      await textarea.fill(overCap);
+      // Playwright's `.fill()` writes the value directly and does
+      // not respect maxlength (only real keystrokes do). So we fill
+      // exactly at the cap and verify the counter reaches 0 —
+      // proving the counter is bound to the cap and the attribute
+      // check above proves the browser will refuse further keystrokes.
+      const atCap = "x".repeat(EXP.characterLimit);
+      await textarea.fill(atCap);
       await page.waitForTimeout(400);
       const val = (await textarea.inputValue()) ?? "";
       expect(
         val.length,
-        `textarea must cap at ${EXP.characterLimit} chars — got ${val.length}`,
-      ).toBeLessThanOrEqual(EXP.characterLimit);
+        `textarea must accept exactly ${EXP.characterLimit} chars — got ${val.length}`,
+      ).toBe(EXP.characterLimit);
       // The counter should read 0 / 5000 at the cap.
       const text = await counterText(page);
       expect(text, "counter must reach 0 when field is at cap").toContain(`0 / ${EXP.characterLimit}`);

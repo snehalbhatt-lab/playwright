@@ -162,50 +162,62 @@ test.describe("Configuration", () => {
   });
 
   // --------------------------------------------------------------------------
-  test("R080-R085 - Integrations: filter multi-select and search input mount", async ({ page }, info) => {
+  test("R080-R085 - Integrations: search input mounts and echoes typed text", async ({ page }, info) => {
     caseIds(info, "R080", "R081", "R082", "R083", "R084", "R085");
+    // Live-vs-Excel drift: the multi-select category filter was
+    // removed in the Integrations UI redesign. The primary search
+    // input is the only remaining filter control on the section.
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.integrations);
-    await expect(page.locator(C.integrations.filterMultiselect)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
-    await expect(page.locator(C.integrations.searchInput)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
-    // Search input echoes typed text.
-    await page.locator(C.integrations.searchInput).fill("jira");
-    await expect(page.locator(C.integrations.searchInput)).toHaveValue("jira");
-    await step(page, info, 1, "search-filter-echoes-input");
-    await page.locator(C.integrations.searchInput).fill("");
+    const search = page.locator(C.integrations.searchInputAlt);
+    await expect(search).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+    await search.fill("jira");
+    await expect(search).toHaveValue("jira");
+    await step(page, info, 1, "search-echoes-input");
+    await search.fill("");
   });
 
   // --------------------------------------------------------------------------
-  test("R076-R079 R084 - Integrations: ALM Tools group header renders with category count", async ({ page }, info) => {
+  test("R076-R079 R084 - Integrations: grid mounts with a category-labelled row zone", async ({ page }, info) => {
     caseIds(info, "R076", "R077", "R078", "R079", "R084");
+    // Live-vs-Excel drift: the per-category group header ("ALM Tools
+    // (99)") was replaced by a kendo-grid section that renders
+    // integration categories inline in the section body. Assert the
+    // grid mounts and the section contains a known category label.
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.integrations);
-    const groupHeader = page.locator(C.integrations.groupHeaderTemplate.replace("{i}", "0"));
-    await expect(groupHeader).toBeVisible({ timeout: TIMEOUTS.elementVisible });
-    // Header text should include a category label + numeric count (e.g. "ALM Tools (99)").
-    const text = (await groupHeader.innerText()).trim();
-    expect(text, `group header "${text}" should include a category name`).toMatch(/[A-Z]/);
-    expect(text, `group header "${text}" should include a count`).toMatch(/\(\d+\)/);
-    await step(page, info, 1, "group-header-verified");
+    await expect(page.locator(C.integrations.grid)).toBeVisible({
+      timeout: TIMEOUTS.elementVisible,
+    });
+    const section = page.locator(C.sections.integrations);
+    await expect(
+      section,
+      "Integrations section must include the ALM Tools category label",
+    ).toContainText("ALM Tools", { timeout: TIMEOUTS.elementVisible });
+    await step(page, info, 1, "grid-and-category-label-verified");
   });
 
   // --------------------------------------------------------------------------
-  test("R085 - Integrations: each row exposes Edit/Delete action buttons via a menu", async ({ page }, info) => {
+  test("R085 - Integrations: each row exposes Sync/Edit/Delete inline action buttons", async ({ page }, info) => {
     caseIds(info, "R085");
+    // Live-vs-Excel drift: the per-row Actions three-dot menu was
+    // replaced by three inline icon buttons (Sync / Edit / Delete)
+    // on each grid row. IDs follow the pattern
+    // `#integration-{action}-{i}`.
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.integrations);
-    // Action buttons appear per integration row. The first row's Actions button
-    // must be attached to the DOM.
-    const actions0 = page.locator(C.integrations.actionsButtonTemplate.replace("{i}", "0")).first();
-    await expect(actions0, "row 0 Actions button must exist").toBeVisible({ timeout: TIMEOUTS.elementVisible });
-    // Edit/Delete buttons repeat by row (shared id). Assert at least one edit
-    // and one delete button exists per template.
-    await expect(page.locator(C.integrations.editButtonTemplate.replace("{i}", "0")).first()).toBeAttached({
-      timeout: TIMEOUTS.elementVisible,
-    });
-    await expect(page.locator(C.integrations.deleteButtonTemplate.replace("{i}", "0")).first()).toBeAttached({
-      timeout: TIMEOUTS.elementVisible,
-    });
+    await expect(
+      page.locator(C.integrations.syncButtonTemplate.replace("{i}", "0")).first(),
+      "row 0 Sync button must be visible",
+    ).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+    await expect(
+      page.locator(C.integrations.editButtonTemplate.replace("{i}", "0")).first(),
+      "row 0 Edit button must be visible",
+    ).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+    await expect(
+      page.locator(C.integrations.deleteButtonTemplate.replace("{i}", "0")).first(),
+      "row 0 Delete button must be visible",
+    ).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await step(page, info, 1, "integration-row-actions-visible");
   });
 

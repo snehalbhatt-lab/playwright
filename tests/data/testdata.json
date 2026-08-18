@@ -550,6 +550,24 @@
       "emptyStateText": "No reports generated yet"
     }
   },
+  "complianceReport": {
+    "modelPrefix": "ComplianceTM",
+    "selectors": {
+      "generateReportToolbarButton": "Generate Report",
+      "complianceReportCard": "button[aria-label=\"Compliance Report\"]",
+      "reportPanelTitle": "Compliance Report",
+      "generateNewButton": "Generate New",
+      "dialogHeading": "Generate Compliance Report",
+      "closeButton": "#reportCompliancePopup-close-button",
+      "sectionHeading": "Compliance Framework Sections",
+      "reportTypeHeading": "Select Report Type",
+      "pdfRadio": "#reportExportFile-pdf-input",
+      "csvRadio": "#reportExportFile-csv-input",
+      "cancelButton": "button#reportCompliancePopup-cancel-button",
+      "generateButton": "button#reportCompliancePopup-generateReport-button",
+      "popupItems": ".k-animation-container-shown .k-list-item"
+    }
+  },
   "threatDashboard": {
     "path": "/dashboard",
     "expectedModelStatuses": [

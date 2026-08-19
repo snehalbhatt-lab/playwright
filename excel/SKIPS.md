@@ -1,10 +1,10 @@
 # Excel tabs skipped for the Playwright test generation initiative
 
-Batch triage as of 2026-08-18. Workbook: `ThreatModeler Test Cases 7.x (till 7.4.1).xlsx` (110 tabs total).
+Batch triage as of 2026-08-18, updated 2026-08-19. Workbook: `ThreatModeler Test Cases 7.x (till 7.4.1).xlsx` (110 tabs total).
 
-- **Completed as of triage: 24 tabs.**
-- **Skipped: 55 tabs** (categorized below).
-- **Remaining deliverable: 31 tabs.**
+- **Completed to date: 34 tabs.**
+- **Skipped: 56 tabs** (categorized below).
+- **Remaining deliverable: 20 tabs.**
 
 Each skipped tab lists row count and category. Skip reasons are structural — the tab either has no real test content, duplicates already-shipped work, needs infrastructure (file upload, second user, admin permission, external system, canvas pixel inspection) that Playwright driving the app cannot provide, or is dominated by destructive tenant mutations that would leave residue.
 
@@ -69,9 +69,9 @@ Prompt rule: skip file-upload / bulk-import cases. Every scenario begins with "C
 | Draw.io | 41 |
 | Visio Import1 | 43 |
 
-## E. Canvas-blocked (5)
+## E. Canvas-blocked (6)
 
-Visual features drawn on `<canvas>` — no DOM to inspect. Verified via probing on Component color change and Verizon (see memory).
+Visual features drawn on `<canvas>` — no DOM to inspect. Verified via probing on Component color change, Verizon, and Protocol Bulk Edit (see memory).
 
 | Tab | Rows | What |
 |---|---|---|
@@ -80,6 +80,7 @@ Visual features drawn on `<canvas>` — no DOM to inspect. Verified via probing 
 | Border color change | 19 | Canvas group border color |
 | Threat Risk Colour | 20 | Same feature as Verizon |
 | Attack path | 21 | Canvas + presentation recording |
+| Protocol Bulk Edit | 24 | Right-click multi-selected canvas links → GoJS context menu (no DOM). Verified 2026-08-19: real Playwright right-click at link viewport coords produces no DOM menu; `link.contextMenu` is null. Same blocker as Default Protocol module A. |
 
 ## F. Integration-blocked (3)
 
@@ -140,7 +141,7 @@ Sheets with no clear feature name; content looks like partial drafts.
 
 Not skipped. To be shipped in the remaining budget.
 
-**Small (< 40 rows)** — Task, Notification (subset), CVSS score, Protocol Bulk Edit, Tags Bulk Edit, Export threats, Default Protocol, Compliance Status for Report, Cloudmodeler diagram filter.
+**Small (< 40 rows)** — Notification (subset), CVSS score, Export threats, Compliance Status for Report. (Shipped: Task, Tags Bulk Edit, Default Protocol, Cloudmodeler diagram filter. Skipped: Protocol Bulk Edit — canvas.)
 
 **Medium (40–70 rows)** — Home screen functionality work, Add threats(Per project), Custom Compliance, Notification, Wizard, Resource com VPC, Onboarding Tour, Create new model not use, Bidirectional, WingMan, Edit option, Residual Risk for threat, Security Requirements Mitigatio, NewCompliance Report, Auto Threat Mitigation, Save Filter, Integration Dashboard, CloudModeler (Changes).
 

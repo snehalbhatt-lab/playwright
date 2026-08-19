@@ -106,7 +106,10 @@ test.describe.configure({ mode: "serial" });
 let dupModelName = "";
 let dupModelVersion = "1.0";
 
+// Disposable-model create + cleanup on this tenant runs ~90-120s each,
+// so the hook timeout must be raised well above Playwright's 30s default.
 test.beforeAll(async ({ browser }) => {
+  test.setTimeout(TIMEOUTS.test);
   const context = await browser.newContext();
   const page = await context.newPage();
   try {
@@ -123,6 +126,7 @@ test.beforeAll(async ({ browser }) => {
 });
 
 test.afterAll(async ({ browser }) => {
+  test.setTimeout(TIMEOUTS.test);
   if (!dupModelName) return;
   const context = await browser.newContext();
   const page = await context.newPage();

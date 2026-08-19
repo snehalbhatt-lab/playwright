@@ -220,10 +220,12 @@ test.describe("Dashboard", () => {
   test("R093 R098 R110 - Threats Traceability Matrix renders numeric cells and matches aria-label counts", async ({ page }, info) => {
     caseIds(info, "R093", "R098", "R110");
     await gotoDashboard(page);
-    await expect(page.locator(SEL.traceabilityRoot)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+    // The matrix cells are populated by a backend fetch that can take
+    // 10-20s on cold pageload. Use a longer timeout for the mount.
+    await expect(page.locator(SEL.traceabilityRoot)).toBeVisible({ timeout: TIMEOUTS.navMedium });
     // Row 0 col 0 is Very High / Open — the most reliable cell to check across tenants.
     const anchor = page.locator(SEL.traceabilityCellTemplate.replace("{row}", "0").replace("{col}", "0"));
-    await expect(anchor).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+    await expect(anchor).toBeVisible({ timeout: TIMEOUTS.navMedium });
     const text = (await anchor.innerText()).trim();
     const aria = (await anchor.getAttribute("aria-label")) || "";
     expect(text, "cell text should be numeric").toMatch(/^\d+$/);

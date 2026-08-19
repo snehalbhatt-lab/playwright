@@ -582,6 +582,17 @@
       "saveFormCancelName": "Cancel"
     }
   },
+  "defaultProtocol": {
+    "modelPrefix": "DfltProtoTM",
+    "selectors": {
+      "displayOptionsButton": "#diagram-displayOptions-button",
+      "showLinkColorItemText": "Show link color",
+      "checkedIconClass": "fa-check"
+    },
+    "storageKeys": {
+      "showLinkColor": "HighlightAllDiagramLinks"
+    }
+  },
   "templateBuilder": {
     "path": "/template-builder",
     "searchKeyword": "DElete",

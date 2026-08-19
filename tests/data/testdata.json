@@ -582,6 +582,33 @@
       "saveFormCancelName": "Cancel"
     }
   },
+  "cvssScore": {
+    "diagramLinkSelector": "a[href^=\"/threatmodeldiagram/\"]",
+    "selectors": {
+      "threatsPanelButton": "#sideMenuTour_3",
+      "threatsGrid": ".threats-grid",
+      "selectAllButton": "#diagram-threats-selectAll-button",
+      "actionsButton": "#diagram-threats-action-button",
+      "actionMenuItem": ".overview-action-dropdown-item",
+      "dialog": "kendo-dialog.cvss-calculator-popup",
+      "scoreDetails": ".cvss-score-details",
+      "metricContainer": ".cvss-metrics-list-container",
+      "metricButton": "button.metric-btn",
+      "cancelButton": "#cvss-score-cancel-button",
+      "submitButton": "#cvss-score-submit-button",
+      "resetButtonText": "Reset"
+    },
+    "expected": {
+      "cvssMenuItemText": "Calculate CVSS Score",
+      "dialogTitleText": "Calculate CVSS Score",
+      "vectorPrefix": "CVSS:4.0/",
+      "initialOverallScore": "0.0",
+      "initialSeverity": "None",
+      "confidentialityLabel": "Confidentiality (VC) :",
+      "highOptionText": "High (H)",
+      "vcHighFragment": "VC:H"
+    }
+  },
   "defaultProtocol": {
     "modelPrefix": "DfltProtoTM",
     "selectors": {

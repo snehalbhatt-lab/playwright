@@ -2,9 +2,9 @@
 
 Batch triage as of 2026-08-18, updated 2026-08-19. Workbook: `ThreatModeler Test Cases 7.x (till 7.4.1).xlsx` (110 tabs total).
 
-- **Completed to date: 36 tabs.**
-- **Skipped: 58 tabs** (categorized below).
-- **Remaining deliverable: 16 tabs.**
+- **Completed to date: 38 tabs.**
+- **Skipped: 59 tabs** (categorized below).
+- **Remaining deliverable: 13 tabs.**
 
 Each skipped tab lists row count and category. Skip reasons are structural — the tab either has no real test content, duplicates already-shipped work, needs infrastructure (file upload, second user, admin permission, external system, canvas pixel inspection) that Playwright driving the app cannot provide, or is dominated by destructive tenant mutations that would leave residue.
 
@@ -136,13 +136,14 @@ Sheets with no clear feature name; content looks like partial drafts. Also inclu
 | Modules | 80 (only 13 content rows) | partial draft |
 | Compliance Status for Report | 13 | Spec-vs-reality mapping table (columns: SR / SR Status on Diagram / SR Status on Report / Current Status). Two rows flag known implementation bugs. Automating would need destructive SR-status changes + Compliance Report content parity — same class as prior destructive + report-content skips. Verified 2026-08-20. |
 
-## K. Feature not deployed on tmdev (1)
+## K. Feature not deployed on tmdev (2)
 
 Tab describes a UI that does not exist on `https://tmdev.threatmodeler.us` (7.4.1). No entry point in the main app nav, no matching route, no visible container in the DOM. Likely a 7.5+ feature or a separate product/subdomain.
 
 | Tab | Rows | What is missing on tmdev |
 |---|---|---|
 | AI Report | 36 real (79 total) | Standalone WingmanAI landing page. Excel describes header + threat model dropdown + prompt-box + "Start from template" + "Attach a report" cards + left nav with Chat Menu / Search / Chats Listing / Delete flow. Live tmdev only exposes an in-diagram 325 px sidebar (`#wingman-conversation-icon` → `.wingman-conversation-container`) with a minimal chat interface — no template cards, no left nav, no chat listing, no threat-model dropdown inside the panel. `/ai-report`, `/wingmanai`, `/wingman` all redirect to `/threatmodels`. Verified 2026-08-20. Only ~3 of 36 rows would map to what exists here (attachment icon, mic icon, prompt input) — poor ROI for a dedicated spec. |
+| WingMan | 55 real (56 total) | Fuller Wingman panel with Help + Support tabs + suggestion chips + ticket creation/list + insights box. Live tmdev shows the same minimal in-diagram sidebar as AI Report — no tabs, no send button (only mic + attachment), no suggestions, no tickets, no insights. Also assumes canvas-drop suggestions (R26-R38, canvas-blocked) and cross-user approver flows (R40-R55). Verified 2026-08-20. Only ~3 of 55 rows map to what exists — same class as AI Report. |
 
 ---
 
@@ -152,7 +153,7 @@ Not skipped. To be shipped in the remaining budget.
 
 **Small (< 40 rows)** — Notification (subset). (Shipped: Task, Tags Bulk Edit, Default Protocol, Cloudmodeler diagram filter, CVSS score, Export threats. Skipped: Protocol Bulk Edit — canvas; Compliance Status for Report — spec table, not tests.)
 
-**Medium (40–70 rows)** — Home screen functionality work, Add threats(Per project), Custom Compliance, Notification, Wizard, Resource com VPC, Onboarding Tour, Create new model not use, Bidirectional, WingMan, Edit option, Residual Risk for threat, Security Requirements Mitigatio, NewCompliance Report, Auto Threat Mitigation, Save Filter, Integration Dashboard, CloudModeler (Changes).
+**Medium (40–70 rows)** — Home screen functionality work, Add threats(Per project), Resource com VPC, Onboarding Tour, Create new model not use, Bidirectional, Edit option, Residual Risk for threat, Security Requirements Mitigatio, Auto Threat Mitigation, CloudModeler (Changes). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard. Skipped: WingMan — feature partially deployed, see K.)
 
 **Large (70+ rows)** — Security Control 7.0. (Shipped: Template Builder, Dashboard1. Skipped: AI Report — feature not deployed on tmdev, see K.)
 

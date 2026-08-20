@@ -582,6 +582,35 @@
       "saveFormCancelName": "Cancel"
     }
   },
+  "exportThreats": {
+    "diagramLinkSelector": "a[href^=\"/threatmodeldiagram/\"]",
+    "selectors": {
+      "threatsPanelButton": "#sideMenuTour_3",
+      "srPanelButton": "#sideMenuTour_4",
+      "threatsSelectAll": "#diagram-threats-selectAll-button",
+      "srSelectAll": "#diagram-sr-selectAll-button",
+      "threatsActionButton": "#diagram-threats-action-button",
+      "srActionButton": "#diagram-sr-action-button",
+      "actionMenuItem": ".overview-action-dropdown-item",
+      "modalDialog": "ngb-modal-window .modal-dialog",
+      "modalTitle": ".modal-title",
+      "radioCsv": "#csv",
+      "radioExcel": "#excel",
+      "radioThreatsOnly": "#threats-only",
+      "radioThreatsAndSrs": "#threats-and-srs",
+      "radioSrOnly": "#security-requirements-only",
+      "radioSrAndThreats": "#security-requirements-and-threats",
+      "threatsCancelButton": "#threat-cancel-button",
+      "threatsDownloadButton": "#threat-download-button",
+      "srCancelButton": "#sr-cancel-button",
+      "srDownloadButton": "#sr-download-button"
+    },
+    "expected": {
+      "exportMenuItemText": "Export",
+      "threatsDialogTitle": "Export Threats",
+      "srDialogTitle": "Export Security Requirements"
+    }
+  },
   "cvssScore": {
     "diagramLinkSelector": "a[href^=\"/threatmodeldiagram/\"]",
     "selectors": {

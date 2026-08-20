@@ -2,9 +2,9 @@
 
 Batch triage as of 2026-08-18, updated 2026-08-19. Workbook: `ThreatModeler Test Cases 7.x (till 7.4.1).xlsx` (110 tabs total).
 
-- **Completed to date: 34 tabs.**
-- **Skipped: 56 tabs** (categorized below).
-- **Remaining deliverable: 20 tabs.**
+- **Completed to date: 36 tabs.**
+- **Skipped: 57 tabs** (categorized below).
+- **Remaining deliverable: 17 tabs.**
 
 Each skipped tab lists row count and category. Skip reasons are structural — the tab either has no real test content, duplicates already-shipped work, needs infrastructure (file upload, second user, admin permission, external system, canvas pixel inspection) that Playwright driving the app cannot provide, or is dominated by destructive tenant mutations that would leave residue.
 
@@ -126,14 +126,15 @@ Tab is dominated by cases that create / mutate / delete real threat-model conten
 | Overview panel | 271 | Cross-cutting model overview with heavy setup |
 | Resource Component fot GCP | 136 | GCP resource component library edits |
 
-## J. Mystery / doubtful sheets (2)
+## J. Mystery / doubtful sheets (3)
 
-Sheets with no clear feature name; content looks like partial drafts.
+Sheets with no clear feature name; content looks like partial drafts. Also includes spec/mapping tables that use a different column format (no Test Scenarios / Test Steps / Expected Result / Priority) and are dev documentation rather than test cases.
 
-| Tab | Rows |
-|---|---|
-| s | 28 |
-| Modules | 80 (only 13 content rows) |
+| Tab | Rows | Note |
+|---|---|---|
+| s | 28 | partial draft |
+| Modules | 80 (only 13 content rows) | partial draft |
+| Compliance Status for Report | 13 | Spec-vs-reality mapping table (columns: SR / SR Status on Diagram / SR Status on Report / Current Status). Two rows flag known implementation bugs. Automating would need destructive SR-status changes + Compliance Report content parity — same class as prior destructive + report-content skips. Verified 2026-08-20. |
 
 ---
 
@@ -141,7 +142,7 @@ Sheets with no clear feature name; content looks like partial drafts.
 
 Not skipped. To be shipped in the remaining budget.
 
-**Small (< 40 rows)** — Notification (subset), CVSS score, Export threats, Compliance Status for Report. (Shipped: Task, Tags Bulk Edit, Default Protocol, Cloudmodeler diagram filter. Skipped: Protocol Bulk Edit — canvas.)
+**Small (< 40 rows)** — Notification (subset). (Shipped: Task, Tags Bulk Edit, Default Protocol, Cloudmodeler diagram filter, CVSS score, Export threats. Skipped: Protocol Bulk Edit — canvas; Compliance Status for Report — spec table, not tests.)
 
 **Medium (40–70 rows)** — Home screen functionality work, Add threats(Per project), Custom Compliance, Notification, Wizard, Resource com VPC, Onboarding Tour, Create new model not use, Bidirectional, WingMan, Edit option, Residual Risk for threat, Security Requirements Mitigatio, NewCompliance Report, Auto Threat Mitigation, Save Filter, Integration Dashboard, CloudModeler (Changes).
 

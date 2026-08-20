@@ -582,6 +582,33 @@
       "saveFormCancelName": "Cancel"
     }
   },
+  "saveFilter": {
+    "populatedModelName": "A computer-aided engineering service on Azure",
+    "modelSearchInput": "#tmMain-searchModel-input",
+    "diagramLinkSelector": "a[href^=\"/threatmodeldiagram/\"]",
+    "selectors": {
+      "threatsPanelButton": "#sideMenuTour_3",
+      "srPanelButton": "#sideMenuTour_4",
+      "tcPanelButton": "#sideMenuTour_5",
+      "threatsExpandIcon": "#diagram-threats-expand-icon",
+      "srExpandIcon": "#diagram-sr-expand-icon",
+      "tcExpandIcon": "#diagram-test-case-expand-icon",
+      "threatsMyViewButton": "#diagram-threats-myView-button",
+      "srMyViewButton": "#diagram-sr-myView-button",
+      "tcMyViewButton": "#diagram-testCase-myView-button",
+      "expanderHeader": ".k-expander-header",
+      "saveCurrentViewLabel": "Save Current View",
+      "savedViewsLabelPrefix": "Saved Views",
+      "nameInput": "input[placeholder=\"Enter View Name\"]",
+      "cancelButton": "button.bold-button:has-text(\"Cancel\")",
+      "saveButton": "button.bold-button:has-text(\"Save\")",
+      "tooltipWindow": "ngb-tooltip-window"
+    },
+    "expected": {
+      "tooltipText": "Save your applied filter view for quick access in future",
+      "probeName": "SFProbe"
+    }
+  },
   "notification": {
     "path": "/configurations",
     "selectors": {
@@ -684,6 +711,13 @@
       "createButton": "button#template-builder-createNewTemplate-button",
       "closeButtonName": "Close"
     }
+  },
+  "complianceReportSectionsMultiselect": {
+    "id": "reportCompliancePopup-selectSection-dropdown",
+    "kendoScope": "kendo-multiselect#reportCompliancePopup-selectSection-dropdown",
+    "chip": ".k-chip[role=\"option\"]",
+    "chipRemoveAction": ".k-chip-remove-action",
+    "clearAll": ".k-clear-value"
   },
   "complianceReport": {
     "modelPrefix": "ComplianceTM",

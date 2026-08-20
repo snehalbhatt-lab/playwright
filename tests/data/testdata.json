@@ -582,6 +582,23 @@
       "saveFormCancelName": "Cancel"
     }
   },
+  "notification": {
+    "path": "/configurations",
+    "selectors": {
+      "notificationsTab": "#config-notifications-tab",
+      "panelbarItem": "kendo-panelbar-item",
+      "saveButton": "button#config-notification-save-button",
+      "activeTabClass": "active"
+    },
+    "expected": {
+      "sectionHeadings": [
+        "Threat Model Collaborator Management",
+        "Threat Model Activity",
+        "User Management",
+        "General"
+      ]
+    }
+  },
   "exportThreats": {
     "diagramLinkSelector": "a[href^=\"/threatmodeldiagram/\"]",
     "selectors": {

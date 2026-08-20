@@ -693,6 +693,105 @@
       "showLinkColor": "HighlightAllDiagramLinks"
     }
   },
+  "onboardingTour": {
+    "diagramLinkSelector": "a[href^=\"/threatmodeldiagram/\"]",
+    "storageKey": "threat-modeler-tour",
+    "selectors": {
+      "popover": ".tour-step",
+      "popoverHeading": ".tour-step h1, .tour-step h2, .tour-step h3, .tour-step h4, .tour-step h5, .tour-step h6",
+      "nextButton": ".tour-step .next-button",
+      "backButton": ".tour-step .back-button",
+      "skipButton": ".tour-step .skip-button",
+      "doNotShowCheckbox": "#guidedTourCheckbox",
+      "doNotShowLabel": "label[for=\"guidedTourCheckbox\"]",
+      "spotlightOverlay": ".guided-tour-spotlight-overlay",
+      "userInputMask": ".guided-tour-user-input-mask",
+      "bodyActiveClass": "tour-open",
+      "threatsPanelButton": "#sideMenuTour_3",
+      "srPanelButton": "#sideMenuTour_4",
+      "testCasesPanelButton": "#sideMenuTour_5",
+      "createNewMenu": "button#create-new-menu",
+      "createNewMenuItem": "[role=\"menuitem\"]:has-text(\"Threat Model\"):visible",
+      "createDialogClose": "kendo-dialog button[aria-label=\"Close\"]"
+    },
+    "storageStates": {
+      "reset": {
+        "totalStep": 0,
+        "isComplete": false,
+        "skipped": false,
+        "doNotShowAgain": false,
+        "visitedStep": 0
+      }
+    },
+    "tours": {
+      "diagramScreen": {
+        "totalStep": 14,
+        "expectedHeadings": [
+          "Welcome to the ThreatModeler Diagram",
+          "Components Toolbox",
+          "Use Essential Diagram Functions",
+          "Add Groups",
+          "Add Security Controls",
+          "Download Reports",
+          "View Component Information",
+          "View Attributes",
+          "View Threats",
+          "View Security Requirements",
+          "View Test Cases",
+          "Set for Approval",
+          "Versioning and History",
+          "Compare Versions"
+        ]
+      },
+      "createNewThreatScreen": {
+        "totalStep": 7,
+        "expectedHeadings": [
+          "Enter Model Details",
+          "Start Fresh",
+          "Use Model Templates",
+          "Imports - Bring in Existing Models",
+          "Cloud Models - Cloud-Specific Threat Modeling",
+          "Solutions Hub - Access Threat Intelligence",
+          "Wizard - Step-by-Step Assistance"
+        ]
+      },
+      "diagramThreatsSideScreen": {
+        "totalStep": 4,
+        "openerSelector": "#sideMenuTour_3",
+        "expectedHeadings": [
+          "Expanded View",
+          "Number of Threats",
+          "View Threat Details",
+          "Actions"
+        ]
+      },
+      "diagramSecurityRequirementsSideScreen": {
+        "totalStep": 4,
+        "openerSelector": "#sideMenuTour_4",
+        "expectedHeadings": [
+          "Expanded View",
+          "Number of Security Requirements",
+          "View Security Requirement Details",
+          "Actions"
+        ]
+      },
+      "diagramTestCaseSideScreen": {
+        "totalStep": 4,
+        "openerSelector": "#sideMenuTour_5",
+        "expectedHeadings": [
+          "Expanded View",
+          "Number of Test Cases",
+          "View Test Case Details",
+          "Actions"
+        ]
+      }
+    },
+    "expected": {
+      "doNotShowLabelText": "Do Not Show Again",
+      "counterDone": "Done",
+      "welcomePartial": "Welcome to the ThreatModeler Diagram"
+    }
+  },
   "templateBuilder": {
     "path": "/template-builder",
     "searchKeyword": "DElete",

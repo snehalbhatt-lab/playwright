@@ -3,8 +3,8 @@
 Batch triage as of 2026-08-18, updated 2026-08-21. Workbook: `ThreatModeler Test Cases 7.x (till 7.4.1).xlsx` (110 tabs total).
 
 - **Completed to date: 40 tabs.**
-- **Skipped: 60 tabs** (categorized below).
-- **Remaining deliverable: 10 tabs.**
+- **Skipped: 61 tabs** (categorized below).
+- **Remaining deliverable: 9 tabs.**
 
 Each skipped tab lists row count and category. Skip reasons are structural — the tab either has no real test content, duplicates already-shipped work, needs infrastructure (file upload, second user, admin permission, external system, canvas pixel inspection) that Playwright driving the app cannot provide, or is dominated by destructive tenant mutations that would leave residue.
 
@@ -112,7 +112,7 @@ Every scenario requires User A to mention User B, then log in as B and inspect t
 |---|---|
 | DiagramNotification | 17 |
 
-## I. Destructive-heavy on shared threat models (7)
+## I. Destructive-heavy on shared threat models (8)
 
 Tab is dominated by cases that create / mutate / delete real threat-model content that persists on the tenant. Realistic Playwright scope would be a small "dialog-shell" spec — not tracked as a full-tab delivery.
 
@@ -125,6 +125,7 @@ Tab is dominated by cases that create / mutate / delete real threat-model conten
 | Framework CopyPaste | 216 | Same |
 | Overview panel | 271 | Cross-cutting model overview with heavy setup |
 | Resource Component fot GCP | 136 | GCP resource component library edits |
+| Residual Risk for threat | 56 | R5-R34 is a 5x6 calculation matrix (inherent risk × N-of-5 SRs implemented) needing a fresh disposable model + exact SR shape per case; R37-R57 are all destructive mutations (framework edits, wizard, config toggle, template save/import, JSON export/import, attribute answers, protocol/trust-boundary edits, mitigation). Non-destructive R2-R3 required a populated Threats grid but on tmdev the "first model" list rotates by recent activity — empty/new models frequently land on top, making the column-chooser probe flaky. Verified 2026-08-21: 2-test shell suite failed 3× on rotating-first-model tenant state before user chose to skip the tab. |
 
 ## J. Mystery / doubtful sheets (3)
 
@@ -154,7 +155,7 @@ Not skipped. To be shipped in the remaining budget.
 
 **Small (< 40 rows)** — Notification (subset). (Shipped: Task, Tags Bulk Edit, Default Protocol, Cloudmodeler diagram filter, CVSS score, Export threats. Skipped: Protocol Bulk Edit — canvas; Compliance Status for Report — spec table, not tests.)
 
-**Medium (40–70 rows)** — Add threats(Per project), Resource com VPC, Bidirectional, Edit option, Residual Risk for threat, Security Requirements Mitigatio, Auto Threat Mitigation, CloudModeler (Changes). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard, Onboarding Tour, Home screen functionality work. Skipped: WingMan — feature partially deployed; Create new model not use — legacy wizard, both see K.)
+**Medium (40–70 rows)** — Add threats(Per project), Resource com VPC, Bidirectional, Edit option, Security Requirements Mitigatio, Auto Threat Mitigation, CloudModeler (Changes). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard, Onboarding Tour, Home screen functionality work. Skipped: WingMan — feature partially deployed; Create new model not use — legacy wizard, both see K. Residual Risk for threat — destructive matrix + rotating-model flakiness, see I.)
 
 **Large (70+ rows)** — Security Control 7.0. (Shipped: Template Builder, Dashboard1. Skipped: AI Report — feature not deployed on tmdev, see K.)
 

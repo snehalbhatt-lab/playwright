@@ -3,8 +3,8 @@
 Batch triage as of 2026-08-18, updated 2026-08-21. Workbook: `ThreatModeler Test Cases 7.x (till 7.4.1).xlsx` (110 tabs total).
 
 - **Completed to date: 43 tabs.**
-- **Skipped: 63 tabs** (categorized below).
-- **Remaining deliverable: 4 tabs.**
+- **Skipped: 64 tabs** (categorized below).
+- **Remaining deliverable: 3 tabs.**
 
 Each skipped tab lists row count and category. Skip reasons are structural — the tab either has no real test content, duplicates already-shipped work, needs infrastructure (file upload, second user, admin permission, external system, canvas pixel inspection) that Playwright driving the app cannot provide, or is dominated by destructive tenant mutations that would leave residue.
 
@@ -129,7 +129,7 @@ Tab is dominated by cases that create / mutate / delete real threat-model conten
 | Residual Risk for threat | 56 | R5-R34 is a 5x6 calculation matrix (inherent risk × N-of-5 SRs implemented) needing a fresh disposable model + exact SR shape per case; R37-R57 are all destructive mutations (framework edits, wizard, config toggle, template save/import, JSON export/import, attribute answers, protocol/trust-boundary edits, mitigation). Non-destructive R2-R3 required a populated Threats grid but on tmdev the "first model" list rotates by recent activity — empty/new models frequently land on top, making the column-chooser probe flaky. Verified 2026-08-21: 2-test shell suite failed 3× on rotating-first-model tenant state before user chose to skip the tab. |
 | Edit option | 57 | Inline hover-edit of Status / Risk / Tags on Threats, SR, and Test Cases panels. Every case mutates threat/SR/TC state — status changes, risk changes, tag adds/removes — all destructive to shared tenant models. Non-destructive shell would need a populated model with visible Status/Risk cells in each of the 3 panels, hitting the same rotating-first-model fixture flake as Residual Risk. Bulk-edit rows (R4-R5, R11-R12, R31-R32, R48-R49) plus cross-panel cascade rows (R6-R7, R13, R34) plus tag-report content rows (R25-R26, R43, R59) are also destructive or file-content-dependent. Skipped 2026-08-21 without a Phase 2 probe. |
 
-## J. Mystery / doubtful sheets (3)
+## J. Mystery / doubtful sheets (4)
 
 Sheets with no clear feature name; content looks like partial drafts. Also includes spec/mapping tables that use a different column format (no Test Scenarios / Test Steps / Expected Result / Priority) and are dev documentation rather than test cases.
 
@@ -138,6 +138,7 @@ Sheets with no clear feature name; content looks like partial drafts. Also inclu
 | s | 28 | partial draft |
 | Modules | 80 (only 13 content rows) | partial draft |
 | Compliance Status for Report | 13 | Spec-vs-reality mapping table (columns: SR / SR Status on Diagram / SR Status on Report / Current Status). Two rows flag known implementation bugs. Automating would need destructive SR-status changes + Compliance Report content parity — same class as prior destructive + report-content skips. Verified 2026-08-20. |
+| Resource com VPC | ~53 | Spec-mapping table for GCP TerraForm Import (columns: Count / Component name / Coming in Diagram / Resource Details Showing / Show in Rule Engine). Each row documents whether a `google_*` Terraform resource type maps to a diagram component after TerraForm import. No priority / test steps / expected-result columns — it's dev documentation, not test cases. Feature is also blocked by category D (TerraForm Import is import-gated / file-upload). Verified 2026-08-21. |
 
 ## K. Feature not deployed on tmdev (3)
 
@@ -157,7 +158,7 @@ Not skipped. To be shipped in the remaining budget.
 
 **Small (< 40 rows)** — Notification (subset). (Shipped: Task, Tags Bulk Edit, Default Protocol, Cloudmodeler diagram filter, CVSS score, Export threats. Skipped: Protocol Bulk Edit — canvas; Compliance Status for Report — spec table, not tests.)
 
-**Medium (40–70 rows)** — Resource com VPC, CloudModeler (Changes). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard, Onboarding Tour, Home screen functionality work, Auto Threat Mitigation, Security Requirements Mitigation, Add threats(Per project). Skipped: WingMan — feature partially deployed; Create new model not use — legacy wizard, both see K. Residual Risk for threat + Edit option — destructive-heavy + rotating-model flakiness, see I. Bidirectional — canvas-blocked, see E.)
+**Medium (40–70 rows)** — CloudModeler (Changes). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard, Onboarding Tour, Home screen functionality work, Auto Threat Mitigation, Security Requirements Mitigation, Add threats(Per project). Skipped: WingMan — feature partially deployed; Create new model not use — legacy wizard, both see K. Residual Risk for threat + Edit option — destructive-heavy + rotating-model flakiness, see I. Bidirectional — canvas-blocked, see E. Resource com VPC — GCP TerraForm-import spec-mapping table, see J.)
 
 **Large (70+ rows)** — Security Control 7.0. (Shipped: Template Builder, Dashboard1. Skipped: AI Report — feature not deployed on tmdev, see K.)
 

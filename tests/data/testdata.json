@@ -693,6 +693,66 @@
       "showLinkColor": "HighlightAllDiagramLinks"
     }
   },
+  "autoThreatMitigation": {
+    "selectors": {
+      "threatsPanelButton": "#sideMenuTour_3",
+      "srPanelButton": "#sideMenuTour_4",
+      "threatsGrid": "kendo-grid.threats-grid",
+      "srGrid": "kendo-grid.securityRequirementsGrid",
+      "diagramLinkPattern": "\\/threatmodeldiagram\\/[0-9a-f-]{36}",
+      "modelListRow": "kendo-grid tbody tr.k-master-row",
+      "modelNameElement": ".tm-primary.fw-600",
+      "riskPillClasses": ".medium-risk-cur, .high-risk-cur, .very-high-risk-cur, .low-risk-cur"
+    },
+    "expected": {
+      "threatStatuses": [
+        "Open",
+        "Mitigated",
+        "Fixed",
+        "Not Applicable",
+        "Need More Details",
+        "Not Tested",
+        "Partially Mitigated",
+        "Mitigated by Control",
+        "Out of Scope"
+      ],
+      "threatStatusIds": [
+        "diagram-threats-Open-button",
+        "diagram-threats-Mitigated-button",
+        "diagram-threats-Fixed-button",
+        "diagram-threats-Not Applicable-button",
+        "diagram-threats-Need More Details-button",
+        "diagram-threats-Not Tested-button",
+        "diagram-threats-Partially Mitigated-button",
+        "diagram-threats-Mitigated by Control-button",
+        "diagram-threats-Out of Scope-button"
+      ],
+      "srStatuses": [
+        "Open",
+        "Implemented",
+        "Not Applicable",
+        "Recommended",
+        "Unable to Validate",
+        "Implemented by Control",
+        "Need More Details",
+        "Partially Implemented",
+        "Out of Scope",
+        "Required"
+      ],
+      "srStatusIds": [
+        "diagram-sr-Open-button",
+        "diagram-sr-Implemented-button",
+        "diagram-sr-Not Applicable-button",
+        "diagram-sr-Recommended-button",
+        "diagram-sr-Unable to Validate-button",
+        "diagram-sr-Implemented by Control-button",
+        "diagram-sr-Need More Details-button",
+        "diagram-sr-Partially Implemented-button",
+        "diagram-sr-Out of Scope-button",
+        "diagram-sr-Required-button"
+      ]
+    }
+  },
   "homeScreen": {
     "selectors": {
       "searchInput": "#tmMain-searchModel-input",

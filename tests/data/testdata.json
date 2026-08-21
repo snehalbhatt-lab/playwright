@@ -693,6 +693,44 @@
       "showLinkColor": "HighlightAllDiagramLinks"
     }
   },
+  "homeScreen": {
+    "selectors": {
+      "searchInput": "#tmMain-searchModel-input",
+      "searchPlaceholderAnim": ".animation-wrapper .placeholder-highlight",
+      "wingmanButton": "button#tmMain-wingman-button",
+      "wingmanPanel": ".wingman-panel",
+      "wingmanTitle": ".wingman-title",
+      "wingmanGreeting": ".wingman-panel p.greeting-text",
+      "wingmanTextarea": "#textarea-landing",
+      "wingmanMic": "button#wingman-mic-button",
+      "wingmanClose": ".wingman-panel .wingman-close-btn",
+      "nudge": "tm-nudge .nudge-container",
+      "nudgeCarousel": "tm-nudge .nudge-carousel",
+      "nudgeSnoozeBtn": "button#nudge-snooze-btn",
+      "nudgeCloseBtn": "tm-nudge .nudge-close-btn",
+      "snoozeDialog": "kendo-dialog.snooze-nudge-kendo-dialog",
+      "snoozeTitle": ".snooze-nudge-kendo-dialog .k-dialog-title",
+      "snoozeOptions": ".snooze-nudge-kendo-dialog .snooze-options .snooze-option-label",
+      "snoozeOptionText": ".snooze-option-text",
+      "snoozeRadio": ".snooze-nudge-kendo-dialog input[type=\"radio\"][name=\"snoozeDuration\"]",
+      "snoozeCancelBtn": "button#nudge_cancel_button",
+      "snoozeSaveBtn": "button#nudge_save_btn",
+      "snoozeDialogClose": ".snooze-nudge-kendo-dialog button[aria-label=\"Close\"]"
+    },
+    "expected": {
+      "wingmanButtonAria": "AI",
+      "wingmanTitleText": "AI",
+      "wingmanTextareaPlaceholder": "Ask to create, manage, suggest",
+      "wingmanGreetingPrefix": "Hey,",
+      "searchAriaLabel": "Search threat models by name, version, tags, risk or author",
+      "snoozeTitleText": "Snooze",
+      "snoozeOptionLabels": [
+        "Always show",
+        "Snooze for 1 day",
+        "Snooze for 1 week"
+      ]
+    }
+  },
   "onboardingTour": {
     "diagramLinkSelector": "a[href^=\"/threatmodeldiagram/\"]",
     "storageKey": "threat-modeler-tour",

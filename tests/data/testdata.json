@@ -693,6 +693,23 @@
       "showLinkColor": "HighlightAllDiagramLinks"
     }
   },
+  "securityControl7": {
+    "selectors": {
+      "modelListRow": "kendo-grid tbody tr.k-master-row",
+      "modelNameElement": ".tm-primary.fw-600",
+      "diagramLinkPattern": "\\/threatmodeldiagram\\/[0-9a-f-]{36}",
+      "securityControlsButton": "button#topMenuTour_3",
+      "impactSummaryDialog": "dialog[aria-label=\"Security Controls\"]",
+      "threatsTab": "#ngb-nav-0",
+      "srTab": "#ngb-nav-1",
+      "activeClass": "active",
+      "inactiveClass": "nav-tab-inactive"
+    },
+    "expected": {
+      "threatsTabText": "Threats",
+      "srTabText": "Security Requirements"
+    }
+  },
   "cloudmodelerChanges": {
     "selectors": {
       "createNewMenu": "button#create-new-menu",

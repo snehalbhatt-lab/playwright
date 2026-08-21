@@ -2,9 +2,9 @@
 
 Batch triage as of 2026-08-18, updated 2026-08-21. Workbook: `ThreatModeler Test Cases 7.x (till 7.4.1).xlsx` (110 tabs total).
 
-- **Completed to date: 43 tabs.**
+- **Completed to date: 44 tabs.**
 - **Skipped: 64 tabs** (categorized below).
-- **Remaining deliverable: 3 tabs.**
+- **Remaining deliverable: 2 tabs.**
 
 Each skipped tab lists row count and category. Skip reasons are structural — the tab either has no real test content, duplicates already-shipped work, needs infrastructure (file upload, second user, admin permission, external system, canvas pixel inspection) that Playwright driving the app cannot provide, or is dominated by destructive tenant mutations that would leave residue.
 
@@ -158,7 +158,7 @@ Not skipped. To be shipped in the remaining budget.
 
 **Small (< 40 rows)** — Notification (subset). (Shipped: Task, Tags Bulk Edit, Default Protocol, Cloudmodeler diagram filter, CVSS score, Export threats. Skipped: Protocol Bulk Edit — canvas; Compliance Status for Report — spec table, not tests.)
 
-**Medium (40–70 rows)** — CloudModeler (Changes). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard, Onboarding Tour, Home screen functionality work, Auto Threat Mitigation, Security Requirements Mitigation, Add threats(Per project). Skipped: WingMan — feature partially deployed; Create new model not use — legacy wizard, both see K. Residual Risk for threat + Edit option — destructive-heavy + rotating-model flakiness, see I. Bidirectional — canvas-blocked, see E. Resource com VPC — GCP TerraForm-import spec-mapping table, see J.)
+**Medium (40–70 rows)** — (all resolved). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard, Onboarding Tour, Home screen functionality work, Auto Threat Mitigation, Security Requirements Mitigation, Add threats(Per project), CloudModeler (Changes). Skipped: WingMan — feature partially deployed; Create new model not use — legacy wizard, both see K. Residual Risk for threat + Edit option — destructive-heavy + rotating-model flakiness, see I. Bidirectional — canvas-blocked, see E. Resource com VPC — GCP TerraForm-import spec-mapping table, see J.)
 
 **Large (70+ rows)** — Security Control 7.0. (Shipped: Template Builder, Dashboard1. Skipped: AI Report — feature not deployed on tmdev, see K.)
 

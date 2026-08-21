@@ -693,6 +693,43 @@
       "showLinkColor": "HighlightAllDiagramLinks"
     }
   },
+  "cloudmodelerChanges": {
+    "selectors": {
+      "createNewMenu": "button#create-new-menu",
+      "createNewMenuItem": "[role=\"menuitem\"]:has-text(\"Threat Model\"):visible",
+      "dialog": "kendo-dialog.create-new-model-dialog",
+      "tabItem": ".k-tabstrip-item",
+      "cloudProviderDropdown": "kendo-dropdownlist#cloudModeler-list",
+      "cloudProviderOption": ".k-list-item",
+      "addNewCloudButton": "button#AddNewCloud-button",
+      "cloudPanel": "#step4-panel",
+      "keylessRadio": "#wfi-gcpRadioButton",
+      "keybasedRadio": "#keys-gcpRadioButton",
+      "publicRadio": "#public-gcpRadioButton",
+      "privateRadio": "#private-gcpRadioButton",
+      "browseButton": "button#gcp-Credentials-browse-button",
+      "submitButton": "button#gcpCreate-button",
+      "cancelButton": "button#gcp-cancel-button",
+      "dialogCloseIcon": "kendo-dialog.create-new-model-dialog button[aria-label=\"Close\"]"
+    },
+    "expected": {
+      "cloudModelerTabText": "CloudModeler",
+      "providerOptions": [
+        "AWS Accelerator",
+        "Azure Accelerator",
+        "Google Cloud Platform"
+      ],
+      "gcpOption": "Google Cloud Platform",
+      "authLabels": {
+        "keyless": "Keyless Authentication",
+        "keybased": "Key-Based"
+      },
+      "accessLabels": {
+        "public": "Public",
+        "private": "Private"
+      }
+    }
+  },
   "addThreatsPerProject": {
     "selectors": {
       "modelListRow": "kendo-grid tbody tr.k-master-row",

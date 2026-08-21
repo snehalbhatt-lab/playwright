@@ -693,6 +693,25 @@
       "showLinkColor": "HighlightAllDiagramLinks"
     }
   },
+  "securityRequirementsMitigation": {
+    "selectors": {
+      "modelListRow": "kendo-grid tbody tr.k-master-row",
+      "modelNameElement": ".tm-primary.fw-600",
+      "diagramLinkPattern": "\\/threatmodeldiagram\\/[0-9a-f-]{36}",
+      "securityControlsButton": "button#topMenuTour_3",
+      "impactSummaryDialog": "dialog[aria-label=\"Security Controls\"]",
+      "impactSummaryComponent": "tm-diagram-model-review-security-control",
+      "accordionItem": "dialog[aria-label=\"Security Controls\"] .accordion .accordion-item",
+      "accordionFlagTitle": ".flag-title-text",
+      "accordionCount": ".box-value.font-medium",
+      "closeIcon": "dialog[aria-label=\"Security Controls\"] i.tm-panel-close[aria-label=\"Close\"]"
+    },
+    "expected": {
+      "buttonAriaLabel": "Security Controls",
+      "titleText": "Security Control Impact Summary",
+      "tabLabels": ["Threats", "Security Requirements"]
+    }
+  },
   "autoThreatMitigation": {
     "selectors": {
       "threatsPanelButton": "#sideMenuTour_3",

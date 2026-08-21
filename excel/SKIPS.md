@@ -3,8 +3,8 @@
 Batch triage as of 2026-08-18, updated 2026-08-21. Workbook: `ThreatModeler Test Cases 7.x (till 7.4.1).xlsx` (110 tabs total).
 
 - **Completed to date: 43 tabs.**
-- **Skipped: 62 tabs** (categorized below).
-- **Remaining deliverable: 5 tabs.**
+- **Skipped: 63 tabs** (categorized below).
+- **Remaining deliverable: 4 tabs.**
 
 Each skipped tab lists row count and category. Skip reasons are structural — the tab either has no real test content, duplicates already-shipped work, needs infrastructure (file upload, second user, admin permission, external system, canvas pixel inspection) that Playwright driving the app cannot provide, or is dominated by destructive tenant mutations that would leave residue.
 
@@ -69,7 +69,7 @@ Prompt rule: skip file-upload / bulk-import cases. Every scenario begins with "C
 | Draw.io | 41 |
 | Visio Import1 | 43 |
 
-## E. Canvas-blocked (6)
+## E. Canvas-blocked (7)
 
 Visual features drawn on `<canvas>` — no DOM to inspect. Verified via probing on Component color change, Verizon, and Protocol Bulk Edit (see memory).
 
@@ -81,6 +81,7 @@ Visual features drawn on `<canvas>` — no DOM to inspect. Verified via probing 
 | Threat Risk Colour | 20 | Same feature as Verizon |
 | Attack path | 21 | Canvas + presentation recording |
 | Protocol Bulk Edit | 24 | Right-click multi-selected canvas links → GoJS context menu (no DOM). Verified 2026-08-19: real Playwright right-click at link viewport coords produces no DOM menu; `link.contextMenu` is null. Same blocker as Default Protocol module A. |
+| Bidirectional | 28 | Protocol bidirectional-arrow icon rendered by GoJS on canvas — same blocker as Default Protocol module A / Protocol Bulk Edit. R3-R12 + R21-R23 require canvas hover/right-click on protocol links; R26-R31 involve template preview + security-control cascade which depend on canvas protocol setup. R13-R17 (Display Options > Link Direction default) is DOM-accessible but yields only 1 structural test — the Display Options menu mechanic is already exercised by `default_protocol.spec.ts` Show-Link-Color tests. Skipped 2026-08-21 without a Phase 2 probe. |
 
 ## F. Integration-blocked (3)
 
@@ -156,7 +157,7 @@ Not skipped. To be shipped in the remaining budget.
 
 **Small (< 40 rows)** — Notification (subset). (Shipped: Task, Tags Bulk Edit, Default Protocol, Cloudmodeler diagram filter, CVSS score, Export threats. Skipped: Protocol Bulk Edit — canvas; Compliance Status for Report — spec table, not tests.)
 
-**Medium (40–70 rows)** — Resource com VPC, Bidirectional, CloudModeler (Changes). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard, Onboarding Tour, Home screen functionality work, Auto Threat Mitigation, Security Requirements Mitigation, Add threats(Per project). Skipped: WingMan — feature partially deployed; Create new model not use — legacy wizard, both see K. Residual Risk for threat + Edit option — destructive-heavy + rotating-model flakiness, see I.)
+**Medium (40–70 rows)** — Resource com VPC, CloudModeler (Changes). (Shipped: Custom Compliance, Notification, Wizard, NewCompliance Report, Save Filter, Integration Dashboard, Onboarding Tour, Home screen functionality work, Auto Threat Mitigation, Security Requirements Mitigation, Add threats(Per project). Skipped: WingMan — feature partially deployed; Create new model not use — legacy wizard, both see K. Residual Risk for threat + Edit option — destructive-heavy + rotating-model flakiness, see I. Bidirectional — canvas-blocked, see E.)
 
 **Large (70+ rows)** — Security Control 7.0. (Shipped: Template Builder, Dashboard1. Skipped: AI Report — feature not deployed on tmdev, see K.)
 

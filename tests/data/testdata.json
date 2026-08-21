@@ -693,6 +693,36 @@
       "showLinkColor": "HighlightAllDiagramLinks"
     }
   },
+  "addThreatsPerProject": {
+    "selectors": {
+      "modelListRow": "kendo-grid tbody tr.k-master-row",
+      "modelNameElement": ".tm-primary.fw-600",
+      "diagramLinkPattern": "\\/threatmodeldiagram\\/[0-9a-f-]{36}",
+      "threatsPanelButton": "#sideMenuTour_3",
+      "threatsGrid": "kendo-grid.threats-grid",
+      "addNewButton": "button#diagram-threats-addNewThreat-button",
+      "dialog": "kendo-dialog.k-dialog-wrapper:has(.add-threat-sr-content)",
+      "dialogTitle": ".k-dialog-title, .k-window-title",
+      "dialogBody": ".add-threat-sr-body",
+      "componentLabel": ".add-threat-sr-form-label",
+      "addThreatContainer": ".add-threat-container",
+      "addThreatItem": ".add-threat-item",
+      "noteText": ".add-threat-sr-note",
+      "cancelButton": "button#diagram-Threat-cancel-button",
+      "submitButton": "button#diagram-Threat-submit-button",
+      "addMoreButton": "button#diagram-Threat-addMore-button",
+      "closeIcon": "kendo-dialog.k-dialog-wrapper:has(.add-threat-sr-content) button[aria-label=\"Close\"]"
+    },
+    "expected": {
+      "addNewButtonText": "Add New",
+      "dialogTitleText": "Add Threat",
+      "componentLabelText": "Component/Threat models",
+      "cancelText": "Cancel",
+      "submitText": "Submit",
+      "addMoreText": "Add More",
+      "noteTextPartial": "Threats which are already associated to the selected component will not be added again"
+    }
+  },
   "securityRequirementsMitigation": {
     "selectors": {
       "modelListRow": "kendo-grid tbody tr.k-master-row",

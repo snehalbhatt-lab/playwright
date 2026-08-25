@@ -166,11 +166,18 @@ async function openThreatsExpanded(page: Page): Promise<void> {
   // click reliably enlarges the panel + mounts the My Views button.
   await page.waitForTimeout(1500);
   await killReleaseNote(page);
-  await page.locator(SEL.threatsExpandIcon).click();
-  // MyView button mounts asynchronously after the expand animation.
-  await expect(page.locator(SEL.threatsMyViewButton)).toBeVisible({
-    timeout: TIMEOUTS.navMedium,
-  });
+  const myViewBtn = page.locator(SEL.threatsMyViewButton);
+  // The panel occasionally stays at 30% (My Views only mounts at
+  // 50%+). Click the expand icon; if the button still hasn't
+  // materialised, retry a couple of times with pauses to let the
+  // resize animation + row hydration finish.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await page.locator(SEL.threatsExpandIcon).click().catch(() => {});
+    if (await myViewBtn.isVisible({ timeout: 10000 }).catch(() => false)) return;
+    await page.waitForTimeout(1500);
+    await killReleaseNote(page);
+  }
+  await expect(myViewBtn).toBeVisible({ timeout: TIMEOUTS.navMedium });
 }
 
 async function openMyViewsDropdown(page: Page, myViewButtonSel: string): Promise<void> {

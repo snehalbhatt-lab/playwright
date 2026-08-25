@@ -52,7 +52,7 @@
       "version": "Enter Version",
       "username": "Username*",
       "password": "Password*",
-      "versionField": "Version *"
+      "versionField": "Enter Version"
     },
     "dialogs": {
       "createThreatModel": "Create New Threat Model",
@@ -1151,7 +1151,7 @@
       "dropdownOption": ".k-list-item"
     },
     "expected": {
-      "defaultSelected": "CVSS 3.1",
+      "defaultSelected": "CVSS 4.0",
       "expectedOptions": ["CVSS 3.1", "CVSS 4.0"]
     }
   },

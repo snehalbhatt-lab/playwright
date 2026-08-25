@@ -141,18 +141,92 @@ export async function createDisposableModel(
 export async function archiveModelByName(page: Page, modelName: string): Promise<void> {
   await clearBlockingOverlays(page);
   await waitForRow(page, modelName);
-  await jsClickInRow(page, modelName, 'input[id^="tm-kendo-checkbox-"]');
-  await clearBlockingOverlays(page);
-  await page.getByRole("button", { name: ROLES.buttons.threatModelMenu }).click();
-  await page.evaluate((sel) => {
-    const el = document.querySelector(sel) as HTMLElement | null;
-    el?.click();
-  }, SEL.archiveIcon);
-  const confirm = page.getByRole("dialog", { name: ROLES.dialogs.archiveThreatModel });
+  // Dialog exposes its title as body text (no aria-label), so match
+  // by text content rather than accessible name.
+  const confirm = page
+    .getByRole("dialog")
+    .filter({ hasText: ROLES.dialogs.archiveThreatModel })
+    .first();
+  // Live-app path (verified 2026-08 against tmdev):
+  //   1. Select a row via its per-row `input[aria-label="Select Row"]`
+  //      (Kendo strips the id from row checkboxes; the header
+  //      "Select All Name" is the only checkbox with an id and must
+  //      not be the click target).
+  //   2. Selection reveals a top-of-grid toolbar containing an
+  //      `i[aria-label="Archive"]` icon (no navigation menu is
+  //      involved — the old "Threat Model menu" click was wrong; it
+  //      only opens the left sidebar submenu).
+  //   3. Clicking the archive icon opens the confirm dialog.
+  // The selection sometimes doesn't register in time for the archive
+  // icon to mount, so retry the checkbox + icon-click cycle up to 3
+  // times, wiping overlays between attempts.
+  let dialogVisible = false;
+  for (let attempt = 1; attempt <= 3 && !dialogVisible; attempt++) {
+    await clearBlockingOverlays(page);
+    await jsClickInRow(page, modelName, 'input[aria-label="Select Row"]');
+    await page.waitForTimeout(500);
+    await clearBlockingOverlays(page);
+    // Wait for the archive icon to mount before dispatching the
+    // click; if it never appears the selection didn't register, so
+    // loop back and try again.
+    const iconMounted = await page
+      .waitForFunction(
+        (sel) => !!document.querySelector(sel),
+        SEL.archiveIcon,
+        { timeout: TIMEOUTS.elementVisible },
+      )
+      .then(() => true)
+      .catch(() => false);
+    if (!iconMounted) continue;
+    await page.evaluate((sel) => {
+      const el = document.querySelector(sel) as HTMLElement | null;
+      el?.click();
+    }, SEL.archiveIcon);
+    dialogVisible = await confirm
+      .isVisible({ timeout: TIMEOUTS.elementVisible })
+      .catch(() => false);
+  }
   await expect(confirm).toBeVisible({ timeout: TIMEOUTS.elementVisible });
-  await confirm.getByRole("button", { name: ROLES.buttons.archive, exact: true }).click();
+  // Remove the "Welcome to ThreatModeler Nexus" release-note dialog
+  // if it stacked over the confirm — otherwise Playwright's actionability
+  // check on the Archive button times out silently and clicks a stale
+  // hidden node.
+  await page.evaluate(() => {
+    document.querySelectorAll("kendo-dialog, .k-dialog, .k-window").forEach((el) => {
+      if (/Welcome to/i.test((el as HTMLElement).innerText || "")) el.remove();
+    });
+  });
+  // Also JS-dispatch as a belt-and-braces fallback in case Angular's
+  // click handler doesn't fire from Playwright's event.
+  await page.evaluate(() => {
+    const dialogs = Array.from(document.querySelectorAll("kendo-dialog, .k-dialog, .k-window"));
+    const archiveDialog = dialogs.find((el) =>
+      /Archive threat model/i.test((el as HTMLElement).innerText || ""),
+    );
+    if (archiveDialog) {
+      const btn = Array.from(archiveDialog.querySelectorAll("button")).find(
+        (b) => (b.textContent || "").trim().toLowerCase() === "archive",
+      );
+      (btn as HTMLElement | undefined)?.click();
+    }
+  });
+  // Explicit short timeout so if the JS-dispatch already closed the
+  // dialog, we don't sit waiting for the (now-gone) button up to the
+  // test-level timeout.
+  await confirm
+    .getByRole("button", { name: ROLES.buttons.archive, exact: true })
+    .click({ force: true, timeout: 3000 })
+    .catch(() => {});
   await expect(confirm).toBeHidden({ timeout: TIMEOUTS.dialogHidden });
   await waitForLoaderIdle(page).catch(() => {});
+  // The active grid doesn't always refetch after archive; force a
+  // reload so the row-gone assertion sees the freshly filtered set.
+  await gotoTMList(page);
+  const search = page.locator(TM.selectors.searchInput).first();
+  if (await search.isVisible({ timeout: TIMEOUTS.elementVisible }).catch(() => false)) {
+    await search.fill(modelName);
+    await page.waitForTimeout(1500);
+  }
   await expect(page.getByRole("button", { name: modelName, exact: true })).toHaveCount(0, {
     timeout: TIMEOUTS.rowVisible,
   });
@@ -164,18 +238,32 @@ export async function restoreModelByName(page: Page, modelName: string): Promise
   await gotoArchivedList(page);
   await clearBlockingOverlays(page);
   await waitForRow(page, modelName);
-  await jsClickInRow(page, modelName, 'input[id^="tm-kendo-checkbox-"]');
+  await jsClickInRow(page, modelName, 'input[aria-label="Select Row"]');
   await clearBlockingOverlays(page);
   await page.evaluate((sel) => {
     const el = document.querySelector(sel) as HTMLElement | null;
     el?.click();
   }, SEL.restoreIcon);
+  // Kill any "Welcome to ThreatModeler Nexus" release-note dialog
+  // that stacks over the confirm — same interceptor issue as archive.
+  await page.evaluate(() => {
+    document.querySelectorAll("kendo-dialog, .k-dialog, .k-window").forEach((el) => {
+      if (/Welcome to/i.test((el as HTMLElement).innerText || "")) el.remove();
+    });
+  });
   const confirm = page.getByRole("dialog").first();
   if (await confirm.isVisible({ timeout: TIMEOUTS.elementVisible }).catch(() => false)) {
     const btn = confirm.getByRole("button", { name: /^(Yes|Restore)$/ }).first();
     if (await btn.isVisible().catch(() => false)) await btn.click();
   }
   await waitForLoaderIdle(page).catch(() => {});
+  // Force a fresh archived-list fetch — the grid can hold stale state.
+  await gotoArchivedList(page);
+  const search = page.locator(TM.selectors.searchInput).first();
+  if (await search.isVisible({ timeout: TIMEOUTS.elementVisible }).catch(() => false)) {
+    await search.fill(modelName);
+    await page.waitForTimeout(1500);
+  }
   await expect(page.getByRole("button", { name: modelName, exact: true })).toHaveCount(0, {
     timeout: TIMEOUTS.rowVisible,
   });
@@ -205,7 +293,7 @@ export async function permanentDeleteFromArchive(page: Page, modelName: string):
   let dialogVisible = false;
   for (let attempt = 1; attempt <= 3 && !dialogVisible; attempt++) {
     await clearBlockingOverlays(page);
-    await jsClickInRow(page, modelName, 'input[id^="tm-kendo-checkbox-"]');
+    await jsClickInRow(page, modelName, 'input[aria-label="Select Row"]');
     await page.waitForTimeout(500);
     await clearBlockingOverlays(page);
     await page.evaluate((sel) => {
@@ -220,6 +308,13 @@ export async function permanentDeleteFromArchive(page: Page, modelName: string):
   }
   const confirm = page.getByRole("dialog").first();
   await expect(confirm).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+  // Kill the "Welcome to ThreatModeler Nexus" release-note dialog if
+  // it stacked on top of the confirm and would swallow the click.
+  await page.evaluate(() => {
+    document.querySelectorAll("kendo-dialog, .k-dialog, .k-window").forEach((el) => {
+      if (/Welcome to/i.test((el as HTMLElement).innerText || "")) el.remove();
+    });
+  });
   await confirm.getByRole("button", { name: "Delete", exact: true }).click();
   await waitForLoaderIdle(page).catch(() => {});
 }

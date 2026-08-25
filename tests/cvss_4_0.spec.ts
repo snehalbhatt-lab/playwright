@@ -81,7 +81,7 @@ test.describe("CVSS 4.0 — Configuration > Threat Model Defaults", () => {
     await expect(dropdown, "CVSS Version dropdown must render").toBeVisible({
       timeout: TIMEOUTS.elementVisible,
     });
-    await expect(dropdown, "default option must be CVSS 3.1").toContainText(EXP.defaultSelected);
+    await expect(dropdown, `default option must be ${EXP.defaultSelected}`).toContainText(EXP.defaultSelected);
     await step(page, info, 2, "default-selected");
 
     // Open the dropdown popup and assert the option list.

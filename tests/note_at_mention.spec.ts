@@ -92,12 +92,25 @@ async function openDisposableModelAndFirstThreatNotes(page: Page): Promise<strin
   // grid row is hovered/focused (kendo shows expand icons on hover),
   // so Playwright's default click waits fail. JS-dispatching the
   // click bypasses the visibility check — the click handler itself
-  // works regardless.
-  await page.evaluate((sel) => {
-    const el = document.querySelector(sel) as HTMLElement | null;
-    el?.click();
-  }, SEL.expandThreatDetails);
-  await expect(page.locator(SEL.noteTextarea).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
+  // works regardless. Fresh disposable models can take 5-15s to
+  // auto-generate their initial threats; wait for the row's expand
+  // icon to be in the DOM before dispatching, and retry the click a
+  // few times if the notes textarea doesn't materialise.
+  await page.waitForFunction(
+    (sel) => !!document.querySelector(sel),
+    SEL.expandThreatDetails,
+    { timeout: TIMEOUTS.elementVisible },
+  );
+  const textarea = page.locator(SEL.noteTextarea).first();
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await page.evaluate((sel) => {
+      const el = document.querySelector(sel) as HTMLElement | null;
+      el?.click();
+    }, SEL.expandThreatDetails);
+    if (await textarea.isVisible({ timeout: 5000 }).catch(() => false)) break;
+    await page.waitForTimeout(1500);
+  }
+  await expect(textarea).toBeVisible({ timeout: TIMEOUTS.elementVisible });
   return modelName;
 }
 

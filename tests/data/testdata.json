@@ -8,7 +8,8 @@
     "root": "/",
     "login": "/idsvr/Account/Login",
     "threatModels": "/threatmodels",
-    "threatModelsArchived": "/threatmodels/archived"
+    "threatModelsArchived": "/threatmodels/archived",
+    "aiHome": "/ai-home"
   },
   "urlPatterns": {
     "loginOrApp": "(\\/idsvr\\/Account\\/Login|\\/threatmodels)",
@@ -18,7 +19,8 @@
   "titles": {
     "threatModels": "Threat Models \\| ThreatModeler",
     "threatModelDiagram": "Threat Model Diagram \\| ThreatModeler",
-    "threatModelsArchived": "Archived Threat Models \\| ThreatModeler"
+    "threatModelsArchived": "Archived Threat Models \\| ThreatModeler",
+    "aiHome": "AI Home \\| ThreatModeler Nexus"
   },
   "timeouts": {
     "test": 300000,
@@ -891,6 +893,48 @@
         "Always show",
         "Snooze for 1 day",
         "Snooze for 1 week"
+      ]
+    }
+  },
+  "aiHome": {
+    "selectors": {
+      "pageHeading": "h1:has-text(\"Home\")",
+      "aiConversation": "main[aria-label=\"AI conversation\"]",
+      "greetingHeading": "main[aria-label=\"AI conversation\"] h1",
+      "aiActionsNav": "nav[aria-label=\"AI actions\"]",
+      "textarea": "#textarea-landing",
+      "composerBtn": "button[aria-label=\"Open the composer menu\"]",
+      "voiceBtn": "button#wingman-mic-button",
+      "sendBtn": "button[aria-label=\"Send\"]",
+      "disclaimerNote": "[role=\"note\"]",
+      "chatsPanel": "aside[aria-label=\"Chats\"]",
+      "chatsBrandText": "aside[aria-label=\"Chats\"] .nexus-brand-text",
+      "searchChatsBtn": "button[aria-label=\"Search chats\"]",
+      "collapseBtn": "button[aria-label=\"Collapse panel\"]",
+      "expandBtn": "button[aria-label=\"Expand panel\"]",
+      "newChatBtn": "aside[aria-label=\"Chats\"] .nexus-new-chat",
+      "recentChatsHeading": "aside[aria-label=\"Chats\"] .nexus-recents-heading",
+      "chatsEmpty": "aside[aria-label=\"Chats\"] .nexus-empty",
+      "searchDialog": "[role=\"dialog\"][aria-label=\"Search chats\"]",
+      "searchDialogInput": "[role=\"dialog\"][aria-label=\"Search chats\"] input.nexus-search-input",
+      "searchDialogClose": "[role=\"dialog\"][aria-label=\"Search chats\"] button[aria-label=\"Close\"]",
+      "searchDialogEmpty": "[role=\"dialog\"][aria-label=\"Search chats\"] .nexus-search-empty",
+      "composerMenu": "[role=\"menu\"]",
+      "composerMenuItem": "[role=\"menuitem\"]"
+    },
+    "expected": {
+      "pageHeadingText": "Home",
+      "greetingPrefix": "How can I help you,",
+      "textareaPlaceholder": "Create a threat model, widget — or search threat models",
+      "chatsTitleText": "Chats",
+      "newChatText": "New chat",
+      "recentChatsText": "Recent chats",
+      "chatsEmptyText": "No recent chats yet.",
+      "searchInputPlaceholder": "Search...",
+      "disclaimerText": "AI can make mistakes, please double check responses.",
+      "composerMenuItemLabels": [
+        "Add files/image",
+        "Connectors"
       ]
     }
   },

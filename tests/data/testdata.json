@@ -12,8 +12,9 @@
     "aiHome": "/ai-home"
   },
   "urlPatterns": {
-    "loginOrApp": "(\\/idsvr\\/Account\\/Login|\\/threatmodels)",
+    "loginOrApp": "(\\/idsvr\\/Account\\/Login|\\/threatmodels|\\/ai-home)",
     "loggedIn": "\\/threatmodels(\\?|$|\\/)",
+    "postLoginLanding": "\\/(threatmodels|ai-home)(\\?|$|\\/)",
     "threatModelDiagram": "\\/threatmodeldiagram\\/[0-9a-f-]{36}"
   },
   "titles": {

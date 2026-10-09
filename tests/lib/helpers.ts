@@ -45,8 +45,14 @@ async function attemptLogin(page: Page): Promise<void> {
     await expect(usernameField).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await usernameField.pressSequentially(USERNAME, { delay: TIMEOUTS.typingDelaySlow });
     await passwordField.pressSequentially(PASSWORD, { delay: TIMEOUTS.typingDelaySlow });
+    // Post-login landing drifted on tmdev: sign-in now redirects to /ai-home
+    // on some tenant configurations and /threatmodels on others. Accept either
+    // so the wait doesn't time out; the title-check fallback below navigates
+    // to /threatmodels when the test needs that specific landing.
     await Promise.all([
-      page.waitForURL(new RegExp(URL_PATTERNS.loggedIn), { timeout: TIMEOUTS.navMedium }),
+      page.waitForURL(new RegExp(URL_PATTERNS.postLoginLanding), {
+        timeout: TIMEOUTS.navMedium,
+      }),
       page.getByRole("button", { name: ROLES.buttons.signIn }).click(),
     ]);
   }

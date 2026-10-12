@@ -89,9 +89,9 @@
   "login": {
     "loginPathPattern": "\\/idsvr\\/Account\\/Login",
     "resetPasswordPath": "/sign-in/reset-password",
-    "loggedInPathPattern": "\\/threatmodels(\\?|$|\\/)",
+    "loggedInPathPattern": "\\/(threatmodels|ai-home)(\\?|$|\\/)",
     "titles": {
-      "loggedIn": "Threat Models \\| ThreatModeler"
+      "loggedIn": "(Threat Models|AI Home) \\| ThreatModeler( Nexus)?"
     },
     "selectors": {
       "usernameInput": "#Username",

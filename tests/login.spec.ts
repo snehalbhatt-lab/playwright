@@ -151,7 +151,10 @@ test.describe("Login Screen", () => {
   // R014/R015 kept as two independent tests so each gets a fresh Playwright
   // context. The identity server session survives clearCookies() within a
   // single context, causing the second iteration to skip the login form.
-  test("R014 - valid credentials via Sign In click land on /threatmodels", async ({ page }, info) => {
+  // Post-login landing drifted: sign-in now lands on either /threatmodels or
+  // /ai-home depending on tenant config, so loggedInPathPattern + titles
+  // match both.
+  test("R014 - valid credentials via Sign In click land on a post-login screen", async ({ page }, info) => {
     caseIds(info, "R014");
     await gotoLogin(page);
     await page.locator(SEL.usernameInput).fill(testdata.credentials.username);
@@ -165,7 +168,7 @@ test.describe("Login Screen", () => {
     await step(page, info, 2, "R014-click-landed");
   });
 
-  test("R015 - Enter key on password field also lands on /threatmodels", async ({ page }, info) => {
+  test("R015 - Enter key on password field also lands on a post-login screen", async ({ page }, info) => {
     caseIds(info, "R015");
     await gotoLogin(page);
     await page.locator(SEL.usernameInput).fill(testdata.credentials.username);

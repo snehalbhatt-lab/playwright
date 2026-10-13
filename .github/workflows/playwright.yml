@@ -26,6 +26,16 @@ jobs:
       TM_PASS: ${{ secrets.TM_PASS }}
       # Optional override; falls back to baseUrl in tests/data/testdata.json
       TM_BASE_URL: ${{ secrets.TM_BASE_URL }}
+      # TestRail reporter — unset secrets ⇒ reporter is a no-op (see
+      # tests/lib/testrail-reporter.ts). Configure these as repo secrets
+      # under Settings → Secrets and variables → Actions.
+      TESTRAIL_URL: ${{ secrets.TESTRAIL_URL }}
+      TESTRAIL_USER: ${{ secrets.TESTRAIL_USER }}
+      TESTRAIL_API_KEY: ${{ secrets.TESTRAIL_API_KEY }}
+      TESTRAIL_PROJECT_ID: ${{ secrets.TESTRAIL_PROJECT_ID }}
+      TESTRAIL_SUITE_ID: ${{ secrets.TESTRAIL_SUITE_ID }}
+      TESTRAIL_RUN_NAME: "Playwright CI #${{ github.run_number }} (${{ github.ref_name }})"
+      TESTRAIL_CLOSE_RUN: "true"
 
     steps:
       - name: Checkout

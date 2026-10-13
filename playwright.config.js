@@ -17,7 +17,15 @@ module.exports = defineConfig({
   // interception, kendo timing) usually clear on a fresh browser
   // context; this soaks up ~90% of the drift.
   retries: 2,
-  reporter: [["list"], ["html", { open: "never" }]],
+  // The TestRail reporter is env-gated: unset TESTRAIL_* credentials make it
+  // a no-op, so local runs stay quiet. Set TESTRAIL_URL + TESTRAIL_USER +
+  // TESTRAIL_API_KEY + TESTRAIL_PROJECT_ID (and optionally _SUITE_ID /
+  // _RUN_ID / _RUN_NAME / _CLOSE_RUN) in CI to activate.
+  reporter: [
+    ["list"],
+    ["html", { open: "never" }],
+    ["./tests/lib/testrail-reporter.ts"],
+  ],
   use: {
     // Always-on trace: every Playwright action records a snapshot +
     // the resulting screenshot. Open via the HTML report's "View

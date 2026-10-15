@@ -38,6 +38,9 @@ jobs:
       # The sbhatt account can push results but lacks "close test runs"
       # permission (TestRail 403). Leave runs open; close manually in UI.
       TESTRAIL_CLOSE_RUN: "false"
+      # Default cap of 10 MiB skips most Playwright traces. 50 MiB covers
+      # realistic traces for ~1 min tests; adjust if traces still skip.
+      TESTRAIL_ATTACH_MAX_BYTES: "52428800"
 
     steps:
       - name: Checkout

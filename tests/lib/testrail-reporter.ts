@@ -16,6 +16,12 @@ const STATUS = {
   failed: Number(process.env.TESTRAIL_STATUS_FAILED ?? 5),
 };
 
+function normalizeBaseUrl(raw: string): string {
+  const trimmed = raw.replace(/\/$/, "");
+  if (!trimmed) return "";
+  return /^https?:\/\//.test(trimmed) ? trimmed : `https://${trimmed}`;
+}
+
 interface TRResult {
   case_id: number;
   status_id: number;
@@ -30,7 +36,7 @@ export default class TestRailReporter implements Reporter {
   private results = new Map<number, TRResult>();
   private runId?: number;
   private cfg = {
-    baseUrl: process.env.TESTRAIL_URL ?? "",
+    baseUrl: normalizeBaseUrl(process.env.TESTRAIL_URL ?? ""),
     user: process.env.TESTRAIL_USER ?? "",
     apiKey: process.env.TESTRAIL_API_KEY ?? "",
     projectId: Number(process.env.TESTRAIL_PROJECT_ID ?? 0),

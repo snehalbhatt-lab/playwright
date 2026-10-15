@@ -127,7 +127,7 @@ test.describe("Security Control 7.0", () => {
   test("T1 Impact Summary Threats/SR tabs toggle active state on click (Threats is default)", async ({
     page,
   }, info) => {
-    caseIds(info, "SecurityControl7.R4", "SecurityControl7.R5", "SecurityControl7.R7");
+    caseIds(info, "C111004", "SecurityControl7.R4", "SecurityControl7.R5", "SecurityControl7.R7");
     await openFirstModelDiagram(page);
 
     await page.locator(SEL.securityControlsButton).click();

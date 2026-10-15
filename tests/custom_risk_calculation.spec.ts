@@ -60,7 +60,7 @@ test.describe("Custom Risk Calculation", () => {
 
   // --------------------------------------------------------------------------
   test("R1 group headers - Custom Risk Calculation section mounts with heading", async ({ page }, info) => {
-    caseIds(info, "R1-headers");
+    caseIds(info, "C110913", "R1-headers");
     await gotoCRCSection(page);
     // The h2 accessible name includes a nested info-tooltip button, so
     // `getByRole('heading', { name: 'Custom Risk Calculation', exact })`
@@ -74,7 +74,7 @@ test.describe("Custom Risk Calculation", () => {
 
   // --------------------------------------------------------------------------
   test("Toggle Custom Risk Calculation switch is present with ON/OFF states", async ({ page }, info) => {
-    caseIds(info, "R2-toggle");
+    caseIds(info, "C110914", "R2-toggle");
     await gotoCRCSection(page);
     const toggle = page.locator(SEL.enableToggle);
     await expect(toggle).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -89,7 +89,7 @@ test.describe("Custom Risk Calculation", () => {
 
   // --------------------------------------------------------------------------
   test("Parameters group renders Likelihood + Impact categories", async ({ page }, info) => {
-    caseIds(info, "parameters-groups");
+    caseIds(info, "C110915");
     await gotoCRCSection(page);
     for (const category of CRC.labels.categories) {
       await expect(
@@ -102,7 +102,7 @@ test.describe("Custom Risk Calculation", () => {
 
   // --------------------------------------------------------------------------
   test("Three range sliders render (Authenticated, Application, High Value Target)", async ({ page }, info) => {
-    caseIds(info, "sliders-mount");
+    caseIds(info, "C110916");
     await gotoCRCSection(page);
     for (const sel of [SEL.authenticatedRange, SEL.applicationRange, SEL.highValueRange]) {
       await expect(page.locator(sel), sel).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -112,7 +112,7 @@ test.describe("Custom Risk Calculation", () => {
 
   // --------------------------------------------------------------------------
   test("Slider labels: Authenticated / Application / HVT endpoint labels present", async ({ page }, info) => {
-    caseIds(info, "slider-labels");
+    caseIds(info, "C110917");
     await gotoCRCSection(page);
     const groups: Array<[string, string[]]> = [
       ["authenticated", CRC.labels.authenticated],
@@ -132,7 +132,7 @@ test.describe("Custom Risk Calculation", () => {
 
   // --------------------------------------------------------------------------
   test("Save button is present (not clicked to avoid mutating shared tenant risk parameters)", async ({ page }, info) => {
-    caseIds(info, "save-button");
+    caseIds(info, "C110918");
     await gotoCRCSection(page);
     await expect(page.locator(SEL.saveButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     // Do NOT click Save — persisting a random slider value would change

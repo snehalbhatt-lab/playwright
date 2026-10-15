@@ -73,7 +73,7 @@ test.describe("Custom Compliance — Secure Design Graph library-lock behaviour"
   test.setTimeout(TIMEOUTS.test);
 
   test("compliance_entity_locks_library_to_all: switching to Compliance disables the Library dropdown at All", async ({ page }, info) => {
-    caseIds(info, "CC.R03");
+    caseIds(info, "C110900", "CC.R03");
     await gotoSDG(page);
     await switchEntity(page, "Compliance");
     await step(page, info, 1, "compliance-entity-active");
@@ -99,7 +99,7 @@ test.describe("Custom Compliance — Secure Design Graph library-lock behaviour"
   });
 
   test("compliance_section_entity_locks_library_to_all: same library-lock behaviour on Compliance Sections", async ({ page }, info) => {
-    caseIds(info, "CC.R24");
+    caseIds(info, "C110901", "CC.R24");
     await gotoSDG(page);
     await switchEntity(page, "Compliance Sections");
     await step(page, info, 1, "compliance-sections-entity-active");

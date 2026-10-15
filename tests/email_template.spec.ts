@@ -162,7 +162,7 @@ test.describe("Email Template (Collaborator) — TMDEV-6291", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("add_collaborator_email: opens share dialog and adds a collaborator", async ({ page }, info) => {
-    caseIds(info, "TMDEV-6291.R01", "TMDEV-6291.R03", "TMDEV-6291.R06");
+    caseIds(info, "C110952", "TMDEV-6291.R01", "TMDEV-6291.R03", "TMDEV-6291.R06");
     const { modelName } = await setupModel(page);
     try {
       await step(page, info, 1, "diagram-open");
@@ -211,7 +211,7 @@ test.describe("Email Template (Collaborator) — TMDEV-6291", () => {
   });
 
   test("remove_collaborator_email: removes a saved collaborator", async ({ page }, info) => {
-    caseIds(info, "TMDEV-6291.R07");
+    caseIds(info, "C110953", "TMDEV-6291.R07");
     const { modelName } = await setupModel(page);
     try {
       // Pre-add so there is a collaborator to remove.
@@ -265,7 +265,7 @@ test.describe("Email Template (Collaborator) — TMDEV-6291", () => {
 
   for (const pc of permCases) {
     test(`change_permission_${pc.to}: updates existing collaborator role to ${pc.to}`, async ({ page }, info) => {
-      caseIds(info, pc.id);
+      caseIds(info, "C110954");
       const fromRole = ET.roles[pc.from];
       const toRole = ET.roles[pc.to];
       const { modelName } = await setupModel(page);
@@ -299,7 +299,7 @@ test.describe("Email Template (Collaborator) — TMDEV-6291", () => {
   }
 
   test("add_multiple_collaborators: adds 3+ collaborators in one Save", async ({ page }, info) => {
-    caseIds(info, "TMDEV-6291.R11");
+    caseIds(info, "C110955", "TMDEV-6291.R11");
     const { modelName } = await setupModel(page);
     try {
       await openShareDialog(page);

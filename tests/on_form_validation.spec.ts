@@ -145,7 +145,7 @@ test.describe("On form validation — Create new model", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("duplicate_name_shows_error: existing name + version renders inline duplicate error", async ({ page }, info) => {
-    caseIds(info, "OFV.R01", "OFV.R02");
+    caseIds(info, "C110983", "OFV.R01", "OFV.R02");
     await login(page);
     await page.goto((testdata as { baseUrl: string }).baseUrl + testdata.paths.threatModels);
     await dismissPostLoginOverlays(page);
@@ -185,7 +185,7 @@ test.describe("On form validation — Create new model", () => {
   });
 
   test("required_field_errors: clearing name and version each shows the required-field error", async ({ page }, info) => {
-    caseIds(info, "OFV.R03", "OFV.R04");
+    caseIds(info, "C110984", "OFV.R03", "OFV.R04");
     await login(page);
     await page.goto((testdata as { baseUrl: string }).baseUrl + testdata.paths.threatModels);
     await dismissPostLoginOverlays(page);
@@ -215,7 +215,7 @@ test.describe("On form validation — Create new model", () => {
   });
 
   test("error_persists_across_tabs: duplicate error remains after switching tabs and coming back", async ({ page }, info) => {
-    caseIds(info, "OFV.R05", "OFV.R06");
+    caseIds(info, "C110985", "OFV.R05", "OFV.R06");
     await login(page);
     await page.goto((testdata as { baseUrl: string }).baseUrl + testdata.paths.threatModels);
     await dismissPostLoginOverlays(page);

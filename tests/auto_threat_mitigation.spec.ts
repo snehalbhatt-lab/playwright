@@ -185,7 +185,7 @@ test.describe("Auto Threat Mitigation", () => {
   test("T1 Threats panel exposes the 9 auto-mitigation threat statuses", async ({
     page,
   }, info) => {
-    caseIds(info, "AutoThreatMitigation.R1", "AutoThreatMitigation.R21");
+    caseIds(info, "C110871", "AutoThreatMitigation.R1", "AutoThreatMitigation.R21");
     await openPopulatedModel(page);
     await openPanel(page, SEL.threatsPanelButton, SEL.threatsGrid);
     await step(page, info, 1, "threats-panel-open");
@@ -209,7 +209,7 @@ test.describe("Auto Threat Mitigation", () => {
   });
 
   test("T2 SR panel exposes the 10 auto-mitigation SR statuses", async ({ page }, info) => {
-    caseIds(info, "AutoThreatMitigation.R28", "AutoThreatMitigation.R29");
+    caseIds(info, "C110872", "AutoThreatMitigation.R28", "AutoThreatMitigation.R29");
     await openPopulatedModel(page);
     await openPanel(page, SEL.srPanelButton, SEL.srGrid);
     await step(page, info, 1, "sr-panel-open");

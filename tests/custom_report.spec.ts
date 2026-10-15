@@ -105,14 +105,14 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R005 - navigate from Threat Model diagram → Generate Report → Custom Report opens", async ({ page }, info) => {
-    caseIds(info, "R005");
+    caseIds(info, "C110902", "R005");
     await openCustomReportPanel(page);
     await step(page, info, 1, "custom-report-panel-open");
   });
 
   // --------------------------------------------------------------------------
   test("R055 R056 - Custom Report panel exposes Generate New + Saved Reports section", async ({ page }, info) => {
-    caseIds(info, "R055", "R056");
+    caseIds(info, "C110903", "R055", "R056");
     await openCustomReportPanel(page);
     // Generate New button must always be present.
     await expect(page.locator(SEL.generateNewButton).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -125,7 +125,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R008 R010 R046 R047 - Create dialog opens with 6 section tabs + Report Name + version selector", async ({ page }, info) => {
-    caseIds(info, "R008", "R010", "R046", "R047");
+    caseIds(info, "C110904", "R008", "R010", "R046", "R047");
     await openCreateDialog(page);
     // Scope text search to the modal — a hidden <li> with matching text lives
     // in the side-nav and would otherwise be picked up by getByText.
@@ -142,7 +142,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R011 - Save Report is disabled until Report Name is filled", async ({ page }, info) => {
-    caseIds(info, "R011");
+    caseIds(info, "C110905", "R011");
     await openCreateDialog(page);
     // Both save buttons start disabled.
     await expect(page.locator(SEL.saveReportButton)).toBeDisabled({ timeout: TIMEOUTS.elementVisible });
@@ -160,7 +160,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R067 R068 R069 R070 - Visibility dropdown exposes Only me / Department / Organisation", async ({ page }, info) => {
-    caseIds(info, "R067", "R068", "R069", "R070");
+    caseIds(info, "C110906", "R067", "R068", "R069", "R070");
     await openCreateDialog(page);
     const vis = page.locator(SEL.visibilityDropdown);
     await expect(vis).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -180,7 +180,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R008 R046 - Each of 5 report sections has an Include in Report toggle", async ({ page }, info) => {
-    caseIds(info, "R008", "R046", "R087", "R091", "R097");
+    caseIds(info, "C110907", "R008", "R046", "R087", "R091", "R097");
     await openCreateDialog(page);
     for (const [key, sel] of Object.entries(SEL.includeCheckboxes)) {
       await expect(page.locator(sel as string), `${key} include checkbox`).toBeAttached({
@@ -192,7 +192,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R046 - Overview sub-selection checkboxes render", async ({ page }, info) => {
-    caseIds(info, "R046");
+    caseIds(info, "C110908", "R046");
     await openCreateDialog(page);
     for (const sel of SEL.overviewSubs) {
       await expect(page.locator(sel), sel).toBeAttached({ timeout: TIMEOUTS.elementVisible });
@@ -202,7 +202,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R087 R088 R090 R100 - Threats sub-selection checkboxes render (description, SR, security control, CVE, notes, TC, tags, custom field)", async ({ page }, info) => {
-    caseIds(info, "R087", "R088", "R090", "R095", "R098", "R100");
+    caseIds(info, "C110909", "R087", "R088", "R090", "R095", "R098", "R100");
     await openCreateDialog(page);
     // Threats section is collapsed by default — need to enable the include-in-report toggle
     // so the sub-checkboxes render.
@@ -215,7 +215,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R091 R092 - Security Requirements sub-selection checkboxes render", async ({ page }, info) => {
-    caseIds(info, "R091", "R092", "R096", "R099");
+    caseIds(info, "C110910", "R091", "R092", "R096", "R099");
     await openCreateDialog(page);
     await page.locator(SEL.includeCheckboxes.securityRequirements).click({ force: true });
     for (const sel of SEL.srSubs) {
@@ -226,7 +226,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R097 - Test Cases include + description sub-checkbox render", async ({ page }, info) => {
-    caseIds(info, "R097");
+    caseIds(info, "C110911", "R097");
     await openCreateDialog(page);
     await page.locator(SEL.includeCheckboxes.testCases).click({ force: true });
     for (const sel of SEL.testCasesSubs) {
@@ -237,7 +237,7 @@ test.describe("Custom Report", () => {
 
   // --------------------------------------------------------------------------
   test("R026 (partial) - Close dialog (×) without saving returns to Custom Report panel with no side effects", async ({ page }, info) => {
-    caseIds(info, "R026");
+    caseIds(info, "C110912", "R026");
     await openCreateDialog(page);
     // Fill a name to prove nothing was saved even though the form was populated.
     await page.locator(SEL.reportNameInput).fill("QA_should_not_persist");

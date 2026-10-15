@@ -57,7 +57,7 @@ test.describe("Help Section — Home Screen + Threats STRIDE view", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("help_dialog_opens_with_sections: header help icon opens the popup with 3 sections and hyperlink icons", async ({ page }, info) => {
-    caseIds(info, "HS.R01", "HS.R02");
+    caseIds(info, "C110960", "HS.R01", "HS.R02");
     await gotoAppLanding(page);
     await step(page, info, 1, "landing");
 
@@ -95,7 +95,7 @@ test.describe("Help Section — Home Screen + Threats STRIDE view", () => {
   });
 
   test("help_dialog_link_targets: external links have expected hrefs (not followed)", async ({ page }, info) => {
-    caseIds(info, "HS.R03");
+    caseIds(info, "C110961", "HS.R03");
     await gotoAppLanding(page);
     await page.locator(SEL.helpButton).click();
     await expect(page.locator(SEL.helpPopup)).toBeVisible({ timeout: TIMEOUTS.elementVisible });

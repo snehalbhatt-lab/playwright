@@ -203,7 +203,7 @@ test.describe("Security Requirements Mitigation", () => {
   });
 
   test("T2 Close × icon dismisses the Impact Summary panel", async ({ page }, info) => {
-    caseIds(info, "SecurityRequirementsMitigation.R5", "SecurityRequirementsMitigation.R24");
+    caseIds(info, "C111005", "SecurityRequirementsMitigation.R5", "SecurityRequirementsMitigation.R24");
     await openFirstModelDiagram(page);
 
     await page.locator(SEL.securityControlsButton).click();

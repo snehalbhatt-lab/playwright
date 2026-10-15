@@ -215,7 +215,7 @@ test.describe("Add threats(Per project)", () => {
   test("T2 Cancel and titlebar × both dismiss the Add Threat dialog without adding a threat", async ({
     page,
   }, info) => {
-    caseIds(info, "AddThreats.R16");
+    caseIds(info, "C110858", "AddThreats.R16");
     await openFirstModelDiagram(page);
 
     // --- Attempt 1: dismiss via Cancel button ---

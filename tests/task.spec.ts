@@ -82,7 +82,7 @@ test.describe("Task — Diagram > Task panel dialog interactions", () => {
   test.setTimeout(600000);
 
   test("cancel_closes_create_task_form_without_persisting: Cancel returns to empty task list", async ({ page }, info) => {
-    caseIds(info, "TK.R03");
+    caseIds(info, "C111025", "TK.R03");
     const { modelName } = await setupModel(page);
     try {
       await openTasksPanel(page);
@@ -114,7 +114,7 @@ test.describe("Task — Diagram > Task panel dialog interactions", () => {
   });
 
   test("create_button_disabled_without_mandatory_info: Create enables only after name + priority + note", async ({ page }, info) => {
-    caseIds(info, "TK.R04");
+    caseIds(info, "C111026", "TK.R04");
     const { modelName } = await setupModel(page);
     try {
       await openTasksPanel(page);

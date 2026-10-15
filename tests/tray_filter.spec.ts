@@ -119,7 +119,7 @@ test.describe("Tray Filter — Diagram > Toolbox filter", () => {
   test.setTimeout(600000);
 
   test("filter_applies_and_persists_after_refresh: checkbox stays selected after reload", async ({ page }, info) => {
-    caseIds(info, "TF.R01");
+    caseIds(info, "C111060", "TF.R01");
     const modelName = await openDisposableModelAndToolbox(page);
     try {
       await openFilterModal(page);
@@ -157,7 +157,7 @@ test.describe("Tray Filter — Diagram > Toolbox filter", () => {
   });
 
   test("filter_highlight_indicator_toggles: icon gains highlight class when checked, loses on uncheck and on Clear", async ({ page }, info) => {
-    caseIds(info, "TF.R08", "TF.R09", "TF.R10");
+    caseIds(info, "C111061", "TF.R08", "TF.R09", "TF.R10");
     const modelName = await openDisposableModelAndToolbox(page);
     try {
       // R08 baseline — icon starts WITHOUT the highlight class.
@@ -203,7 +203,7 @@ test.describe("Tray Filter — Diagram > Toolbox filter", () => {
   });
 
   test("filter_can_be_reapplied_after_clear: user can re-select filters after Clear", async ({ page }, info) => {
-    caseIds(info, "TF.R04", "TF.R06", "TF.R07");
+    caseIds(info, "C111062", "TF.R04", "TF.R06", "TF.R07");
     const modelName = await openDisposableModelAndToolbox(page);
     try {
       await openFilterModal(page);
@@ -233,7 +233,7 @@ test.describe("Tray Filter — Diagram > Toolbox filter", () => {
   });
 
   test("search_with_filter_shows_no_results_and_reset_filter_link: unknown term + active filter renders reset UI", async ({ page }, info) => {
-    caseIds(info, "TF.R12", "TF.R13", "TF.R14", "TF.R15");
+    caseIds(info, "C111063", "TF.R12", "TF.R13", "TF.R14", "TF.R15");
     const modelName = await openDisposableModelAndToolbox(page);
     try {
       // Apply a filter first.

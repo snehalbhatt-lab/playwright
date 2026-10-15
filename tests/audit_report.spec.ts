@@ -97,14 +97,14 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R002 - navigate from diagram → Generate Report → Audit Report opens", async ({ page }, info) => {
-    caseIds(info, "R002");
+    caseIds(info, "C110861", "R002");
     await openAuditReportPanel(page);
     await step(page, info, 1, "audit-report-panel-open");
   });
 
   // --------------------------------------------------------------------------
   test("R003 R063 - Audit Report panel: Generate New button visible", async ({ page }, info) => {
-    caseIds(info, "R003", "R063");
+    caseIds(info, "C110862", "R003", "R063");
     await openAuditReportPanel(page);
     await expect(page.locator(SEL.generateNewButton).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await step(page, info, 1, "panel-controls-visible");
@@ -112,7 +112,7 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R056 - Generate Audit Report dialog opens with heading + close button", async ({ page }, info) => {
-    caseIds(info, "R056");
+    caseIds(info, "C110863", "R056");
     await openGenerateDialog(page);
     // Dialog title lives in .modal-title (heading text is "Generate Audit Report").
     await expect(inModal(page).getByText(AR.dialogTitle).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -122,7 +122,7 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R057 - Select Version dropdown mounts with current version value", async ({ page }, info) => {
-    caseIds(info, "R057");
+    caseIds(info, "C110864", "R057");
     await openGenerateDialog(page);
     const ver = page.locator(SEL.versionDropdown);
     await expect(ver).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -134,7 +134,7 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R058 - Select Time Frame dropdown defaults to 'Last 30 Days'", async ({ page }, info) => {
-    caseIds(info, "R058");
+    caseIds(info, "C110865", "R058");
     await openGenerateDialog(page);
     const tf = page.locator(SEL.timeFrameDropdown);
     await expect(tf).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -145,7 +145,7 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R064 R065 R066 R067 R068 - Select Action dropdown defaults to 'All' and exposes Added / Removed / Updated", async ({ page }, info) => {
-    caseIds(info, "R064", "R065", "R066", "R067", "R068");
+    caseIds(info, "C110866", "R064", "R065", "R066", "R067", "R068");
     await openGenerateDialog(page);
     const action = page.locator(SEL.actionDropdown);
     await expect(action).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -166,7 +166,7 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R056 (partial) - Include user activity summary checkbox is present", async ({ page }, info) => {
-    caseIds(info, "R056");
+    caseIds(info, "C110867", "R056");
     await openGenerateDialog(page);
     // The checkbox id contains spaces — attribute selector needed.
     await expect(page.locator(SEL.userActivityCheckbox)).toBeAttached({ timeout: TIMEOUTS.elementVisible });
@@ -175,7 +175,7 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R056 (partial) - Metrics multiselect + Transactions multiselect are present", async ({ page }, info) => {
-    caseIds(info, "R056");
+    caseIds(info, "C110868", "R056");
     await openGenerateDialog(page);
     const metrics = page.locator(SEL.metricsMultiselect);
     await expect(metrics).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -188,7 +188,7 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R077 R078 - PDF + CSV format radios are present in the Generate dialog", async ({ page }, info) => {
-    caseIds(info, "R077", "R078");
+    caseIds(info, "C110869", "R077", "R078");
     await openGenerateDialog(page);
     // Radios might be off-screen — scroll into view first.
     await page.locator(SEL.pdfFormatRadio).scrollIntoViewIfNeeded();
@@ -199,7 +199,7 @@ test.describe("Audit Report", () => {
 
   // --------------------------------------------------------------------------
   test("R071 (partial) - Cancel button closes dialog without generating a report", async ({ page }, info) => {
-    caseIds(info, "R071");
+    caseIds(info, "C110870", "R071");
     await openGenerateDialog(page);
     await expect(page.locator(SEL.cancelButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await expect(page.locator(SEL.generateButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });

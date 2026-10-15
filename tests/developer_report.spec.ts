@@ -105,14 +105,14 @@ test.describe("Developer Report", () => {
 
   // --------------------------------------------------------------------------
   test("DR001 - navigate from diagram → Generate Report → Developer Report opens", async ({ page }, info) => {
-    caseIds(info, "DR001");
+    caseIds(info, "C110944");
     await openDeveloperReportPanel(page);
     await step(page, info, 1, "developer-report-panel-open");
   });
 
   // --------------------------------------------------------------------------
   test("DR002 - empty state message + Generate New CTA visible when no reports", async ({ page }, info) => {
-    caseIds(info, "DR002");
+    caseIds(info, "C110945");
     await openDeveloperReportPanel(page);
     // Empty state message: only asserted if the panel currently has no
     // generated reports for this model. When reports exist the panel
@@ -131,7 +131,7 @@ test.describe("Developer Report", () => {
 
   // --------------------------------------------------------------------------
   test("DR003 DR033 DR034 - Generate Developer Report dialog opens with heading", async ({ page }, info) => {
-    caseIds(info, "DR003", "DR033", "DR034");
+    caseIds(info, "C110946");
     await openGenerateDialog(page);
     await expect(
       page.locator(DR.modalSelector).getByText(DR.dialogTitle).first(),
@@ -142,7 +142,7 @@ test.describe("Developer Report", () => {
 
   // --------------------------------------------------------------------------
   test("DR034 DR036 DR037 - Version dropdown mounts with a V N version value", async ({ page }, info) => {
-    caseIds(info, "DR034", "DR036", "DR037");
+    caseIds(info, "C110947");
     await openGenerateDialog(page);
     const ver = page.locator(SEL.versionDropdown);
     await expect(ver).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -166,7 +166,7 @@ test.describe("Developer Report", () => {
 
   // --------------------------------------------------------------------------
   test("DR063 - PDF + CSV format radios are present; PDF is default", async ({ page }, info) => {
-    caseIds(info, "DR063");
+    caseIds(info, "C110948");
     await openGenerateDialog(page);
     await page.locator(SEL.pdfFormatRadio).scrollIntoViewIfNeeded();
     await expect(page.locator(SEL.pdfFormatRadio)).toBeAttached({ timeout: TIMEOUTS.elementVisible });
@@ -178,7 +178,7 @@ test.describe("Developer Report", () => {
 
   // --------------------------------------------------------------------------
   test("DR-cancel - Cancel button closes dialog without generating a report", async ({ page }, info) => {
-    caseIds(info, "DR-cancel");
+    caseIds(info, "C110949");
     await openGenerateDialog(page);
     await expect(page.locator(SEL.cancelButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await expect(page.locator(SEL.generateButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });

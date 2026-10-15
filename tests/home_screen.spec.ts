@@ -133,7 +133,7 @@ test.describe("Home screen functionality work", () => {
   test("T1 home search input renders with AI-suggested placeholder animation", async ({
     page,
   }, info) => {
-    caseIds(info, "HomeScreen.R11", "HomeScreen.R14", "HomeScreen.R15");
+    caseIds(info, "C110962", "HomeScreen.R11", "HomeScreen.R14", "HomeScreen.R15");
     await landOnHome(page);
     await step(page, info, 1, "home-landed");
 
@@ -167,7 +167,7 @@ test.describe("Home screen functionality work", () => {
   test("T2 AI (WingMan) panel opens from home header with textarea + mic + user greeting", async ({
     page,
   }, info) => {
-    caseIds(info, "HomeScreen.R38", "HomeScreen.R39", "HomeScreen.R40");
+    caseIds(info, "C110963", "HomeScreen.R38", "HomeScreen.R39", "HomeScreen.R40");
     await landOnHome(page);
 
     const btn = page.locator(SEL.wingmanButton);
@@ -212,7 +212,7 @@ test.describe("Home screen functionality work", () => {
   test("T3 WingMan nudge card mounts on home with carousel + snooze + close controls", async ({
     page,
   }, info) => {
-    caseIds(info, "HomeScreen.R23", "HomeScreen.R24", "HomeScreen.R26", "HomeScreen.R27");
+    caseIds(info, "C110964", "HomeScreen.R23", "HomeScreen.R24", "HomeScreen.R26", "HomeScreen.R27");
     await landOnHome(page);
 
     // The nudge card is server-driven and rotates; give it a

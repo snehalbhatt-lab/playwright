@@ -91,7 +91,7 @@ test.describe("NewCompliance Report — Diagram > Reports > Compliance Report di
   test.setTimeout(600000);
 
   test("compliance_report_dialog_opens_with_framework_dropdown_and_cancel_closes: dialog shell renders + Cancel is non-destructive", async ({ page }, info) => {
-    caseIds(info, "CR.R01", "CR.R02", "CR.R03");
+    caseIds(info, "C110882", "CR.R01", "CR.R02", "CR.R03");
     const { modelName } = await setupModel(page);
     try {
       await openComplianceReportDialog(page);
@@ -141,7 +141,7 @@ test.describe("NewCompliance Report — Diagram > Reports > Compliance Report di
   });
 
   test("selecting_framework_surfaces_sections_and_enables_generate: sections list appears + Generate enables", async ({ page }, info) => {
-    caseIds(info, "CR.R04", "CR.R05");
+    caseIds(info, "C110883", "CR.R04", "CR.R05");
     const { modelName } = await setupModel(page);
     try {
       await openComplianceReportDialog(page);
@@ -201,7 +201,7 @@ test.describe("NewCompliance Report — Diagram > Reports > Compliance Report di
   //   R61 — custom field content parity.
 
   test("sections_multiselect_clear_all_removes_all_chips: Clear (×) on selected chips deselects every section", async ({ page }, info) => {
-    caseIds(info, "CR.R33");
+    caseIds(info, "C110884", "CR.R33");
     const { modelName } = await setupModel(page);
     try {
       await openComplianceReportDialog(page);
@@ -238,7 +238,7 @@ test.describe("NewCompliance Report — Diagram > Reports > Compliance Report di
   });
 
   test("sections_multiselect_chip_remove_reduces_count: removing one chip decrements the selected count", async ({ page }, info) => {
-    caseIds(info, "CR.R36");
+    caseIds(info, "C110885", "CR.R36");
     const { modelName } = await setupModel(page);
     try {
       await openComplianceReportDialog(page);

@@ -60,7 +60,7 @@ test.describe("Integration Dashboard — page UI + export dropdown + duration de
   test.setTimeout(TIMEOUTS.test);
 
   test("dashboard_ui_landmarks_render: header + summary + integration + duration + data grid", async ({ page }, info) => {
-    caseIds(info, "IN.R03");
+    caseIds(info, "C110965", "IN.R03");
     await gotoIntegrationDashboard(page);
     await step(page, info, 1, "on-dashboard");
 
@@ -94,7 +94,7 @@ test.describe("Integration Dashboard — page UI + export dropdown + duration de
   });
 
   test("export_dropdown_shows_excel_and_pdf_options: menu opens with two icon options", async ({ page }, info) => {
-    caseIds(info, "IN.R45");
+    caseIds(info, "C110966", "IN.R45");
     await gotoIntegrationDashboard(page);
     await step(page, info, 1, "on-dashboard");
 
@@ -135,7 +135,7 @@ test.describe("Integration Dashboard — page UI + export dropdown + duration de
   });
 
   test("duration_filter_defaults_to_90_days: dashboard opens with Last 90 Days preselected", async ({ page }, info) => {
-    caseIds(info, "IN.R46");
+    caseIds(info, "C110967", "IN.R46");
     await gotoIntegrationDashboard(page);
 
     const durationSection = page.locator(SEL.durationLabel).locator("..");

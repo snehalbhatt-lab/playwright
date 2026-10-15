@@ -76,7 +76,7 @@ test.describe("Tags Bulk Edit — Secure Design Graph > Components", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("add_tag_option_visible_after_selecting_components: More actions > Add tag becomes reachable", async ({ page }, info) => {
-    caseIds(info, "TB.H1");
+    caseIds(info, "C111020");
     await gotoSDG(page);
     await step(page, info, 1, "on-sdg");
 
@@ -95,7 +95,7 @@ test.describe("Tags Bulk Edit — Secure Design Graph > Components", () => {
   });
 
   test("add_tag_dialog_opens_with_expected_controls: dialog carries multi-select + Cancel + Submit(disabled)", async ({ page }, info) => {
-    caseIds(info, "TB.R01");
+    caseIds(info, "C111021", "TB.R01");
     await gotoSDG(page);
     await selectTwoComponents(page);
     await openAddTagsDialog(page);
@@ -122,7 +122,7 @@ test.describe("Tags Bulk Edit — Secure Design Graph > Components", () => {
   });
 
   test("multiple_tags_can_be_selected_at_once: choosing two tags results in two chips", async ({ page }, info) => {
-    caseIds(info, "TB.R02");
+    caseIds(info, "C111022", "TB.R02");
     await gotoSDG(page);
     await selectTwoComponents(page);
     await openAddTagsDialog(page);
@@ -159,7 +159,7 @@ test.describe("Tags Bulk Edit — Secure Design Graph > Components", () => {
   });
 
   test("search_filters_tag_list: typing narrows the popup to matching entries", async ({ page }, info) => {
-    caseIds(info, "TB.R06");
+    caseIds(info, "C111023", "TB.R06");
     await gotoSDG(page);
     await selectTwoComponents(page);
     await openAddTagsDialog(page);
@@ -190,7 +190,7 @@ test.describe("Tags Bulk Edit — Secure Design Graph > Components", () => {
   });
 
   test("cancel_after_tag_selection_does_not_persist: Cancel closes dialog with no side effect", async ({ page }, info) => {
-    caseIds(info, "TB.R08");
+    caseIds(info, "C111024", "TB.R08");
     await gotoSDG(page);
     await selectTwoComponents(page);
     await openAddTagsDialog(page);

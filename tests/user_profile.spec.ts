@@ -88,7 +88,7 @@ test.describe("User Profile — Profile module", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("navigate_to_profile: header Profile menu opens /user-profile", async ({ page }, info) => {
-    caseIds(info, "UP.R01", "UP.R02");
+    caseIds(info, "C111064", "UP.R01", "UP.R02");
     await login(page);
     await page.goto(BASE_URL + PATHS.threatModels);
     await dismissPostLoginOverlays(page);
@@ -116,7 +116,7 @@ test.describe("User Profile — Profile module", () => {
   });
 
   test("profile_static_details: profile card shows all expected fields", async ({ page }, info) => {
-    caseIds(info, "UP.R03", "UP.R04", "UP.R05", "UP.R06", "UP.R07", "UP.R08", "UP.R09", "UP.R10", "UP.R11", "UP.R12");
+    caseIds(info, "C111065", "UP.R03", "UP.R04", "UP.R05", "UP.R06", "UP.R07", "UP.R08", "UP.R09", "UP.R10", "UP.R11", "UP.R12");
     await gotoProfile(page);
     await step(page, info, 1, "profile-page");
 
@@ -157,7 +157,7 @@ test.describe("User Profile — Profile module", () => {
   });
 
   test("edit_and_save_profile: Save button enables on edit, saves, reverts cleanly", async ({ page }, info) => {
-    caseIds(info, "UP.R13", "UP.R14");
+    caseIds(info, "C111066", "UP.R13", "UP.R14");
     await gotoProfile(page);
 
     const saveBtn = page.locator(SEL.accountSaveButton);
@@ -204,7 +204,7 @@ test.describe("User Profile — Profile module", () => {
   });
 
   test("integrations_section_visible: Integrations block renders with API key + key button", async ({ page }, info) => {
-    caseIds(info, "UP.R15");
+    caseIds(info, "C111067", "UP.R15");
     await gotoProfile(page);
     await expect(page.locator(SEL.integrationsTitle)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await expect(page.locator(SEL.apiKeyInput)).toBeVisible();
@@ -213,7 +213,7 @@ test.describe("User Profile — Profile module", () => {
   });
 
   test("generate_api_key_dialog: banner opens, has required fields, closes via Cancel and X", async ({ page }, info) => {
-    caseIds(info, "UP.R16", "UP.R17", "UP.R19", "UP.R20");
+    caseIds(info, "C111068", "UP.R16", "UP.R17", "UP.R19", "UP.R20");
     await gotoProfile(page);
     const genBtn = page.locator(SEL.generateKeyButton);
     await expect(genBtn).toBeVisible();
@@ -245,7 +245,7 @@ test.describe("User Profile — Profile module", () => {
   });
 
   test("reset_all_warnings_dialog: opens confirm with Cancel + Reset, both act", async ({ page }, info) => {
-    caseIds(info, "UP.R21", "UP.R23", "UP.R24", "UP.R25");
+    caseIds(info, "C111069", "UP.R21", "UP.R23", "UP.R24", "UP.R25");
     await gotoProfile(page);
     const resetBtn = page.locator(SEL.resetAllWarningsButton);
     await expect(resetBtn).toBeVisible();
@@ -277,7 +277,7 @@ test.describe("User Profile — Profile module", () => {
   });
 
   test("header_icons_functional: Help + Notifications icons open and close", async ({ page }, info) => {
-    caseIds(info, "UP.R28");
+    caseIds(info, "C111070", "UP.R28");
     await gotoProfile(page);
     await clearBlockingOverlays(page);
 
@@ -311,7 +311,7 @@ test.describe("User Profile — Profile module", () => {
   });
 
   test("set_password_validation: rule errors + mismatch error appear inline (no submit)", async ({ page }, info) => {
-    caseIds(info, "UP.R32", "UP.R33", "UP.R34");
+    caseIds(info, "C111071", "UP.R32", "UP.R33", "UP.R34");
     await gotoProfile(page);
 
     // Expand the Set Password form.
@@ -354,7 +354,7 @@ test.describe("User Profile — Profile module", () => {
   });
 
   test("logout_from_profile: logout redirects to the login page", async ({ page }, info) => {
-    caseIds(info, "UP.R27");
+    caseIds(info, "C111072", "UP.R27");
     await gotoProfile(page);
 
     // Open the header profile dropdown (the profile page itself doesn't

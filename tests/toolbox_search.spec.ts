@@ -116,7 +116,7 @@ test.describe("Toolbox search — Diagram > Component toolbox", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("placeholder_animation_shows_ai_suggestions: rotating placeholder items with expected component terms", async ({ page }, info) => {
-    caseIds(info, "TS.R01", "TS.R02");
+    caseIds(info, "C111056", "TS.R01", "TS.R02");
     const modelName = await openDisposableModelAndToolbox(page);
     try {
       // R01 — the AI-placeholder animation is a
@@ -150,7 +150,7 @@ test.describe("Toolbox search — Diagram > Component toolbox", () => {
   });
 
   test("placeholder_disappears_on_type_returns_on_clear: display flips block/none/block", async ({ page }, info) => {
-    caseIds(info, "TS.R04");
+    caseIds(info, "C111057", "TS.R04");
     const modelName = await openDisposableModelAndToolbox(page);
     try {
       const container = page.locator(SEL.placeholderContainer);
@@ -177,7 +177,7 @@ test.describe("Toolbox search — Diagram > Component toolbox", () => {
   });
 
   test("no_results_message_for_unknown_term: shows 'No Result Found' + reason string with searched term", async ({ page }, info) => {
-    caseIds(info, "TS.R05");
+    caseIds(info, "C111058", "TS.R05");
     const modelName = await openDisposableModelAndToolbox(page);
     try {
       await setSearchTerm(page, TERMS.nonexistent);
@@ -194,7 +194,7 @@ test.describe("Toolbox search — Diagram > Component toolbox", () => {
   });
 
   test("fuzzy_search_returns_results: partial / short / long / misspelled terms all match", async ({ page }, info) => {
-    caseIds(info, "TS.R10", "TS.R11", "TS.R12", "TS.R13");
+    caseIds(info, "C111059", "TS.R10", "TS.R11", "TS.R12", "TS.R13");
     const modelName = await openDisposableModelAndToolbox(page);
     try {
       // Each variant must NOT show the "No Result Found" text — its

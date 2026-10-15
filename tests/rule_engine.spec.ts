@@ -70,7 +70,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R005 (UI) - navigate to Rules Engine mounts page with heading + Create form section", async ({ page }, info) => {
-    caseIds(info, "R005");
+    caseIds(info, "C110989", "R005");
     await gotoRuleEngine(page);
     await expect(page.getByRole("heading", { name: RE.labels.pageHeading, level: 1 })).toBeVisible({
       timeout: TIMEOUTS.elementVisible,
@@ -83,7 +83,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R041 R043 R047 - My Rules list panel renders with count + search + filters + sort", async ({ page }, info) => {
-    caseIds(info, "R041", "R043", "R047");
+    caseIds(info, "C110990", "R041", "R043", "R047");
     await gotoRuleEngine(page);
     await expect(page.locator(SEL.reportCount).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     const count = (await page.locator(SEL.reportCount).first().innerText()).trim();
@@ -99,7 +99,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R006 - Create form: Rule Name textbox exists and accepts special characters", async ({ page }, info) => {
-    caseIds(info, "R006");
+    caseIds(info, "C110991", "R006");
     await gotoRuleEngine(page);
     const nameInput = page.locator(SEL.ruleNameInput).first();
     await expect(nameInput).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -114,7 +114,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R071 R072 - Context combobox default value + shape", async ({ page }, info) => {
-    caseIds(info, "R071", "R072");
+    caseIds(info, "C110992", "R071", "R072");
     await gotoRuleEngine(page);
     const context = page.locator(SEL.contextCombobox);
     await expect(context).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -131,7 +131,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R016 R060 - Trigger combobox mounts with placeholder 'Select Trigger'", async ({ page }, info) => {
-    caseIds(info, "R016", "R060");
+    caseIds(info, "C110993", "R016", "R060");
     await gotoRuleEngine(page);
     const trigger = page.locator(SEL.triggerCombobox);
     await expect(trigger).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -144,7 +144,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R018 R061 - Add Condition button is present + Conditions section shows 'No conditions added'", async ({ page }, info) => {
-    caseIds(info, "R018", "R061");
+    caseIds(info, "C110994", "R018", "R061");
     await gotoRuleEngine(page);
     await expect(page.locator(SEL.addConditionButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await expect(page.getByText(/No conditions added/i).first()).toBeVisible({
@@ -155,7 +155,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R065 - Add Action button is present in the Actions section", async ({ page }, info) => {
-    caseIds(info, "R065");
+    caseIds(info, "C110995", "R065");
     await gotoRuleEngine(page);
     // Scroll into view since Actions is below Conditions.
     await page.locator(SEL.addActionButton).scrollIntoViewIfNeeded();
@@ -165,7 +165,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R005 (partial) - Save / Save & Activate / Cancel buttons render", async ({ page }, info) => {
-    caseIds(info, "R005", "R082");
+    caseIds(info, "C110996", "R005", "R082");
     await gotoRuleEngine(page);
     for (const sel of [SEL.saveButton, SEL.saveAndActivateButton, SEL.cancelButton]) {
       await expect(page.locator(sel), sel).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -177,7 +177,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R010 R043 - Search filters the rule list", async ({ page }, info) => {
-    caseIds(info, "R010", "R043");
+    caseIds(info, "C110997", "R010", "R043");
     await gotoRuleEngine(page);
     const search = page.locator(SEL.searchInput).first();
     await expect(search).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -196,7 +196,7 @@ test.describe("Rule Engine", () => {
 
   // --------------------------------------------------------------------------
   test("R088 R089 (UI) - Rule Engine layout mounts without blocking overlays after clearing loaders", async ({ page }, info) => {
-    caseIds(info, "R088", "R089");
+    caseIds(info, "C110998", "R088", "R089");
     await gotoRuleEngine(page);
     // The onboarding tour may auto-dismiss for existing users. Assert that
     // after clearBlockingOverlays the primary controls are usable.

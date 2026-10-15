@@ -92,7 +92,7 @@ test.describe("Notification — Configurations > Notifications shell", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("notifications_tab_opens_with_four_sections: activates tab and renders the four accordion panels", async ({ page }, info) => {
-    caseIds(info, "NF.R02", "NF.R08");
+    caseIds(info, "C110981", "NF.R02", "NF.R08");
     await gotoNotificationsTab(page);
     await step(page, info, 1, "notifications-tab-active");
 
@@ -110,7 +110,7 @@ test.describe("Notification — Configurations > Notifications shell", () => {
   });
 
   test("notifications_save_button_disabled_when_no_changes: Save renders disabled on load", async ({ page }, info) => {
-    caseIds(info, "NF.R04");
+    caseIds(info, "C110982", "NF.R04");
     await gotoNotificationsTab(page);
     await step(page, info, 1, "notifications-tab-active");
 

@@ -118,7 +118,7 @@ test.describe("Create model — Diagram > Version history", () => {
   test.setTimeout(600000);
 
   test("create_model_icon_shown_next_to_old_version: (+) icon appears on the old version row", async ({ page }, info) => {
-    caseIds(info, "CM.R01");
+    caseIds(info, "C110897", "CM.R01");
     const modelName = await openVersionHistoryWithOldVersion(page);
     try {
       // R01 — the (+) icon must render on the old version's row.
@@ -134,7 +134,7 @@ test.describe("Create model — Diagram > Version history", () => {
   });
 
   test("create_new_model_dialog_opens_autofilled: click (+) opens Create Model dialog with name + version prefilled", async ({ page }, info) => {
-    caseIds(info, "CM.R02");
+    caseIds(info, "C110898", "CM.R02");
     const modelName = await openVersionHistoryWithOldVersion(page);
     try {
       await page.locator(SEL.createModelIcon).first().click();
@@ -169,7 +169,7 @@ test.describe("Create model — Diagram > Version history", () => {
   });
 
   test("cancel_closes_create_model_dialog: dialog X closes without creating a model", async ({ page }, info) => {
-    caseIds(info, "CM.R03");
+    caseIds(info, "C110899", "CM.R03");
     const modelName = await openVersionHistoryWithOldVersion(page);
     try {
       await page.locator(SEL.createModelIcon).first().click();

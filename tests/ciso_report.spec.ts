@@ -86,14 +86,14 @@ test.describe("CISO Report", () => {
 
   // --------------------------------------------------------------------------
   test("R003 R008 - navigate from diagram → Generate Report → CISO Report opens", async ({ page }, info) => {
-    caseIds(info, "R003", "R008");
+    caseIds(info, "C110873", "R003", "R008");
     await openCISOReportPanel(page);
     await step(page, info, 1, "ciso-report-panel-open");
   });
 
   // --------------------------------------------------------------------------
   test("R008 - Generate Report menu exposes 'CISO Report' as one of its options", async ({ page }, info) => {
-    caseIds(info, "R008");
+    caseIds(info, "C110874", "R008");
     await openFirstModelDiagram(page);
     await page.locator("#topMenuTour_5").click();
     await expect(
@@ -104,7 +104,7 @@ test.describe("CISO Report", () => {
 
   // --------------------------------------------------------------------------
   test("R009 - CISO Report panel exposes Generate New button", async ({ page }, info) => {
-    caseIds(info, "R009");
+    caseIds(info, "C110875", "R009");
     await openCISOReportPanel(page);
     await expect(page.locator(SEL.generateNewButton).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await step(page, info, 1, "generate-new-visible");
@@ -112,7 +112,7 @@ test.describe("CISO Report", () => {
 
   // --------------------------------------------------------------------------
   test("R005 R056 - Panel renders either an empty state OR a Ready to Download section", async ({ page }, info) => {
-    caseIds(info, "R005", "R056");
+    caseIds(info, "C110876", "R005", "R056");
     await openCISOReportPanel(page);
     // Either the empty-state text is present OR the "Ready to Download"
     // section is present — assert at least one.
@@ -129,7 +129,7 @@ test.describe("CISO Report", () => {
 
   // --------------------------------------------------------------------------
   test("R005 - When at least one report exists, reportCount shows a numeric badge", async ({ page }, info) => {
-    caseIds(info, "R005");
+    caseIds(info, "C110877", "R005");
     await openCISOReportPanel(page);
     // Skip gracefully if the panel is in empty state (no prior generation
     // done on this tenant for this model).
@@ -144,7 +144,7 @@ test.describe("CISO Report", () => {
 
   // --------------------------------------------------------------------------
   test("R006 R058 - Existing report rows expose PDF + HTML download options", async ({ page }, info) => {
-    caseIds(info, "R006", "R058");
+    caseIds(info, "C110878", "R006", "R058");
     await openCISOReportPanel(page);
     // Reachable only when at least one report exists.
     const ready = page.getByText(CISO.labels.readyToDownloadHeader).first();
@@ -160,7 +160,7 @@ test.describe("CISO Report", () => {
 
   // --------------------------------------------------------------------------
   test("R005 - Report row carries version chip (V N) + timestamp", async ({ page }, info) => {
-    caseIds(info, "R005");
+    caseIds(info, "C110879", "R005");
     await openCISOReportPanel(page);
     const ready = page.getByText(CISO.labels.readyToDownloadHeader).first();
     if (!(await ready.isVisible().catch(() => false))) {
@@ -178,7 +178,7 @@ test.describe("CISO Report", () => {
 
   // --------------------------------------------------------------------------
   test("R008 - Ready to Download section header is toggleable", async ({ page }, info) => {
-    caseIds(info, "R008");
+    caseIds(info, "C110880", "R008");
     await openCISOReportPanel(page);
     const toggle = page.locator(SEL.readyToDownloadToggle).first();
     if (!(await toggle.isVisible().catch(() => false))) {

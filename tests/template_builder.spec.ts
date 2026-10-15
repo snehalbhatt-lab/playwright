@@ -71,7 +71,7 @@ test.describe("Template Builder — list page + New Template dialog", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("template_builder_landmarks_render: list + search + delete + department filter + preview", async ({ page }, info) => {
-    caseIds(info, "TB.R01", "TB.R02");
+    caseIds(info, "C111027", "TB.R01", "TB.R02");
     await gotoTemplateBuilder(page);
     await step(page, info, 1, "on-template-builder");
 
@@ -103,7 +103,7 @@ test.describe("Template Builder — list page + New Template dialog", () => {
   });
 
   test("new_template_dialog_opens_and_close_x_dismisses: dialog opens with Name field + Close is non-destructive", async ({ page }, info) => {
-    caseIds(info, "TB.R03", "TB.R07");
+    caseIds(info, "C111028", "TB.R03", "TB.R07");
     await gotoTemplateBuilder(page);
     await openNewTemplateDialog(page);
     await step(page, info, 1, "dialog-open");
@@ -125,7 +125,7 @@ test.describe("Template Builder — list page + New Template dialog", () => {
   });
 
   test("create_button_disabled_until_name_provided: mandatory name gates Create", async ({ page }, info) => {
-    caseIds(info, "TB.R08");
+    caseIds(info, "C111029", "TB.R08");
     await gotoTemplateBuilder(page);
     await openNewTemplateDialog(page);
 
@@ -154,7 +154,7 @@ test.describe("Template Builder — list page + New Template dialog", () => {
   });
 
   test("search_filters_template_list: typing narrows the visible cards", async ({ page }, info) => {
-    caseIds(info, "TB.R12");
+    caseIds(info, "C111030", "TB.R12");
     await gotoTemplateBuilder(page);
 
     const cards = page.locator(SEL.templateCards);

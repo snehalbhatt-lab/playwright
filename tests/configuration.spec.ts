@@ -59,7 +59,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R071 R072 - Configurations screen mounts with all left-nav tabs + section anchors", async ({ page }, info) => {
-    caseIds(info, "R068", "R069", "R070", "R071", "R072");
+    caseIds(info, "C110886", "R068", "R069", "R070", "R071", "R072");
     await gotoConfigurations(page);
     // Left-nav tabs
     for (const [key, sel] of Object.entries(C.tabs)) {
@@ -79,7 +79,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R007-R012 R072 - Threat Model Defaults section: Add Attacker + related toggles + Save", async ({ page }, info) => {
-    caseIds(info, "R007", "R008", "R009", "R010", "R011", "R012", "R072");
+    caseIds(info, "C110887", "R007", "R008", "R009", "R010", "R011", "R012", "R072");
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.threatModelDefaults);
     // Section heading uses the refreshed label ("Threat Model Defaults", not
@@ -103,7 +103,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R015 R016 R017 R018 R024-R029 R390-R397 - AI/Wingman section: info tooltip, all toggles, save button", async ({ page }, info) => {
-    caseIds(info, "R015", "R016", "R017", "R018", "R020", "R024", "R025", "R026", "R027", "R028", "R029", "R390", "R391", "R392", "R393", "R394", "R395", "R396", "R397");
+    caseIds(info, "C110888", "R015", "R016", "R017", "R018", "R020", "R024", "R025", "R026", "R027", "R028", "R029", "R390", "R391", "R392", "R393", "R394", "R395", "R396", "R397");
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.wingman);
     await expect(
@@ -124,7 +124,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R038 R039 R040 R068-R071 - Notifications section: 4 accordion sub-sections + save button", async ({ page }, info) => {
-    caseIds(info, "R038", "R039", "R040", "R068", "R069", "R070", "R071");
+    caseIds(info, "C110889", "R038", "R039", "R040", "R068", "R069", "R070", "R071");
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.notifications);
     await expect(page.locator(C.notifications.saveButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -148,7 +148,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R054 R055 - Integrations: New Integration dialog opens with category groups", async ({ page }, info) => {
-    caseIds(info, "R054", "R055");
+    caseIds(info, "C110890", "R054", "R055");
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.integrations);
     await expect(page.locator(C.integrations.newIntegrationButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -163,7 +163,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R080-R085 - Integrations: search input mounts and echoes typed text", async ({ page }, info) => {
-    caseIds(info, "R080", "R081", "R082", "R083", "R084", "R085");
+    caseIds(info, "C110891", "R080", "R081", "R082", "R083", "R084", "R085");
     // Live-vs-Excel drift: the multi-select category filter was
     // removed in the Integrations UI redesign. The primary search
     // input is the only remaining filter control on the section.
@@ -179,7 +179,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R076-R079 R084 - Integrations: grid mounts with a category-labelled row zone", async ({ page }, info) => {
-    caseIds(info, "R076", "R077", "R078", "R079", "R084");
+    caseIds(info, "C110892", "R076", "R077", "R078", "R079", "R084");
     // Live-vs-Excel drift: the per-category group header ("ALM Tools
     // (99)") was replaced by a kendo-grid section that renders
     // integration categories inline in the section body. Assert the
@@ -199,7 +199,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R085 - Integrations: each row exposes Sync/Edit/Delete inline action buttons", async ({ page }, info) => {
-    caseIds(info, "R085");
+    caseIds(info, "C110893", "R085");
     // Live-vs-Excel drift: the per-row Actions three-dot menu was
     // replaced by three inline icon buttons (Sync / Edit / Delete)
     // on each grid row. IDs follow the pattern
@@ -223,7 +223,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("LLM Features Defaults - 7 feature integration dropdowns render", async ({ page }, info) => {
-    caseIds(info, "R081", "R082", "R083"); // LLM feature integration selection
+    caseIds(info, "C110894", "R081", "R082", "R083"); // LLM feature integration selection
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.llmFeaturesDefaults);
     for (const sel of C.llmFeaturesDefaults.featureDropdowns) {
@@ -234,7 +234,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R374-R384 - Updates: Update Content button opens the scheduler dialog", async ({ page }, info) => {
-    caseIds(info, "R374", "R375", "R376", "R377", "R378", "R379", "R380", "R381", "R382", "R383", "R384");
+    caseIds(info, "C110895", "R374", "R375", "R376", "R377", "R378", "R379", "R380", "R381", "R382", "R383", "R384");
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.updates);
     const btn = page.locator(C.updates.updateContentButton);
@@ -252,7 +252,7 @@ test.describe("Configuration", () => {
 
   // --------------------------------------------------------------------------
   test("R401 R402 R403 R405 R411 - Email Templates section: Create button, search, existing template rows with actions", async ({ page }, info) => {
-    caseIds(info, "R401", "R402", "R403", "R405", "R408", "R409", "R410", "R411");
+    caseIds(info, "C110896", "R401", "R402", "R403", "R405", "R408", "R409", "R410", "R411");
     await gotoConfigurations(page);
     await scrollTo(page, C.sections.emailTemplates);
     await expect(page.locator(C.emailTemplates.createButton)).toBeVisible({ timeout: TIMEOUTS.elementVisible });

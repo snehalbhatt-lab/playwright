@@ -213,7 +213,7 @@ test.describe("Onboarding Tour", () => {
   test("T1 diagram tour launches on first visit with a welcome step", async ({
     page,
   }, info) => {
-    caseIds(info, "OnboardingTour.R1");
+    caseIds(info, "C110986", "OnboardingTour.R1");
     await openFirstModelDiagram(page);
     await resetTour(page, "diagramScreen", TOURS.diagramScreen.totalStep);
     await page.reload();
@@ -301,7 +301,7 @@ test.describe("Onboarding Tour", () => {
   test("T3 tour navigation controls: Next advances, Back returns, Skip dismisses", async ({
     page,
   }, info) => {
-    caseIds(info, "OnboardingTour.R16", "OnboardingTour.R17");
+    caseIds(info, "C110987", "OnboardingTour.R16", "OnboardingTour.R17");
     await openFirstModelDiagram(page);
     await resetTour(page, "diagramScreen", TOURS.diagramScreen.totalStep);
     await page.reload();
@@ -342,7 +342,7 @@ test.describe("Onboarding Tour", () => {
   test("T4 Do Not Show Again checkbox is present and defaults unchecked", async ({
     page,
   }, info) => {
-    caseIds(info, "OnboardingTour.R19");
+    caseIds(info, "C110988", "OnboardingTour.R19");
     await openFirstModelDiagram(page);
     await resetTour(page, "diagramScreen", TOURS.diagramScreen.totalStep);
     await page.reload();

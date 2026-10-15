@@ -71,7 +71,7 @@ test.describe("CVSS 4.0 — Configuration > Threat Model Defaults", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("cvss_config_dropdown_shown_with_options: dropdown has 'CVSS 3.1' + 'CVSS 4.0' with 3.1 default", async ({ page }, info) => {
-    caseIds(info, "CV.R01");
+    caseIds(info, "C110919", "CV.R01");
     await gotoThreatModelDefaults(page);
     await step(page, info, 1, "on-threat-model-defaults");
 

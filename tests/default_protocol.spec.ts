@@ -132,7 +132,7 @@ test.describe("Default Protocol sheet — Display Options > Show link color", ()
   test.setTimeout(600000);
 
   test("show_link_color_default_and_toggle: default enabled, toggle flips icon and storage", async ({ page }, info) => {
-    caseIds(info, "DP.R20", "DP.R21", "DP.R22");
+    caseIds(info, "C110941", "DP.R20", "DP.R21", "DP.R22");
     const { modelName } = await setupModel(page);
     try {
       // R20 — default state is enabled on a fresh model.
@@ -183,7 +183,7 @@ test.describe("Default Protocol sheet — Display Options > Show link color", ()
   });
 
   test("show_link_color_persists_across_reload: toggled state survives a page reload", async ({ page }, info) => {
-    caseIds(info, "DP.R27");
+    caseIds(info, "C110942", "DP.R27");
     const { modelName } = await setupModel(page);
     try {
       // Toggle off first so we have a mutation to verify.
@@ -226,7 +226,7 @@ test.describe("Default Protocol sheet — Display Options > Show link color", ()
   });
 
   test("show_link_color_is_stored_client_side: setting written to localStorage (per-browser, not server)", async ({ page }, info) => {
-    caseIds(info, "DP.R24");
+    caseIds(info, "C110943", "DP.R24");
     const { modelName } = await setupModel(page);
     try {
       // Toggle so the key definitely exists (fresh browsers start

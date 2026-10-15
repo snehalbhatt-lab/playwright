@@ -60,7 +60,7 @@ test.describe("Threat Dashboard — landmarks + Compliance Summary + Model Statu
   test.setTimeout(TIMEOUTS.test);
 
   test("dashboard_landmarks_render: filter button + traceability matrix + top-10 + compliance sections", async ({ page }, info) => {
-    caseIds(info, "TD.H1", "TD.R00");
+    caseIds(info, "C111031", "TD.R00");
     await gotoThreatDashboard(page);
     await step(page, info, 1, "on-dashboard");
 
@@ -85,7 +85,7 @@ test.describe("Threat Dashboard — landmarks + Compliance Summary + Model Statu
   });
 
   test("compliance_summary_shows_three_status_categories: Compliant / Non-Compliant / Partially Compliant", async ({ page }, info) => {
-    caseIds(info, "TD.R18");
+    caseIds(info, "C111032", "TD.R18");
     await gotoThreatDashboard(page);
     await step(page, info, 1, "on-dashboard");
 
@@ -115,7 +115,7 @@ test.describe("Threat Dashboard — landmarks + Compliance Summary + Model Statu
   });
 
   test("model_status_filter_defaults_to_all_and_lists_core_statuses: opening dropdown shows the 6 built-in statuses", async ({ page }, info) => {
-    caseIds(info, "TD.R54", "TD.R56");
+    caseIds(info, "C111033", "TD.R54", "TD.R56");
     await gotoThreatDashboard(page);
     await step(page, info, 1, "on-dashboard");
 

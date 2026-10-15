@@ -140,7 +140,7 @@ test.describe("CloudModeler (Changes)", () => {
   test("T1 CloudModeler tab exposes AWS, Azure, and Google Cloud Platform as cloud-provider options", async ({
     page,
   }, info) => {
-    caseIds(info, "CloudModelerChanges.R5", "CloudModelerChanges.R29", "CloudModelerChanges.R30");
+    caseIds(info, "C110881", "CloudModelerChanges.R5", "CloudModelerChanges.R29", "CloudModelerChanges.R30");
     await openCreateDialogCloudModeler(page);
     await step(page, info, 1, "cloudmodeler-tab-open");
 

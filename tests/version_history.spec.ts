@@ -100,7 +100,7 @@ test.describe("Version history — Diagram > Version History", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("version_history_shows_current_version: panel current version matches header badge", async ({ page }, info) => {
-    caseIds(info, "VH.R01", "VH.R15");
+    caseIds(info, "C111079", "VH.R01", "VH.R15");
     const modelName = await openDisposableModelAndVersionPanel(page);
     try {
       await step(page, info, 1, "panel-open");
@@ -122,7 +122,7 @@ test.describe("Version history — Diagram > Version History", () => {
   });
 
   test("create_version_dialog_structure: dialog opens with New Version + Release Notes + Submit + Close", async ({ page }, info) => {
-    caseIds(info, "VH.R02");
+    caseIds(info, "C111080", "VH.R02");
     const modelName = await openDisposableModelAndVersionPanel(page);
     try {
       await page.locator(SEL.createVersionButton).click();
@@ -146,7 +146,7 @@ test.describe("Version history — Diagram > Version History", () => {
   });
 
   test("create_version_submit_disabled_without_mandatory: Submit stays disabled until both New Version and Release Notes are filled", async ({ page }, info) => {
-    caseIds(info, "VH.R03");
+    caseIds(info, "C111081", "VH.R03");
     const modelName = await openDisposableModelAndVersionPanel(page);
     try {
       await page.locator(SEL.createVersionButton).click();
@@ -173,7 +173,7 @@ test.describe("Version history — Diagram > Version History", () => {
   });
 
   test("create_version_cancel_closes_dialog: filling fields then Close X closes dialog without creating a version", async ({ page }, info) => {
-    caseIds(info, "VH.R05");
+    caseIds(info, "C111082", "VH.R05");
     const modelName = await openDisposableModelAndVersionPanel(page);
     try {
       const versionBefore = ((await page.locator(SEL.headerVersionBadge).textContent()) ?? "").trim();
@@ -205,7 +205,7 @@ test.describe("Version history — Diagram > Version History", () => {
   });
 
   test("current_version_shows_submitter_info: current-version row lists submitter name and Version Created timestamp", async ({ page }, info) => {
-    caseIds(info, "VH.R04");
+    caseIds(info, "C111083", "VH.R04");
     const modelName = await openDisposableModelAndVersionPanel(page);
     try {
       const panelText = ((await page.locator(SEL.panel).textContent()) ?? "").trim();

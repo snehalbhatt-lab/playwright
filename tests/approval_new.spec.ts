@@ -85,7 +85,7 @@ test.describe("Approval New — Diagram > Approval Workflow", () => {
   test.setTimeout(600000);
 
   test("submit_for_approval_dialog_shows_approvers_section: dialog renders 'List of Approvers' with warning text", async ({ page }, info) => {
-    caseIds(info, "AN.R01");
+    caseIds(info, "C110859", "AN.R01");
     const modelName = await openDisposableModelAndSubmitDialog(page);
     try {
       await step(page, info, 1, "dialog-open");
@@ -115,7 +115,7 @@ test.describe("Approval New — Diagram > Approval Workflow", () => {
   });
 
   test("approvers_panelbar_expands_and_lists_entries: clicking 'List of Approvers' expands the panel", async ({ page }, info) => {
-    caseIds(info, "AN.R02");
+    caseIds(info, "C110860", "AN.R02");
     const modelName = await openDisposableModelAndSubmitDialog(page);
     try {
       const item = page.locator(SEL.approversPanelbarItem);

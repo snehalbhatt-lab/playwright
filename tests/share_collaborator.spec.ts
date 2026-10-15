@@ -84,7 +84,7 @@ test.describe("Share(collaborator) — Diagram > Share dialog interactions", () 
   test.setTimeout(600000);
 
   test("share_dialog_cancels_via_button: Cancel closes the dialog cleanly", async ({ page }, info) => {
-    caseIds(info, "SC.R01");
+    caseIds(info, "C111006", "SC.R01");
     const { modelName } = await setupModel(page);
     try {
       await openShareDialog(page);
@@ -98,7 +98,7 @@ test.describe("Share(collaborator) — Diagram > Share dialog interactions", () 
   });
 
   test("permissions_dropdown_lists_expected_options: role popup carries Project ReadOnly / ReadWrite / Admin", async ({ page }, info) => {
-    caseIds(info, "SC.R02");
+    caseIds(info, "C111007", "SC.R02");
     const { modelName } = await setupModel(page);
     try {
       await openShareDialog(page);
@@ -137,7 +137,7 @@ test.describe("Share(collaborator) — Diagram > Share dialog interactions", () 
   });
 
   test("search_filters_user_suggestions: typing shows matching suggestions in the listbox", async ({ page }, info) => {
-    caseIds(info, "SC.R03");
+    caseIds(info, "C111008", "SC.R03");
     const { modelName } = await setupModel(page);
     try {
       await openShareDialog(page);
@@ -159,7 +159,7 @@ test.describe("Share(collaborator) — Diagram > Share dialog interactions", () 
   });
 
   test("selecting_user_adds_to_pending_list: clicking a suggestion appends a new-entry row with role + remove controls", async ({ page }, info) => {
-    caseIds(info, "SC.R04");
+    caseIds(info, "C111009", "SC.R04");
     const { modelName } = await setupModel(page);
     try {
       await openShareDialog(page);
@@ -199,7 +199,7 @@ test.describe("Share(collaborator) — Diagram > Share dialog interactions", () 
   });
 
   test("cancel_after_add_does_not_persist: adding a user then Cancel leaves the Users tab unchanged", async ({ page }, info) => {
-    caseIds(info, "SC.R05");
+    caseIds(info, "C111010", "SC.R05");
     const { modelName } = await setupModel(page);
     try {
       await openShareDialog(page);

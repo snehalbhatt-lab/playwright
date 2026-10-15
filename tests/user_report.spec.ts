@@ -133,7 +133,7 @@ test.describe("User Report (Audit Report user activity matrix)", () => {
 
   // --------------------------------------------------------------------------
   test("UR001 UR002 UR003 - Generate Audit Report modal opens with PDF + CSV format radios", async ({ page }, info) => {
-    caseIds(info, "UR001", "UR002", "UR003");
+    caseIds(info, "C111073");
     await openGenerateAuditDialog(page);
     await page.locator(SEL.pdfFormatRadio).scrollIntoViewIfNeeded();
     await expect(page.locator(SEL.pdfFormatRadio)).toBeAttached({ timeout: TIMEOUTS.elementVisible });
@@ -146,7 +146,7 @@ test.describe("User Report (Audit Report user activity matrix)", () => {
 
   // --------------------------------------------------------------------------
   test("UR004 - Select User(s): Select All toggles every user (deselect / re-select)", async ({ page }, info) => {
-    caseIds(info, "UR004");
+    caseIds(info, "C111074");
     await openGenerateAuditDialog(page);
     await enableUserActivitySection(page);
     await openMultiselectPopup(page, SEL.userMultiselect);
@@ -173,7 +173,7 @@ test.describe("User Report (Audit Report user activity matrix)", () => {
 
   // --------------------------------------------------------------------------
   test("UR006 UR007 - Select User(s): all activity users pre-checked; single-item toggle works", async ({ page }, info) => {
-    caseIds(info, "UR006", "UR007");
+    caseIds(info, "C111075");
     await openGenerateAuditDialog(page);
     await enableUserActivitySection(page);
     await openMultiselectPopup(page, SEL.userMultiselect);
@@ -201,7 +201,7 @@ test.describe("User Report (Audit Report user activity matrix)", () => {
 
   // --------------------------------------------------------------------------
   test("UR010 UR028 - Select Metric(s): all 8 documented metrics are present", async ({ page }, info) => {
-    caseIds(info, "UR010", "UR028");
+    caseIds(info, "C111076");
     await openGenerateAuditDialog(page);
     await enableUserActivitySection(page);
     await openMultiselectPopup(page, SEL.metricsMultiselect);
@@ -218,7 +218,7 @@ test.describe("User Report (Audit Report user activity matrix)", () => {
 
   // --------------------------------------------------------------------------
   test("UR011 UR013 - Select Metric(s): all metrics ON by default", async ({ page }, info) => {
-    caseIds(info, "UR011", "UR013");
+    caseIds(info, "C111077");
     await openGenerateAuditDialog(page);
     await enableUserActivitySection(page);
     await openMultiselectPopup(page, SEL.metricsMultiselect);
@@ -235,7 +235,7 @@ test.describe("User Report (Audit Report user activity matrix)", () => {
 
   // --------------------------------------------------------------------------
   test("UR005 UR014 - Select Metric(s): Select All toggles every metric (deselect / re-select)", async ({ page }, info) => {
-    caseIds(info, "UR005", "UR014");
+    caseIds(info, "C111078");
     await openGenerateAuditDialog(page);
     await enableUserActivitySection(page);
     await openMultiselectPopup(page, SEL.metricsMultiselect);

@@ -127,7 +127,7 @@ test.describe("Export threats — Diagram > Threats-Export + SR-Export dialogs",
   // ---- Module A: Threats-Export ------------------------------------------
 
   test("threats_export_dialog_structure_and_radio_behavior: CSV/Excel + Threats-only/With-SRs radios mutually exclude", async ({ page }, info) => {
-    caseIds(info, "EX.R01", "EX.R03");
+    caseIds(info, "C110956", "EX.R01", "EX.R03");
     const getDownloads = setupDownloadCounter(page);
     await openFirstPopulatedModel(page);
     await openExportDialogFrom(
@@ -175,7 +175,7 @@ test.describe("Export threats — Diagram > Threats-Export + SR-Export dialogs",
   });
 
   test("threats_export_cancel_dismisses_dialog: Cancel closes dialog with no download event", async ({ page }, info) => {
-    caseIds(info, "EX.R02");
+    caseIds(info, "C110957", "EX.R02");
     const getDownloads = setupDownloadCounter(page);
     await openFirstPopulatedModel(page);
     await openExportDialogFrom(
@@ -202,7 +202,7 @@ test.describe("Export threats — Diagram > Threats-Export + SR-Export dialogs",
   // ---- Module B: SR-Export -----------------------------------------------
 
   test("sr_export_dialog_structure_and_radio_behavior: CSV/Excel + SR-only/With-Threats radios mutually exclude", async ({ page }, info) => {
-    caseIds(info, "EX.R17", "EX.R19");
+    caseIds(info, "C110958", "EX.R17", "EX.R19");
     const getDownloads = setupDownloadCounter(page);
     await openFirstPopulatedModel(page);
     await openExportDialogFrom(
@@ -243,7 +243,7 @@ test.describe("Export threats — Diagram > Threats-Export + SR-Export dialogs",
   });
 
   test("sr_export_cancel_dismisses_dialog: Cancel closes dialog with no download event", async ({ page }, info) => {
-    caseIds(info, "EX.R18");
+    caseIds(info, "C110959", "EX.R18");
     const getDownloads = setupDownloadCounter(page);
     await openFirstPopulatedModel(page);
     await openExportDialogFrom(

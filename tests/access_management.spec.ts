@@ -84,7 +84,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R006 - navigate to Access Management and land on the correct URL + title", async ({ page }, info) => {
-    caseIds(info, "R006");
+    caseIds(info, "C110849", "R006");
     await gotoAccessManagement(page);
     expect(page.url()).toContain(AM.path);
     await step(page, info, 1, "landed-on-access-management");
@@ -92,7 +92,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R008 (partial) - all 4 tabs mount with entity counts", async ({ page }, info) => {
-    caseIds(info, "R008");
+    caseIds(info, "C110850", "R008");
     await gotoAccessManagement(page);
     for (const name of [AM.tabs.departments, AM.tabs.users, AM.tabs.groups, AM.tabs.roles]) {
       const tab = page.locator(SEL.tabRole).filter({ hasText: name }).first();
@@ -106,7 +106,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R008 R073-R076 (partial) - each tab activates and updates the browser title", async ({ page }, info) => {
-    caseIds(info, "R008", "R073", "R074", "R075", "R076");
+    caseIds(info, "C110851", "R008", "R073", "R074", "R075", "R076");
     await gotoAccessManagement(page);
     // Live drift: on first mount the Departments tab is already selected and
     // the title remains "Access Management | ...". The title switches to the
@@ -131,7 +131,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R008 R010 R017 R018 - Departments tab: grid columns + search + pagination", async ({ page }, info) => {
-    caseIds(info, "R008", "R010", "R011", "R012", "R015", "R016", "R017", "R018", "R019", "R020");
+    caseIds(info, "C110852", "R008", "R010", "R011", "R012", "R015", "R016", "R017", "R018", "R019", "R020");
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.departments);
     const headers = await gridHeaderTexts(page);
@@ -152,7 +152,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R083 R084 - Users tab: Department + Status filter dropdowns mount with expected columns", async ({ page }, info) => {
-    caseIds(info, "R083", "R084", "R085", "R086", "R087");
+    caseIds(info, "C110853", "R083", "R084", "R085", "R086", "R087");
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.users);
     const headers = await gridHeaderTexts(page);
@@ -166,7 +166,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R085 R086 R087 - Users tab: Status filter defaults to Active and exposes Inactive / All options", async ({ page }, info) => {
-    caseIds(info, "R085", "R086", "R087");
+    caseIds(info, "C110854", "R085", "R086", "R087");
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.users);
     const statusFilter = page.locator(SEL.users.statusFilter);
@@ -188,7 +188,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R065 R066 - Groups tab: grid columns + search + department filter + at least one row", async ({ page }, info) => {
-    caseIds(info, "R065", "R066", "R067", "R068", "R069", "R071");
+    caseIds(info, "C110855", "R065", "R066", "R067", "R068", "R069", "R071");
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.groups);
     const headers = await gridHeaderTexts(page);
@@ -204,7 +204,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("Roles & Permissions tab: search + type filter mount", async ({ page }, info) => {
-    caseIds(info); // no direct Excel case IDs — a sanity check for the 4th tab
+    caseIds(info, "C110856"); // no direct Excel case IDs — a sanity check for the 4th tab
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.roles);
     await expect(page.locator(SEL.searchInput).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -214,7 +214,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R248 R250 (partial permission-gate) - Create/Add controls are absent for non-Enterprise-Admin sbhatt", async ({ page }, info) => {
-    caseIds(info, "R248", "R250");
+    caseIds(info, "C110857", "R248", "R250");
     await gotoAccessManagement(page);
     // On this tenant sbhatt lacks Enterprise Admin — the top-nav "Create new"
     // menu on this screen offers only "Threat Model", never Dept/User/Group.

@@ -65,7 +65,7 @@ test.describe("Cloudmodeler diagram filter — Diagram > Diagram Filter panel", 
   test.setTimeout(600000);
 
   test("filter_panel_shows_expected_controls: Resources + Tags multiselects + Cancel + Save Filter + Apply + Saved Filters", async ({ page }, info) => {
-    caseIds(info, "DF.R01");
+    caseIds(info, "C110950", "DF.R01");
     const { modelName } = await setupModel(page);
     try {
       await openFilterPanel(page);
@@ -106,7 +106,7 @@ test.describe("Cloudmodeler diagram filter — Diagram > Diagram Filter panel", 
   });
 
   test("save_filter_submit_disabled_until_name_provided: mandatory name gates the save subform", async ({ page }, info) => {
-    caseIds(info, "DF.R28");
+    caseIds(info, "C110951", "DF.R28");
     const { modelName } = await setupModel(page);
     try {
       await openFilterPanel(page);

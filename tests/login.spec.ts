@@ -68,7 +68,7 @@ test.describe("Login Screen", () => {
 
   // --------------------------------------------------------------------------
   test("R004 R005 - render: root redirects to login and all UI controls mount", async ({ page }, info) => {
-    caseIds(info, "R004", "R005");
+    caseIds(info, "C110968", "R004", "R005");
     await gotoLogin(page);
     await step(page, info, 1, "login-page-loaded");
     for (const key of [
@@ -94,7 +94,7 @@ test.describe("Login Screen", () => {
 
   // --------------------------------------------------------------------------
   test("R006 R007 R008 - footer navigation targets have expected hrefs", async ({ page }, info) => {
-    caseIds(info, "R006", "R007", "R008");
+    caseIds(info, "C110969", "R006", "R007", "R008");
     await gotoLogin(page);
     await step(page, info, 1, "before-check");
     for (const c of L.footerLinkCases) {
@@ -110,7 +110,7 @@ test.describe("Login Screen", () => {
 
   // --------------------------------------------------------------------------
   test("R009 R010 R011 R012 R013 - sign-in error / validation for each bad-credential shape", async ({ page }, info) => {
-    caseIds(info, "R009", "R010", "R011", "R012", "R013");
+    caseIds(info, "C110970", "R009", "R010", "R011", "R012", "R013");
     let stepIdx = 0;
     for (const [id, data] of Object.entries(L.credentialCases)) {
       const c = data as {
@@ -155,7 +155,7 @@ test.describe("Login Screen", () => {
   // /ai-home depending on tenant config, so loggedInPathPattern + titles
   // match both.
   test("R014 - valid credentials via Sign In click land on a post-login screen", async ({ page }, info) => {
-    caseIds(info, "R014");
+    caseIds(info, "C110971", "R014");
     await gotoLogin(page);
     await page.locator(SEL.usernameInput).fill(testdata.credentials.username);
     await page.locator(SEL.passwordInput).fill(testdata.credentials.password);
@@ -169,7 +169,7 @@ test.describe("Login Screen", () => {
   });
 
   test("R015 - Enter key on password field also lands on a post-login screen", async ({ page }, info) => {
-    caseIds(info, "R015");
+    caseIds(info, "C110972", "R015");
     await gotoLogin(page);
     await page.locator(SEL.usernameInput).fill(testdata.credentials.username);
     await page.locator(SEL.passwordInput).fill(testdata.credentials.password);
@@ -186,7 +186,7 @@ test.describe("Login Screen", () => {
   // R016 — the SSO CTA is not rendered on this tenant build (no `a[aria-label="sso"]`
   // in DOM). Skipped until the feature is re-enabled on the environment.
   test.skip("R016 - SSO link points to the SAML2 challenge endpoint", async ({ page }, info) => {
-    caseIds(info, "R016");
+    caseIds(info, "C110973", "R016");
     await gotoLogin(page);
     await step(page, info, 1, "before-sso-check");
     const sso = page.locator(SEL.ssoLink).first();
@@ -200,7 +200,7 @@ test.describe("Login Screen", () => {
 
   // --------------------------------------------------------------------------
   test("R017 R018 R019 - Forgot Password: navigates to reset screen, UI mounts, submit disabled when empty", async ({ page }, info) => {
-    caseIds(info, "R017", "R018", "R019");
+    caseIds(info, "C110974", "R017", "R018", "R019");
     await gotoLogin(page);
     await Promise.all([
       page.waitForURL(new RegExp(L.resetPasswordPath.replace(/\//g, "\\/") + "$"), { timeout: TIMEOUTS.navMedium }),
@@ -221,7 +221,7 @@ test.describe("Login Screen", () => {
 
   // --------------------------------------------------------------------------
   test("R020 - Reset Password with unknown email returns enumeration-resistant confirmation", async ({ page }, info) => {
-    caseIds(info, "R020");
+    caseIds(info, "C110975", "R020");
     await page.goto(BASE_URL + L.resetPasswordPath);
     await step(page, info, 1, "on-reset-password");
     await page.locator(SEL.resetEmailInput).fill(L.resetInvalidEmail);
@@ -236,7 +236,7 @@ test.describe("Login Screen", () => {
 
   // --------------------------------------------------------------------------
   test("R027 - 'I remembered my password' from reset screen returns to login flow", async ({ page }, info) => {
-    caseIds(info, "R027");
+    caseIds(info, "C110976", "R027");
     await page.context().clearCookies();
     await page.goto(BASE_URL + L.resetPasswordPath);
     await step(page, info, 1, "on-reset-password");

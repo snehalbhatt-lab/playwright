@@ -144,7 +144,7 @@ test.describe("Note@mention — Diagram > Notes", () => {
   test.setTimeout(600000);
 
   test("character_count_shows_5000_initial: empty textarea shows 'Characters Left: 5000 / 5000'", async ({ page }, info) => {
-    caseIds(info, "NM.R08");
+    caseIds(info, "C110977", "NM.R08");
     const modelName = await openDisposableModelAndFirstThreatNotes(page);
     try {
       const text = await counterText(page);
@@ -162,7 +162,7 @@ test.describe("Note@mention — Diagram > Notes", () => {
   });
 
   test("character_count_updates_on_type_and_delete: counter reflects value length in real time", async ({ page }, info) => {
-    caseIds(info, "NM.R09", "NM.R10");
+    caseIds(info, "C110978", "NM.R09", "NM.R10");
     const modelName = await openDisposableModelAndFirstThreatNotes(page);
     try {
       // Type 11 chars → counter drops by 11.
@@ -196,7 +196,7 @@ test.describe("Note@mention — Diagram > Notes", () => {
   });
 
   test("character_limit_enforced_at_5000: textarea has maxlength=5000; keyboard typing is capped", async ({ page }, info) => {
-    caseIds(info, "NM.R11");
+    caseIds(info, "C110979", "NM.R11");
     const modelName = await openDisposableModelAndFirstThreatNotes(page);
     try {
       const textarea = page.locator(SEL.noteTextarea).first();
@@ -228,7 +228,7 @@ test.describe("Note@mention — Diagram > Notes", () => {
   });
 
   test("notes_cannot_be_edited_hint_visible: 'Notes cannot be edited or deleted after creation' hint is shown", async ({ page }, info) => {
-    caseIds(info, "NM.R17");
+    caseIds(info, "C110980", "NM.R17");
     const modelName = await openDisposableModelAndFirstThreatNotes(page);
     try {
       const hint = page.locator(SEL.notesHintContainer).filter({

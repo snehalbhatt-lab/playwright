@@ -195,7 +195,7 @@ test.describe("Save Filter — Threats / SR / TC panels 'My Views' dropdown", ()
   test.setTimeout(TIMEOUTS.test);
 
   test("my_views_button_visible_after_expand_and_tooltip_matches: expand Threats panel + hover tooltip", async ({ page }, info) => {
-    caseIds(info, "SF.R03", "SF.R04");
+    caseIds(info, "C110999", "SF.R03", "SF.R04");
     await openFirstPopulatedModel(page);
     await openThreatsExpanded(page);
     await step(page, info, 1, "threats-panel-expanded");
@@ -211,7 +211,7 @@ test.describe("Save Filter — Threats / SR / TC panels 'My Views' dropdown", ()
   });
 
   test("my_views_dropdown_lists_save_current_view_and_saved_views: two expander headers appear", async ({ page }, info) => {
-    caseIds(info, "SF.R01");
+    caseIds(info, "C111000", "SF.R01");
     await openFirstPopulatedModel(page);
     await openThreatsExpanded(page);
     await openMyViewsDropdown(page, SEL.threatsMyViewButton);
@@ -231,7 +231,7 @@ test.describe("Save Filter — Threats / SR / TC panels 'My Views' dropdown", ()
   });
 
   test("save_current_view_subform_exposes_name_input_and_actions: Name + Cancel + Save render", async ({ page }, info) => {
-    caseIds(info, "SF.R01");
+    caseIds(info, "C111001", "SF.R01");
     await openFirstPopulatedModel(page);
     await openThreatsExpanded(page);
     await openMyViewsDropdown(page, SEL.threatsMyViewButton);
@@ -259,7 +259,7 @@ test.describe("Save Filter — Threats / SR / TC panels 'My Views' dropdown", ()
   });
 
   test("save_button_disabled_until_name_provided: gates on non-empty View Name", async ({ page }, info) => {
-    caseIds(info, "SF.R17");
+    caseIds(info, "C111002", "SF.R17");
     await openFirstPopulatedModel(page);
     await openThreatsExpanded(page);
     await openMyViewsDropdown(page, SEL.threatsMyViewButton);
@@ -294,7 +294,7 @@ test.describe("Save Filter — Threats / SR / TC panels 'My Views' dropdown", ()
   });
 
   test("cancel_dismisses_subform_without_saving: pending name is discarded", async ({ page }, info) => {
-    caseIds(info, "SF.R08");
+    caseIds(info, "C111003", "SF.R08");
     await openFirstPopulatedModel(page);
     await openThreatsExpanded(page);
     await openMyViewsDropdown(page, SEL.threatsMyViewButton);

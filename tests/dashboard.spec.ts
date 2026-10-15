@@ -92,7 +92,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R005 R111 - dashboard mounts from side-nav and page title is set", async ({ page }, info) => {
-    caseIds(info, "R005", "R111");
+    caseIds(info, "C110925", "R005", "R111");
     await login(page);
     await page.goto(BASE_URL + "/threatmodels");
     await step(page, info, 1, "before-nav");
@@ -112,7 +112,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R006 R007 R008 R009 - summary tiles render with numeric values", async ({ page }, info) => {
-    caseIds(info, "R006", "R007", "R008", "R009");
+    caseIds(info, "C110926", "R006", "R007", "R008", "R009");
     await gotoDashboard(page);
     await waitForTilesLoaded(page);
     const card = page.locator(SEL.summaryCard);
@@ -134,7 +134,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R010-R013 R114-R117 - Top 10 panel renders with 10 rows and risk labels", async ({ page }, info) => {
-    caseIds(info, "R010", "R011", "R012", "R013", "R114", "R115", "R116", "R117");
+    caseIds(info, "C110927", "R010", "R011", "R012", "R013", "R114", "R115", "R116", "R117");
     await gotoDashboard(page);
     await expect(page.locator(SEL.top10Root)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await step(page, info, 1, "top10-mounted");
@@ -152,7 +152,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R014-R017 R112 R113 - Top 10 Security Requirements tab lists 10 SR rows", async ({ page }, info) => {
-    caseIds(info, "R014", "R015", "R016", "R017", "R112", "R113");
+    caseIds(info, "C110928", "R014", "R015", "R016", "R017", "R112", "R113");
     await gotoDashboard(page);
     await expect(page.locator(SEL.top10Root)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     // Assert the SR tab exists as a clickable element inside the Top 10 panel.
@@ -169,7 +169,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R023 R029 R030 - Compliance Summary section mounts with numeric status counts", async ({ page }, info) => {
-    caseIds(info, "R023", "R029", "R030");
+    caseIds(info, "C110929", "R023", "R029", "R030");
     await gotoDashboard(page);
     await expect(page.locator(SEL.complianceRoot)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await expect(page.locator(SEL.complianceHeader)).toHaveText(LABELS.complianceSummaryHeading);
@@ -186,7 +186,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R024 R025 R026 R027 R028 - Compliance Framework Filter opens with search + apply/clear controls", async ({ page }, info) => {
-    caseIds(info, "R024", "R025", "R026", "R027", "R028");
+    caseIds(info, "C110930", "R024", "R025", "R026", "R027", "R028");
     await gotoDashboard(page);
     await page.locator(SEL.complianceFilterOpen).click();
     await expect(page.locator(SEL.complianceFrameworkPanel)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -204,7 +204,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R090 - Threat Trends chart canvas + status legend items render", async ({ page }, info) => {
-    caseIds(info, "R090");
+    caseIds(info, "C110931", "R090");
     await gotoDashboard(page);
     await expect(page.locator(SEL.trendsChart)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
     await expect(page.locator(SEL.trendsCanvas)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -218,7 +218,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R093 R098 R110 - Threats Traceability Matrix renders numeric cells and matches aria-label counts", async ({ page }, info) => {
-    caseIds(info, "R093", "R098", "R110");
+    caseIds(info, "C110932", "R093", "R098", "R110");
     await gotoDashboard(page);
     // The matrix cells are populated by a backend fetch that can take
     // 10-20s on cold pageload. Use a longer timeout for the mount.
@@ -236,7 +236,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R049 R050 R127 R128 - Filter panel: date inputs mount and preserve typed values", async ({ page }, info) => {
-    caseIds(info, "R049", "R050", "R127", "R128");
+    caseIds(info, "C110933", "R049", "R050", "R127", "R128");
     await gotoDashboard(page);
     await openFilterPanel(page);
     await expect(page.locator(SEL.startDatePicker)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -249,7 +249,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R052 R053 R054 R060 R062 R129-R132 R135 - Filter panel: all multi-select widgets mount", async ({ page }, info) => {
-    caseIds(info, "R052", "R053", "R054", "R060", "R062", "R129", "R130", "R131", "R132", "R135");
+    caseIds(info, "C110934", "R052", "R053", "R054", "R060", "R062", "R129", "R130", "R131", "R132", "R135");
     await gotoDashboard(page);
     await openFilterPanel(page);
     for (const sel of [
@@ -266,7 +266,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R059 R061 R063 R133 R134 - Model Status / Department / Tags / ModelType / ThreatModels default to All", async ({ page }, info) => {
-    caseIds(info, "R059", "R061", "R063", "R133", "R134");
+    caseIds(info, "C110935", "R059", "R061", "R063", "R133", "R134");
     await gotoDashboard(page);
     await openFilterPanel(page);
     // The kendo-multiselect exposes aria-label="All" when nothing is user-selected.
@@ -287,7 +287,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R120 R121 R122 R123 R124 R138 R139 - Kendo multiselect dropdown opens on click and search input is present", async ({ page }, info) => {
-    caseIds(info, "R120", "R121", "R122", "R123", "R124", "R138", "R139");
+    caseIds(info, "C110936", "R120", "R121", "R122", "R123", "R124", "R138", "R139");
     await gotoDashboard(page);
     await openFilterPanel(page);
     // Click the Department multiselect wrapper (input alone doesn't always open
@@ -307,7 +307,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R051 R064 R065 R070 R071 - Filter Clear button restores defaults", async ({ page }, info) => {
-    caseIds(info, "R051", "R064", "R065", "R070", "R071");
+    caseIds(info, "C110937", "R051", "R064", "R065", "R070", "R071");
     await gotoDashboard(page);
     await openFilterPanel(page);
     // Clear + Apply buttons render and are clickable.
@@ -324,7 +324,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R073-R089 R136 R137 - Filter panel CRUD icons (new / edit / delete) render on filter dropdown", async ({ page }, info) => {
-    caseIds(info, "R073", "R074", "R075", "R076", "R077", "R078", "R079", "R080", "R081", "R082", "R083", "R084", "R085", "R086", "R087", "R088", "R089", "R136", "R137");
+    caseIds(info, "C110938", "R073", "R074", "R075", "R076", "R077", "R078", "R079", "R080", "R081", "R082", "R083", "R084", "R085", "R086", "R087", "R088", "R089", "R136", "R137");
     await gotoDashboard(page);
     await openFilterPanel(page);
     await expect(page.locator(SEL.filterDropdown)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -336,7 +336,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R144 R145 R147 R150 R151 - Create Custom Widget panel opens with greeting, input, suggestions; close returns to dashboard", async ({ page }, info) => {
-    caseIds(info, "R144", "R145", "R147", "R150", "R151");
+    caseIds(info, "C110939", "R144", "R145", "R147", "R150", "R151");
     await gotoDashboard(page);
     await page.locator(SEL.createCustomWidgetButton).click();
     await expect(page.locator(SEL.wingmanSidebar)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -360,7 +360,7 @@ test.describe("Dashboard", () => {
 
   // --------------------------------------------------------------------------
   test("R157 R158 R159 R160 - AI widget carousel exposes a dropdown navigator (three-dot menu / edit-mode surrogate)", async ({ page }, info) => {
-    caseIds(info, "R157", "R158", "R159", "R160");
+    caseIds(info, "C110940", "R157", "R158", "R159", "R160");
     await gotoDashboard(page);
     // The AI widget row is the surface where three-dot menus live per widget.
     await expect(page.locator(SEL.aiWidgetContainer)).toBeVisible({ timeout: TIMEOUTS.elementVisible });

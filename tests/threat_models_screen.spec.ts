@@ -59,7 +59,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13562 C13563 C13564 C13565 - render: grid + title + column shape", async ({ page }, info) => {
-    caseIds(info, "C13562", "C13563", "C13564", "C13565");
+    caseIds(info, "C111034");
     await login(page);
     await gotoTMList(page);
     await step(page, info, 1, "after-login");
@@ -75,7 +75,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13636 C13637 C13638 C13639 C13640 C13641 - navigation: side-nav links mount", async ({ page }, info) => {
-    caseIds(info, "C13636", "C13637", "C13638", "C13639", "C13640", "C13641");
+    caseIds(info, "C111035");
     await login(page);
     await gotoTMList(page);
     for (const sel of [
@@ -92,7 +92,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13590 C13592 C13593 C13594 +7 more - search: text round-trip", async ({ page }, info) => {
-    caseIds(info, "C13590", "C13592", "C13593", "C13594", "C13595", "C13596", "C13597", "C13598", "C13599", "C13591");
+    caseIds(info, "C111036");
     await login(page);
     await gotoTMList(page);
     const search = page.locator(TM.selectors.searchInput).first();
@@ -107,7 +107,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13585 C13586 - refresh reloads without teardown", async ({ page }, info) => {
-    caseIds(info, "C13585", "C13586");
+    caseIds(info, "C111037");
     await login(page);
     await gotoTMList(page);
     await clearBlockingOverlays(page);
@@ -120,7 +120,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13603 C18010 C18018 - columns: headers render", async ({ page }, info) => {
-    caseIds(info, "C13603", "C18010", "C18018");
+    caseIds(info, "C111038");
     await login(page);
     await gotoTMList(page);
     await expect(page.locator(TM.selectors.columnHeader).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -129,7 +129,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13602 C13604 C13624 C18012 - filter_sort: column-header controls mount", async ({ page }, info) => {
-    caseIds(info, "C13602", "C13604", "C13624", "C18012");
+    caseIds(info, "C111039");
     await login(page);
     await gotoTMList(page);
     await expect(page.locator(TM.selectors.columnHeader).first()).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -138,7 +138,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13584 C13600 C13601 C13607 - select_all: row checkbox attached", async ({ page }, info) => {
-    caseIds(info, "C13584", "C13600", "C13601", "C13607");
+    caseIds(info, "C111040");
     await login(page);
     await gotoTMList(page);
     const cbx = page.locator(TM.selectors.rowCheckboxTemplate.replace("{index}", "0")).first();
@@ -148,7 +148,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13625 C13626 - filter_created_by_me: href nav works", async ({ page }, info) => {
-    caseIds(info, "C13625", "C13626");
+    caseIds(info, "C111041");
     await login(page);
     await gotoTMList(page);
     const link = page.locator(TM.selectors.createCreatedByMeExpand).first();
@@ -162,7 +162,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13631 C13632 C13633 C13634 +4 more - important_star: filter view", async ({ page }, info) => {
-    caseIds(info, "C13631", "C13632", "C13633", "C13634", "C13635", "C18009", "C18017", "C20236");
+    caseIds(info, "C111042");
     await login(page);
     await gotoTMList(page);
     const link = page.locator(TM.selectors.createImportantExpand).first();
@@ -178,7 +178,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13577 C13578 - row_metadata: Modified column exists", async ({ page }, info) => {
-    caseIds(info, "C13577", "C13578");
+    caseIds(info, "C111043");
     await login(page);
     await gotoTMList(page);
     await expect(page.locator(TM.selectors.gridRoot)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -192,7 +192,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13566 C13567 C13568 C13587 +7 more - other: grid + search surfaces", async ({ page }, info) => {
-    caseIds(info, "C13566", "C13567", "C13568", "C13587", "C13589", "C13608", "C13618", "C13629", "C13630", "C13642", "C15827");
+    caseIds(info, "C111044");
     await login(page);
     await gotoTMList(page);
     await expect(page.locator(TM.selectors.searchInput)).toBeVisible({ timeout: TIMEOUTS.elementVisible });
@@ -202,7 +202,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13581 C16878 C17728 - create: new model appears in list", async ({ page }, info) => {
-    caseIds(info, "C13581", "C16878", "C17728");
+    caseIds(info, "C111045");
     await login(page);
     await gotoTMList(page);
     const { modelName } = await createDisposableModel(page, TM_DATA.namePrefixes.create);
@@ -226,7 +226,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13569 C13570 C13571 C13573 +12 more - edit: version updates on save", async ({ page }, info) => {
-    caseIds(info, "C13569", "C13570", "C13571", "C13573", "C13574", "C13575", "C13579", "C13580", "C13583", "C13653", "C13658", "C13666", "C13583", "C16879", "C15956", "C18022", "C13663");
+    caseIds(info, "C111046");
     await login(page);
     await gotoTMList(page);
     const { modelName } = await createDisposableModel(page, TM_DATA.namePrefixes.edit);
@@ -248,7 +248,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13591 C13598 C13605 C13606 +13 more - archive_restore: full lifecycle", async ({ page }, info) => {
-    caseIds(info, "C13591", "C13598", "C13605", "C13606", "C13609", "C13610", "C13611", "C13612", "C13613", "C13614", "C13615", "C13616", "C13617", "C13621", "C13623", "C13646", "C13614");
+    caseIds(info, "C111047");
     await login(page);
     await gotoTMList(page);
     const { modelName } = await createDisposableModel(page, TM_DATA.namePrefixes.archive);
@@ -266,7 +266,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13619 C13620 C13622 - delete_permanent: gone from archived list", async ({ page }, info) => {
-    caseIds(info, "C13619", "C13620", "C13622");
+    caseIds(info, "C111048");
     await login(page);
     await gotoTMList(page);
     const { modelName } = await createDisposableModel(page, TM_DATA.namePrefixes.delete);
@@ -285,7 +285,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C13580 C13588 C15825 - status_change: combobox picks a documented status", async ({ page }, info) => {
-    caseIds(info, "C13580", "C13588", "C15825");
+    caseIds(info, "C111049");
     await login(page);
     await gotoTMList(page);
     const { modelName } = await createDisposableModel(page, TM_DATA.namePrefixes.status);
@@ -317,7 +317,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C16879 - tags: input accepts a tag", async ({ page }, info) => {
-    caseIds(info, "C16879");
+    caseIds(info, "C111050");
     await login(page);
     await gotoTMList(page);
     const { modelName } = await createDisposableModel(page, TM_DATA.namePrefixes.tag);
@@ -346,7 +346,7 @@ test.describe("Threat Models Screen", () => {
   // members-list interactions. 6 explicit "login as user X" cases need
   // a second test account not in testdata -> test.fixme() below.
   test("C13576 C13582 C13627 C13628 +14 more - collaborator: share dialog mounts", async ({ page }, info) => {
-    caseIds(info, "C13576", "C13582", "C13627", "C13628", "C13647", "C13648", "C13649", "C13650", "C13651", "C13652", "C13654", "C13655", "C13656", "C13657", "C13664", "C13665", "C13579", "C13583");
+    caseIds(info, "C111051");
     await login(page);
     await gotoTMList(page);
     const { modelName } = await createDisposableModel(page, TM_DATA.namePrefixes.collab);
@@ -380,7 +380,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C18007 C18008 C18013 - export_csv: download triggers with csv filename", async ({ page }, info) => {
-    caseIds(info, "C18007", "C18008", "C18013");
+    caseIds(info, "C111053");
     await login(page);
     await gotoTMList(page);
     const { filename } = await triggerExportDownload(page, "csv");
@@ -390,7 +390,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C18015 C18016 C18020 - export_excel: download triggers with xlsx filename", async ({ page }, info) => {
-    caseIds(info, "C18015", "C18016", "C18020");
+    caseIds(info, "C111054");
     await login(page);
     await gotoTMList(page);
     const { filename } = await triggerExportDownload(page, "excel");
@@ -400,7 +400,7 @@ test.describe("Threat Models Screen", () => {
 
   // -------------------------------------------------------------------------
   test("C15822 C15826 C15828 C15829 C15830 - report_download: row affordance mounts", async ({ page }, info) => {
-    caseIds(info, "C15822", "C15826", "C15828", "C15829", "C15830");
+    caseIds(info, "C111055");
     await login(page);
     await gotoTMList(page);
     const { modelName } = await createDisposableModel(page, TM_DATA.namePrefixes.report);

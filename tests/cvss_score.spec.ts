@@ -143,7 +143,7 @@ test.describe("CVSS score — Diagram > Threats > Calculate CVSS Score dialog", 
   test.setTimeout(TIMEOUTS.test);
 
   test("actions_menu_shows_cvss_option: Threats panel Actions dropdown exposes Calculate CVSS Score", async ({ page }, info) => {
-    caseIds(info, "CV.R01");
+    caseIds(info, "C110920", "CV.R01");
     await openFirstPopulatedModel(page);
     await openThreatsPanel(page);
     await step(page, info, 1, "threats-panel-open");
@@ -161,7 +161,7 @@ test.describe("CVSS score — Diagram > Threats > Calculate CVSS Score dialog", 
   });
 
   test("dialog_opens_with_expected_structure: title + vector + score + Reset/Cancel/Submit render", async ({ page }, info) => {
-    caseIds(info, "CV.R02");
+    caseIds(info, "C110921", "CV.R02");
     await openFirstPopulatedModel(page);
     await openCVSSDialog(page);
     await step(page, info, 1, "cvss-dialog-open");
@@ -193,7 +193,7 @@ test.describe("CVSS score — Diagram > Threats > Calculate CVSS Score dialog", 
   });
 
   test("vector_and_score_recompute_on_metric_change: change VC to High → vector contains VC:H and score becomes non-zero", async ({ page }, info) => {
-    caseIds(info, "CV.R03", "CV.R04");
+    caseIds(info, "C110922", "CV.R03", "CV.R04");
     await openFirstPopulatedModel(page);
     await openCVSSDialog(page);
     await step(page, info, 1, "dialog-open");
@@ -224,7 +224,7 @@ test.describe("CVSS score — Diagram > Threats > Calculate CVSS Score dialog", 
   });
 
   test("initial_state_reflects_v4_defaults: base metrics pre-selected → score 0.0 severity None + Submit enabled (drift from Excel R5/R7)", async ({ page }, info) => {
-    caseIds(info, "CV.R05", "CV.R07");
+    caseIds(info, "C110923", "CV.R05", "CV.R07");
     await openFirstPopulatedModel(page);
     await openCVSSDialog(page);
     await step(page, info, 1, "dialog-open");
@@ -265,7 +265,7 @@ test.describe("CVSS score — Diagram > Threats > Calculate CVSS Score dialog", 
   });
 
   test("cancel_dismisses_dialog: Cancel removes the dialog from the DOM without writing", async ({ page }, info) => {
-    caseIds(info, "CV.R08");
+    caseIds(info, "C110924", "CV.R08");
     await openFirstPopulatedModel(page);
     await openCVSSDialog(page);
     await step(page, info, 1, "dialog-open");

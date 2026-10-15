@@ -149,7 +149,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("navigate_to_solution_hub: left-nav link navigates to /solutions-hub", async ({ page }, info) => {
-    caseIds(info, "SH.R01", "SH.R02");
+    caseIds(info, "C111011", "SH.R01", "SH.R02");
     await login(page);
     await page.goto(BASE_URL + PATHS.threatModels);
     await dismissPostLoginOverlays(page);
@@ -168,7 +168,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   });
 
   test("home_ui_elements: search + labels + model list + welcome placeholder all render", async ({ page }, info) => {
-    caseIds(info, "SH.R03", "SH.R04");
+    caseIds(info, "C111012", "SH.R03", "SH.R04");
     await gotoSolutionHub(page);
     await expect(page.locator(SEL.searchInputWrapper)).toBeVisible();
     await expect(page.locator(SEL.labelFilterButton)).toBeVisible();
@@ -181,7 +181,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   });
 
   test("model_list_search: search filters, empty returns none, clear X resets", async ({ page }, info) => {
-    caseIds(info, "SH.R06");
+    caseIds(info, "C111013", "SH.R06");
     await gotoSolutionHub(page);
     const before = await modelCount(page);
     await step(page, info, 1, "before-search");
@@ -220,7 +220,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   });
 
   test("hover_shows_full_labels: hovering a card exposes tags + name + date", async ({ page }, info) => {
-    caseIds(info, "SH.R07");
+    caseIds(info, "C111014", "SH.R07");
     await gotoSolutionHub(page);
     const card = await firstModelCard(page);
     await card.hover();
@@ -234,7 +234,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   });
 
   test("select_model_shows_preview_and_about: click a model → preview + About + Download", async ({ page }, info) => {
-    caseIds(info, "SH.R05", "SH.R09", "SH.R10");
+    caseIds(info, "C111015", "SH.R05", "SH.R09", "SH.R10");
     await gotoSolutionHub(page);
     const card = await firstModelCard(page);
     const name = ((await card.getAttribute("aria-label")) ?? "").replace(/^Select threat model:\s*/, "");
@@ -260,7 +260,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   });
 
   test("about_minimize_toggle: About accordion collapses and reopens", async ({ page }, info) => {
-    caseIds(info, "SH.R11");
+    caseIds(info, "C111016", "SH.R11");
     await gotoSolutionHub(page);
     await (await firstModelCard(page)).click();
     const toggle = page.locator(SEL.aboutToggle);
@@ -281,7 +281,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   });
 
   test("related_models_switch: clicking a Related Threat Model swaps the detail panel", async ({ page }, info) => {
-    caseIds(info, "SH.R12", "SH.R13");
+    caseIds(info, "C111017", "SH.R12", "SH.R13");
     await gotoSolutionHub(page);
     await (await firstModelCard(page)).click();
 
@@ -319,7 +319,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   });
 
   test("download_dialog_close_paths: dialog opens; Cancel and X both close it (no Download click)", async ({ page }, info) => {
-    caseIds(info, "SH.R14", "SH.R15", "SH.R16", "SH.R24");
+    caseIds(info, "C111018", "SH.R14", "SH.R15", "SH.R16", "SH.R24");
     await gotoSolutionHub(page);
     await (await firstModelCard(page)).click();
     await step(page, info, 1, "model-selected");
@@ -349,7 +349,7 @@ test.describe("Solution Hub — Home + Download Model modules", () => {
   });
 
   test("labels_sidebar_flow: open, check, clear, apply-filters, close", async ({ page }, info) => {
-    caseIds(info, "SH.R28", "SH.R29", "SH.R30", "SH.R31", "SH.R32", "SH.R33", "SH.R34");
+    caseIds(info, "C111019", "SH.R28", "SH.R29", "SH.R30", "SH.R31", "SH.R32", "SH.R33", "SH.R34");
     await gotoSolutionHub(page);
     await openLabelSidebar(page);
     // R28/R29 — sidebar has title, search, checkbox list, Apply, Clear,

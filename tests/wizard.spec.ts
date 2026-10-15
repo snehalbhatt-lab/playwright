@@ -73,7 +73,7 @@ test.describe("Wizard — Create New Model > Wizard tab", () => {
   test.setTimeout(TIMEOUTS.test);
 
   test("wizard_tab_shows_list_and_count_and_search: default UI has cards + count + search", async ({ page }, info) => {
-    caseIds(info, "WZ.R25");
+    caseIds(info, "C111084", "WZ.R25");
     await openCreateModelDialog(page);
     await openWizardTab(page);
     await step(page, info, 1, "wizard-tab-open");
@@ -123,7 +123,7 @@ test.describe("Wizard — Create New Model > Wizard tab", () => {
   });
 
   test("wizard_next_and_prev_disabled_on_empty_form: navigation blocked without name/version/answer", async ({ page }, info) => {
-    caseIds(info, "WZ.R23");
+    caseIds(info, "C111085", "WZ.R23");
     await openCreateModelDialog(page);
     await openWizardTab(page);
     await step(page, info, 1, "wizard-tab-open");
@@ -147,7 +147,7 @@ test.describe("Wizard — Create New Model > Wizard tab", () => {
   });
 
   test("wizard_cancel_closes_dialog_cleanly: Cancel closes without creating a model", async ({ page }, info) => {
-    caseIds(info, "WZ.R23");
+    caseIds(info, "C111086", "WZ.R23");
     await openCreateModelDialog(page);
     await openWizardTab(page);
     await step(page, info, 1, "wizard-tab-open");

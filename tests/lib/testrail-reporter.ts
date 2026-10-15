@@ -169,7 +169,7 @@ export default class TestRailReporter implements Reporter {
         await this.api("POST", `/close_run/${this.runId}`, {});
       }
       console.log(
-        `[TestRail] pushed ${this.results.size} results → run ${this.runId}` +
+        `[TestRail] pushed ${filteredPayload.length} results → run ${this.runId}` +
           (this.cfg.closeRun ? " (closed)" : ""),
       );
     } catch (err) {

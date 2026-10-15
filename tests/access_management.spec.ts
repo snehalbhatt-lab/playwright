@@ -217,13 +217,13 @@ test.describe("Access Management", () => {
   // sbhatt" — but on 2026-10-15 sbhatt was granted admin on this tenant to
   // unblock TestRail bootstrap (/add_suite). The Create New menu now exposes
   // Department / User / Group / Role / Threat Model, invalidating the original
-  // premise. Skipped (pushes status "blocked" to TestRail) until either a
-  // non-admin fixture account exists or the test is rewritten to assert the
+  // premise. Runtime skip (pushes status "blocked" to TestRail) until either
+  // a non-admin fixture account exists or the test is rewritten to assert the
   // admin case.
-  test.skip("R248 R250 (partial permission-gate) - Create/Add controls are absent for non-Enterprise-Admin sbhatt", async ({ page }, info) => {
+  test("R248 R250 (partial permission-gate) - Create/Add controls are absent for non-Enterprise-Admin sbhatt", async ({ page }, info) => {
     caseIds(info, "C110857", "R248", "R250");
     void page;
-    void info;
+    test.skip(true, "sbhatt is now admin (2026-10-15 TestRail bootstrap grant) — Create New menu exposes Department/User/Group/Role, invalidating this test's premise");
   });
 
   // ==========================================================================
@@ -337,57 +337,46 @@ test.describe("Access Management", () => {
   // spec so a future fixture/perm/UI change can unblock them in-place.
   // --------------------------------------------------------------------------
 
-  test.skip("C14348 - Departments list is in alphabetical order", async ({ page }, info) => {
+  // test.skip() modifier at declaration time never runs the body, so the
+  // caseIds(info, …) call wouldn't register — reporter wouldn't know to push
+  // anything. We use runtime `test.skip(true, reason)` *after* caseIds so the
+  // annotation lands first; the reporter then pushes status "blocked" with
+  // the reason captured in the test comment.
+
+  test("C14348 - Departments list is in alphabetical order", async ({ page }, info) => {
     caseIds(info, "C14348");
     void page;
-    void info;
-    // Blocked: live tmdev tenant does NOT sort departments alphabetically on
-    // mount (first visible 2026-10-15: cdr, Update, sdep, DarshakV2, sdsc…).
-    // Backend ordering appears to be insertion/update time. Documented drift —
-    // either the manual case expectation needs updating or the UI needs the
-    // sort fixed.
+    test.skip(true, "Live tmdev does NOT sort departments alphabetically — backend uses insertion/update order. First visible 2026-10-15: cdr, Update, sdep, DarshakV2, sdsc…");
   });
 
-  test.skip("C14354 - Move to Department dialog UI", async ({ page }, info) => {
+  test("C14354 - Move to Department dialog UI", async ({ page }, info) => {
     caseIds(info, "C14354");
     void page;
-    void info;
-    // Blocked: Move to Dept icon only appears inside a selected department's
-    // user list (not the global Users tab). Reaching it reliably needs a
-    // Department fixture with ≥1 user; cross-dept side effects risk. Needs a
-    // dedicated non-destructive fixture before automation.
+    test.skip(true, "Move to Dept icon lives per-user inside a selected department (not the global Users tab). Needs a non-destructive user+dept fixture to reach reliably.");
   });
 
-  test.skip("C14355 - Move to Department dialog: mandatory fields show red asterisk", async ({ page }, info) => {
+  test("C14355 - Move to Department dialog: mandatory fields show red asterisk", async ({ page }, info) => {
     caseIds(info, "C14355");
     void page;
-    void info;
-    // Blocked: see C14354 — can't reach the dialog non-destructively without a
-    // fixture user+dept pair.
+    test.skip(true, "See C14354 — can't reach the dialog without a fixture.");
   });
 
-  test.skip("C14356 - Move to Department dialog: Cancel closes dialog", async ({ page }, info) => {
+  test("C14356 - Move to Department dialog: Cancel closes dialog", async ({ page }, info) => {
     caseIds(info, "C14356");
     void page;
-    void info;
-    // Blocked: see C14354.
+    test.skip(true, "See C14354.");
   });
 
-  test.skip("C14357 - Move to Department dialog: Close (X) closes dialog", async ({ page }, info) => {
+  test("C14357 - Move to Department dialog: Close (X) closes dialog", async ({ page }, info) => {
     caseIds(info, "C14357");
     void page;
-    void info;
-    // Blocked: see C14354.
+    test.skip(true, "See C14354.");
   });
 
-  test.skip("C14367 - Department's User search text persists when selected Department changes", async ({ page }, info) => {
+  test("C14367 - Department's User search text persists when selected Department changes", async ({ page }, info) => {
     caseIds(info, "C14367");
     void page;
-    void info;
-    // Blocked: this behaviour lives inside a specific department's User sub-
-    // view (per the manual case title). The live Access Management > Users tab
-    // is a flat global list without a per-department user search surface at
-    // sbhatt's permission level. Needs further exploration or a fixture.
+    test.skip(true, "Behaviour lives inside a specific department's User sub-view (per manual case). The live Users tab is a flat global list with no per-dept user search surface at sbhatt's perm level.");
   });
 });
 

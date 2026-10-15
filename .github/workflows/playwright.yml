@@ -35,7 +35,9 @@ jobs:
       TESTRAIL_PROJECT_ID: ${{ secrets.TESTRAIL_PROJECT_ID }}
       TESTRAIL_SUITE_ID: ${{ secrets.TESTRAIL_SUITE_ID }}
       TESTRAIL_RUN_NAME: "Playwright CI #${{ github.run_number }} (${{ github.ref_name }})"
-      TESTRAIL_CLOSE_RUN: "true"
+      # The sbhatt account can push results but lacks "close test runs"
+      # permission (TestRail 403). Leave runs open; close manually in UI.
+      TESTRAIL_CLOSE_RUN: "false"
 
     steps:
       - name: Checkout

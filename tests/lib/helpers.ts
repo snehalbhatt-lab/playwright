@@ -10,9 +10,12 @@ import testdata from "../data/testdata.json";
 // Values come from tests/data/testdata.json; no hardcoded strings live
 // in the spec file itself.
 
-export const BASE_URL: string = process.env.TM_BASE_URL ?? testdata.baseUrl;
-export const USERNAME: string = process.env.TM_USER ?? testdata.credentials.username;
-export const PASSWORD: string = process.env.TM_PASS ?? testdata.credentials.password;
+// `||` not `??` on purpose: GitHub Actions passes undefined secrets as the
+// empty string, which `??` would NOT treat as "unset" — tests would then
+// try to navigate to "" and fail with "Cannot navigate to invalid URL".
+export const BASE_URL: string = process.env.TM_BASE_URL || testdata.baseUrl;
+export const USERNAME: string = process.env.TM_USER || testdata.credentials.username;
+export const PASSWORD: string = process.env.TM_PASS || testdata.credentials.password;
 
 export const PATHS = testdata.paths;
 export const URL_PATTERNS = testdata.urlPatterns;

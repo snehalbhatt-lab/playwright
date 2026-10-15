@@ -52,6 +52,11 @@ interface TRResult {
 export default class TestRailReporter implements Reporter {
   private results = new Map<number, TRResult>();
   private runId?: number;
+  // Populated after the run is known. If undefined, no filtering happens;
+  // if a Set, only case_ids in the Set are pushed. Prevents TestRail's
+  // all-or-nothing 400 ("case Cxxx unknown or not part of the test run")
+  // when a test is dual-tagged across suites.
+  private runCaseIds?: Set<number>;
   private cfg = {
     baseUrl: normalizeBaseUrl(process.env.TESTRAIL_URL ?? ""),
     user: process.env.TESTRAIL_USER ?? "",
@@ -87,7 +92,30 @@ export default class TestRailReporter implements Reporter {
       console.log(`[TestRail] created run ${this.runId} ("${this.cfg.runName}")`);
     } catch (err) {
       console.error(`[TestRail] failed to create run — reporter disabled for this invocation: ${(err as Error).message}`);
+      return;
     }
+    try {
+      this.runCaseIds = await this.fetchRunCaseIds(this.runId!);
+    } catch (err) {
+      console.warn(`[TestRail] couldn't fetch run case_ids (will not filter): ${(err as Error).message}`);
+    }
+  }
+
+  // Fetches every case_id in the run via /get_tests (paginated). Used to
+  // drop out-of-scope case ids from the push payload — e.g., when a test is
+  // dual-tagged with ids from a different suite.
+  private async fetchRunCaseIds(runId: number): Promise<Set<number>> {
+    const ids = new Set<number>();
+    let offset = 0;
+    for (;;) {
+      const resp = await this.api<any>("GET", `/get_tests/${runId}&limit=250&offset=${offset}`);
+      const tests = Array.isArray(resp) ? resp : resp?.tests ?? [];
+      for (const t of tests) if (typeof t.case_id === "number") ids.add(t.case_id);
+      if (tests.length < 250) break;
+      offset += 250;
+      if (offset > 10000) break; // sanity cap
+    }
+    return ids;
   }
 
   onTestEnd(test: TestCase, result: TestResult): void {
@@ -114,13 +142,27 @@ export default class TestRailReporter implements Reporter {
         // Strip the internal _attachments field before POST.
         ({ _attachments: _ignored, ...r }) => r,
       );
-      // Preserve the ordered local list so we can zip response → attachments.
-      // TestRail returns results in the same order as the request, but omits
-      // case_id in the response (only id + test_id), so index alignment is the
-      // only reliable way to pair result_id back to our local attachments.
-      const localOrdered = Array.from(this.results.values());
+      // Filter out case_ids that aren't in this run (dual-tagged tests
+      // can carry ids from a different suite). TestRail rejects the whole
+      // batch otherwise with a 400.
+      const filterByRun = (r: TRResult) =>
+        !this.runCaseIds || this.runCaseIds.has(r.case_id);
+      const localOrdered = Array.from(this.results.values()).filter(filterByRun);
+      const filteredPayload = payload.filter(filterByRun);
+      if (filteredPayload.length === 0) {
+        console.warn(
+          `[TestRail] no case_ids match run ${this.runId} — nothing to push ` +
+            `(reporter saw ${this.results.size} tagged results)`,
+        );
+        return;
+      }
+      if (filteredPayload.length < payload.length) {
+        console.log(
+          `[TestRail] filtered ${payload.length - filteredPayload.length} out-of-scope case_ids; pushing ${filteredPayload.length}`,
+        );
+      }
       const created = await this.api<any>("POST", `/add_results_for_cases/${this.runId}`, {
-        results: payload,
+        results: filteredPayload,
       });
       await this.uploadAttachmentsFor(localOrdered, Array.isArray(created) ? created : []);
       if (this.cfg.closeRun) {

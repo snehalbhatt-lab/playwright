@@ -15,6 +15,10 @@ on:
         description: "TestRail attachment mode (never|failures|always). Blank = reporter default."
         required: false
         default: ""
+      suite_id:
+        description: "Override TESTRAIL_SUITE_ID for this run (e.g., 120 to target the manual Access Management 7.0 suite). Blank = use repo secret."
+        required: false
+        default: ""
 
 concurrency:
   group: playwright-${{ github.ref }}
@@ -37,7 +41,9 @@ jobs:
       TESTRAIL_USER: ${{ secrets.TESTRAIL_USER }}
       TESTRAIL_API_KEY: ${{ secrets.TESTRAIL_API_KEY }}
       TESTRAIL_PROJECT_ID: ${{ secrets.TESTRAIL_PROJECT_ID }}
-      TESTRAIL_SUITE_ID: ${{ secrets.TESTRAIL_SUITE_ID }}
+      # inputs.suite_id (if provided) overrides the repo secret, letting one
+      # workflow dispatch target a different suite without touching secrets.
+      TESTRAIL_SUITE_ID: ${{ inputs.suite_id != '' && inputs.suite_id || secrets.TESTRAIL_SUITE_ID }}
       TESTRAIL_RUN_NAME: "Playwright CI #${{ github.run_number }} (${{ github.ref_name }})"
       # The sbhatt account can push results but lacks "close test runs"
       # permission (TestRail 403). Leave runs open; close manually in UI.

@@ -11,6 +11,10 @@ on:
         description: "Number of parallel workers"
         required: false
         default: "2"
+      attach_on:
+        description: "TestRail attachment mode (never|failures|always). Blank = reporter default."
+        required: false
+        default: ""
 
 concurrency:
   group: playwright-${{ github.ref }}
@@ -41,6 +45,9 @@ jobs:
       # Default cap of 10 MiB skips most Playwright traces. 50 MiB covers
       # realistic traces for ~1 min tests; adjust if traces still skip.
       TESTRAIL_ATTACH_MAX_BYTES: "52428800"
+      # Blank = reporter default (failures); set to "always" via workflow
+      # dispatch input to force attachments on passing tests too.
+      TESTRAIL_ATTACH_ON: ${{ inputs.attach_on }}
 
     steps:
       - name: Checkout

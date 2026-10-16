@@ -92,7 +92,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R008 (partial) - all 4 tabs mount with entity counts", async ({ page }, info) => {
-    caseIds(info, "C110850", "C14281", "R008");
+    caseIds(info, "C110850", "C111477", "R008");
     await gotoAccessManagement(page);
     for (const name of [AM.tabs.departments, AM.tabs.users, AM.tabs.groups, AM.tabs.roles]) {
       const tab = page.locator(SEL.tabRole).filter({ hasText: name }).first();
@@ -131,7 +131,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("R008 R010 R017 R018 - Departments tab: grid columns + search + pagination", async ({ page }, info) => {
-    caseIds(info, "C110852", "C14282", "C14283", "C14284", "R008", "R010", "R011", "R012", "R015", "R016", "R017", "R018", "R019", "R020");
+    caseIds(info, "C110852", "C111478", "C111479", "C111120", "R008", "R010", "R011", "R012", "R015", "R016", "R017", "R018", "R019", "R020");
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.departments);
     const headers = await gridHeaderTexts(page);
@@ -237,7 +237,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("C14285 - Departments grid: Users column carries a numeric count per row", async ({ page }, info) => {
-    caseIds(info, "C14285");
+    caseIds(info, "C111121");
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.departments);
     const grid = page.getByRole("grid", { name: "Departments" });
@@ -256,7 +256,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("C14286 - Departments grid: Groups column carries a numeric count per row", async ({ page }, info) => {
-    caseIds(info, "C14286");
+    caseIds(info, "C111122");
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.departments);
     const grid = page.getByRole("grid", { name: "Departments" });
@@ -273,7 +273,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("C14288 - Create Department dialog opens with correct fields", async ({ page }, info) => {
-    caseIds(info, "C14288");
+    caseIds(info, "C111123");
     await gotoAccessManagement(page);
     // Top-right "Create New" opens a menu with Department / User / Group / Role.
     await page.getByRole("button", { name: "Create New" }).click();
@@ -295,7 +295,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("C14289 - Create Department dialog: Cancel and Close (X) both dismiss without saving", async ({ page }, info) => {
-    caseIds(info, "C14289");
+    caseIds(info, "C111124");
     await gotoAccessManagement(page);
     const openDialog = async () => {
       await page.getByRole("button", { name: "Create New" }).click();
@@ -318,7 +318,7 @@ test.describe("Access Management", () => {
 
   // --------------------------------------------------------------------------
   test("C14347 - Departments list exposes pagination with navigable pages", async ({ page }, info) => {
-    caseIds(info, "C14347");
+    caseIds(info, "C111504");
     await gotoAccessManagement(page);
     await selectTab(page, AM.tabs.departments);
     // tmdev's dept grid uses pagination (not a scrollable viewport). Live drift
@@ -344,37 +344,37 @@ test.describe("Access Management", () => {
   // the reason captured in the test comment.
 
   test("C14348 - Departments list is in alphabetical order", async ({ page }, info) => {
-    caseIds(info, "C14348");
+    caseIds(info, "C111505");
     void page;
     test.skip(true, "Live tmdev does NOT sort departments alphabetically — backend uses insertion/update order. First visible 2026-10-15: cdr, Update, sdep, DarshakV2, sdsc…");
   });
 
   test("C14354 - Move to Department dialog UI", async ({ page }, info) => {
-    caseIds(info, "C14354");
+    caseIds(info, "C111510");
     void page;
     test.skip(true, "Move to Dept icon lives per-user inside a selected department (not the global Users tab). Needs a non-destructive user+dept fixture to reach reliably.");
   });
 
   test("C14355 - Move to Department dialog: mandatory fields show red asterisk", async ({ page }, info) => {
-    caseIds(info, "C14355");
+    caseIds(info, "C111134");
     void page;
     test.skip(true, "See C14354 — can't reach the dialog without a fixture.");
   });
 
   test("C14356 - Move to Department dialog: Cancel closes dialog", async ({ page }, info) => {
-    caseIds(info, "C14356");
+    caseIds(info, "C111511");
     void page;
     test.skip(true, "See C14354.");
   });
 
   test("C14357 - Move to Department dialog: Close (X) closes dialog", async ({ page }, info) => {
-    caseIds(info, "C14357");
+    caseIds(info, "C111512");
     void page;
     test.skip(true, "See C14354.");
   });
 
   test("C14367 - Department's User search text persists when selected Department changes", async ({ page }, info) => {
-    caseIds(info, "C14367");
+    caseIds(info, "C111135");
     void page;
     test.skip(true, "Behaviour lives inside a specific department's User sub-view (per manual case). The live Users tab is a flat global list with no per-dept user search surface at sbhatt's perm level.");
   });
